@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SeniWave</title>
+    
+    <script type="module" src="https://lbvo.ru/js/utils.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <link rel="stylesheet" href="static/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Martian+Mono:wght@100..800&display=swap" rel="stylesheet">
+
+
+    <link rel="icon" href="/static/favicon/fav.svg" type="image/svg+xml">
+    <link rel="icon" href="/static/favicon/fav.ico" sizes="48x48" type="image/x-icon">
+    <link rel="icon" href="/static/favicon/fav.png" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" href="/static/favicon/fav.png" sizes="48x48">
+</head>
+<body>
+    <header>
+        <a href="#" data-page="home">
+            <img src="static/images/logos/header.svg" alt="SeniWave Logo">
+        </a>
+        <div class="link-wr">
+            <a href="#" data-page="home" id="home" class="enabled">
+                Home
+                <img class="outline" src="static/images/icons/home.svg" alt="Active home image">
+                <img class="fill" src="static/images/icons/home-fill.svg" alt="Active home image">
+            </a>
+            <a href="#" data-page="team" id="team">
+                Team
+                <img class="outline" src="static/images/icons/team.svg" alt="Active home image">
+                <img class="fill" src="static/images/icons/team-fill.svg" alt="Active home image">
+            </a>
+            <a href="https://medium.com/@SeniWave">
+                Blog
+                <img src="static/images/icons/blog.svg" alt="">
+            </a>
+            <a class="contact" href="#" data-page="contact" id="contact">
+                Get in touch
+                <div class="img-wrapper">
+                    <img class="first" src="static/images/icons/contact.svg">
+                    <img class="second" src="static/images/icons/message.svg">
+                </div>
+            </a>
+        </div>
+    </header>
+
+    <div class="header-gap"></div>
+
+    <div id="content">
+        <div class="page loading">
+            <div class="loader">
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+            </div>
+        </div>
+        <style>
+            
+        </style>
+    </div>
+
+    <footer>
+        <img src="static/images/logos/footer.png">
+        <div class="legal">
+            <p>All Rights Reserved ©2024-2025</p>
+            <a href="/legal">Privacy Policy</a>
+        </div>
+    </footer>
+    <script>
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 0) {
+                $('header').addClass('scrolled');
+            } else {
+                $('header').removeClass('scrolled');
+            }
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            function loadPage(page) {
+                $.get(`pages/${page}.html`, function(data) {
+                    $("#content").html(data);
+                    history.pushState({ page }, "", `/${page}`);
+                    window.scrollTo(0, 0);
+                    $("[id]").removeClass("enabled");
+                    $(`#${page}`).addClass("enabled");
+                }).fail(function() {
+                    $("#content").html("<h1>Ошибка 404</h1>");
+                });
+            }
+
+            loadPage("home");
+
+            $("a[data-page]").click(function(e) {
+                e.preventDefault();
+                const page = $(this).data("page");
+                loadPage(page);
+            });
+
+            $(window).on("popstate", function(e) {
+                if (e.originalEvent.state?.page) {
+                    loadPage(e.originalEvent.state.page);
+                }
+            });
+
+            const path = window.location.pathname.slice(1);
+            loadPage(path || "home");
+        });
+    </script>
+</body>
+</html>

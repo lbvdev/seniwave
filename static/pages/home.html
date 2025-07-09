@@ -1,0 +1,110 @@
+<div class="page hero">
+    <h1 class="bold">
+        Where <span>Creativity</span><br>
+        Meets <span>Technical Expertise</span>
+    </h1>
+    <h3 class="mono">
+        We are a full-service creative agency with in-house production capabilities, building bold, memorable brands
+        ready for the future.
+    </h3>
+    <div class="wave-wrapper">
+        <img src="static/images/wave.png">
+    </div>
+</div>
+<div class="page service">
+    <h1>Our services</h1>
+    <div class="card-wrapper">
+        <div class="absolute" data-text="byee">
+            Click to services to expand
+            <span>/</span>
+        </div>
+        <div class="card" data-text="We build your complete brand identity from the ground up or refresh your current one to match your growth. This includes a custom-designed logo, a cohesive color palette and typography, a full brand guideline PDF, and clearly defined brand voice and messaging. You’ll also receive a visual moodboard and mockups to see your brand in action.">
+            <img src="static/images/service/brand.svg" alt="brand">
+            <h1 class="bold">Branding</h1>
+
+        </div>
+        <div class="card" data-text="We create fully custom websites from concept to launch — responsive, fast, and designed to convert. You get a complete live website with tailored UI/UX, mobile optimization, and advanced features like 3D object integration, animations, and XR experiences. No templates — just unique, high-impact web presence built for your brand.">
+            <img src="static/images/service/web.svg" alt="brand">
+            <h1 class="bold">Web Dev & Design</h1>
+        </div>
+        <div class="card" data-text="We create custom AR modules and 3D content that let users interact with your products or spaces directly through your website or app. Whether it's visualizing a handbag in a retail app, walking through a property in real estate, or showcasing digital assets at events, we design the content and build the viewer — fully integrated for web and mobile platforms.">
+            <img src="static/images/service/ai.svg" alt="brand">
+            <h1 class="bold">Augmented Reality Integration </h1>
+        </div>
+        <div class="card" data-text="We create a full content plan for your brand and generate everything you need — from posts and visuals to captions and video scripts. We can also create a realistic avatar based on you or design a custom one from scratch, so your brand can stay active, grow its presence, and build a following on platforms like Instagram and TikTok — even while you focus on other things.">
+            <img src="static/images/service/ar.svg" alt="brand">
+            <h1 class="bold">AI Content & Avatar Generation </h1>
+        </div>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script>
+$(document).ready(function () {
+    let activeCard = null;
+    const info = $(".absolute");
+
+    $(".absolute").click(function () {
+        const $this = $(this);
+        const text = $this.data("text");
+
+        gsap.to(info, { opacity: 0, duration: 0.2 });
+        activeCard = null;
+        return;
+    });
+    $(".card").click(function () {
+        const $this = $(this);
+        if (activeCard?.is($this)) {
+            gsap.to(info, { opacity: 0, duration: 0.2 });
+            activeCard = null;
+            return;
+        }
+
+        const text = $this.data("text");
+        const offset = $this.offset();
+        const top = offset.top - $this.closest(".card-wrapper").offset().top;
+        const left = offset.left - $this.closest(".card-wrapper").offset().left;
+
+        gsap.to(info, {
+            top: top + 10,
+            left: left + $this.outerWidth() - info.outerWidth() - 10,
+            duration: 0.4,
+            ease: "back.out(1.7)"
+        });
+
+        gsap.to(info, {
+            opacity: 0.8,
+            duration: 0.2,
+            onComplete: () => {
+                gsap.fromTo(info, { opacity: 0.8, y: 10 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" });
+                info.html(text + "<span>/</span>");
+                $this.closest(".card-wrapper").prepend(info);
+            }
+        });
+        activeCard = $this;
+    });
+});
+</script>
+
+<div class="page blog">
+    <h1>Blog</h1>
+    <div class="card-wrapper scroll-x">
+        <a class="card gold" href="https://medium.com/@SeniWave">
+            <img src="static/images/blog/gold.png" alt="">
+            <div class="text">
+                <p>JUNE 13, 2025</p>
+                <h3>How to own a Slice of Everything with Tokenization and Blockchain Technology</h3>
+            </div>
+        </a>
+        <a class="card" href="https://medium.com/@SeniWave">
+            <img src="static/images/blog/crypto.png" alt="">
+            <div class="text">
+                <p>MAY 10, 2025</p>
+                <h3>Embracing the Future: The Transition to Web 3</h3>
+            </div>
+        </a>
+        <a class="card subscribe" href="https://medium.com/@SeniWave">
+            <p>medium.com/@SeniWave</p>
+            <h2>read more on <b>Medium</b></h2>
+        </a>
+    </div>
+</div>
