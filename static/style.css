@@ -8,6 +8,12 @@
     --padding-horizontal: 76px;
     --padding-vertical: 32px;
 }
+
+::selection {
+  background: #1E1E1E40; /* цвет фона выделения */
+  color: var(--primary-color);        /* цвет текста при выделении */
+}
+
 body{
     width: 100%;
     margin: 0;
@@ -21,6 +27,7 @@ body{
 }
 *{
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
 
@@ -474,6 +481,11 @@ footer{
     }
 }
 
+
+
+
+
+
 .scroll-x{
     overflow-x: auto;
     margin: 0 calc(-1 * var(--padding-horizontal));
@@ -482,36 +494,88 @@ footer{
 
 
 
+html, body {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+}
 
-
-
-::-webkit-scrollbar {
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
-::-webkit-scrollbar-track {
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track {
   background: transparent;
 }
 
-::-webkit-scrollbar-thumb {
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0.2);
   border-radius: 4px;
   transition: background 0.3s ease;
 }
 
-::-webkit-scrollbar-thumb:hover {
+html::-webkit-scrollbar-thumb:hover,
+body::-webkit-scrollbar-thumb:hover {
   background: rgba(0, 0, 0, 0.3);
 }
 
-* {
+
+
+.default-scroll {
   scrollbar-width: thin;
   scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
 }
 
-html {
-  scroll-behavior: smooth;
+.default-scroll::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
 }
+
+.default-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.default-scroll::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+.default-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+
+
+.transparent-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+.transparent-scroll::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.transparent-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.transparent-scroll::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 4px;
+}
+
+.transparent-scroll::-webkit-scrollbar-thumb:hover {
+  background: transparent;
+}
+
+
+
+
 
 
 
@@ -552,25 +616,46 @@ html {
   }
 }
 
-@keyframes orbit { 
-  0%   { transform:rotate(225deg); opacity: 1;
-         animation-timing-function: ease-out; } 
-    
-  7%   { transform:rotate(345deg);
-         animation-timing-function: linear; }
-    
-  30%   { transform:rotate(455deg);
-          animation-timing-function: ease-in-out; }
-    
-  39%   { transform:rotate(690deg);
-          animation-timing-function: linear; }
-    
-  70%   { transform:rotate(815deg); opacity: 1;
-         animation-timing-function: ease-out; }
-    
-  75%   { transform:rotate(945deg); 
-         animation-timing-function: ease-out; }
-    
-  76% { transform:rotate(945deg); opacity: 0; }
-  100% { transform:rotate(945deg); opacity: 0; } 
+@keyframes orbit {
+    0% {
+        transform: rotate(225deg);
+        opacity: 1;
+        animation-timing-function: ease-out;
+    }
+
+    7% {
+        transform: rotate(345deg);
+        animation-timing-function: linear;
+    }
+
+    30% {
+        transform: rotate(455deg);
+        animation-timing-function: ease-in-out;
+    }
+
+    39% {
+        transform: rotate(690deg);
+        animation-timing-function: linear;
+    }
+
+    70% {
+        transform: rotate(815deg);
+        opacity: 1;
+        animation-timing-function: ease-out;
+    }
+
+    75% {
+        transform: rotate(945deg);
+        animation-timing-function: ease-out;
+    }
+
+    76% {
+        transform: rotate(945deg);
+        opacity: 0;
+    }
+
+    100% {
+        transform: rotate(945deg);
+        opacity: 0;
+    }
 }
