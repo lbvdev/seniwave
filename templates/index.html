@@ -20,25 +20,25 @@
 </head>
 <body>
     <header>
-        <a href="#" data-page="home">
+        <a class="logo" href="#" data-page="home">
             <img src="static/images/logos/header.svg" alt="SeniWave Logo">
         </a>
         <div class="link-wr">
-            <a href="#" data-page="home" id="home" class="enabled">
+            <a href="/home" data-page="home" id="home" class="enabled">
                 Home
                 <img class="outline" src="static/images/icons/home.svg" alt="Active home image">
                 <img class="fill" src="static/images/icons/home-fill.svg" alt="Active home image">
             </a>
-            <a href="#" data-page="team" id="team">
+            <a href="/team" data-page="team" id="team">
                 Team
                 <img class="outline" src="static/images/icons/team.svg" alt="Team image">
                 <img class="fill" src="static/images/icons/team-fill.svg" alt="Active team image">
             </a>
-            <a href="https://medium.com/@SeniWave">
+            <a href="https://medium.com/@SeniWave" target="_blank">
                 Blog
                 <img src="static/images/icons/blog.svg" alt="">
             </a>
-            <a href="#" data-page="works" id="works">
+            <a href="/works" data-page="works" id="works">
                 Works
                 <img class="outline" src="static/images/icons/works.svg" alt="Works image">
                 <img class="fill" src="static/images/icons/works-fill.svg" alt="Active works image">
@@ -71,7 +71,7 @@
     </div>
 
     <footer>
-        <img src="static/images/logos/footer.png">
+        <img src="static/images/footer.svg">
         <div class="legal">
             <p>All Rights Reserved ©2024-2025</p>
             <a href="/legal">Privacy Policy</a>
@@ -95,17 +95,21 @@
                     window.scrollTo(0, 0);
                     $("[id]").removeClass("enabled");
                     $(`#${page}`).addClass("enabled");
+                    // Add this line to add a class to the body element
+                    $("body").addClass(page).removeClass("home team blog contact");
                 }).fail(function() {
                     $("#content").html("<h1>Ошибка 404</h1>");
                 });
             }
 
             loadPage("home");
-
+             
             $("a[data-page]").click(function(e) {
                 e.preventDefault();
                 const page = $(this).data("page");
                 loadPage(page);
+                // Add the class to the body element
+                $("body").addClass(page).removeClass("home team blog contact works");
             });
 
             $(window).on("popstate", function(e) {

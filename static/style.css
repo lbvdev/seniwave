@@ -6,7 +6,7 @@
     /* #F7F2FF or purlper #F4EDFF*/
 
     --padding-horizontal: 76px;
-    --padding-vertical: 32px;
+    --padding-vertical: 56px;
 }
 
 ::selection {
@@ -195,7 +195,7 @@ footer{
         justify-content: space-between;
         align-items: center;
 
-        padding: 32px 76px 48px 76px;
+        padding: 32px var(--padding-horizontal) 48px var(--padding-horizontal);
         width: 100%;
 
         a, p{
@@ -329,8 +329,8 @@ footer{
     }
     .card:hover{
         img{
-            margin-left: -76px;
-            padding-left: 76px;
+            margin-left: calc( -1 * var(--padding-horizontal));
+            padding-left: var(--padding-horizontal);
         }
     }
     
@@ -657,5 +657,53 @@ body::-webkit-scrollbar-thumb:hover {
     100% {
         transform: rotate(945deg);
         opacity: 0;
+    }
+}
+
+
+
+
+
+
+
+body.works{
+    background-color: #222222;
+    color: white !important;
+
+    *{
+        color: white !important;
+    }
+
+
+    header{
+        .logo{
+            filter: brightness(0) contrast(100%) invert(100%);
+        }
+        .link-wr a{
+            background-color: #FFFFFF0A;
+        }
+        .link-wr a:not(.contact) img {
+            filter: invert(100%);
+        }
+    }
+    header.scrolled{
+        background-color: #0000003D;
+        backdrop-filter: blur(64px);
+        
+    }
+
+    footer{
+        background: linear-gradient(180deg, rgba(34, 34, 34, 0.00) 0%, rgba(95, 0, 255, 0.24) 100%);
+
+        img{
+            opacity: 0.2;
+        }
+    }
+
+
+    .wave-wrapper{
+        img{
+            filter: brightness(0) contrast(100%) invert(100%);
+        }
     }
 }
