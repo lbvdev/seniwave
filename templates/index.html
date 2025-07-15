@@ -19,31 +19,37 @@
     <link rel="apple-touch-icon" href="/static/favicon/fav.png" sizes="48x48">
 </head>
 <body>
+    <!-- <div id="wave-container"></div>
+<script src="static/wave.js"></script>
+<script>
+  initWaveEffect(document.getElementById('wave-container'));
+</script> -->
+
     <header>
         <a class="logo" href="#" data-page="home">
             <img src="static/images/logos/header.svg" alt="SeniWave Logo">
         </a>
         <div class="link-wr">
-            <a class="after-bg" href="/home" data-page="home" id="home" class="enabled">
+            <a class="link after-bg" href="/home" data-page="home" id="home" class="enabled">
                 Home
                 <img class="outline" src="static/images/icons/home.svg" alt="Active home image">
                 <img class="fill" src="static/images/icons/home-fill.svg" alt="Active home image">
             </a>
-            <a class="after-bg" href="/team" data-page="team" id="team">
+            <a class="link after-bg" href="/team" data-page="team" id="team">
                 Team
                 <img class="outline" src="static/images/icons/team.svg" alt="Team image">
                 <img class="fill" src="static/images/icons/team-fill.svg" alt="Active team image">
             </a>
-            <a class="after-bg" href="https://medium.com/@SeniWave" target="_blank">
+            <a class="link after-bg" href="https://medium.com/@SeniWave" target="_blank">
                 Blog
                 <img src="static/images/icons/blog.svg" alt="">
             </a>
-            <a class="after-bg" href="/works" data-page="works" id="works">
+            <a class="link after-bg" href="/works" data-page="works" id="works">
                 Works
                 <img class="outline" src="static/images/icons/works.svg" alt="Works image">
                 <img class="fill" src="static/images/icons/works-fill.svg" alt="Active works image">
             </a>
-            <div class="with-popup after-bg">
+            <div class="with-popup after-bg menu">
                 <div class="head">
                     Menu
                     <img class="first" src="static/images/icons/menu.svg">
@@ -57,21 +63,18 @@
                         </div>
                     </div>
                     <div class="info-wr">
-                        <a href="" class="info">
+                        <a class="info" href="/home" data-page="home" id="home" class="enabled">
                             <h3>Home</h3>
-                            <p></p>
                         </a>
-                        <a href="https://t.me/seniwave" class="info">
+                        <a class="info" href="/team" data-page="team" id="team">
                             <h3>Team</h3>
-                            <p></p>
                         </a>
-                        <a class="info" href="mailto:info@seniwave.com">
+                        <a class="info" href="https://medium.com/@SeniWave" target="_blank">
                             <h3>Blog</h3>
-                            <p></p>
+                            <p class="invisible">redirects to Medium</p>
                         </a>
-                        <a class="info" href="mailto:info@seniwave.com">
+                        <a class="info" href="/works" data-page="works" id="works">
                             <h3>Works</h3>
-                            <p></p>
                         </a>
                     </div>
 
@@ -81,7 +84,7 @@
                     </div>
                 </div>
             </div>
-            <div class="with-popup contact">
+            <div class="with-popup after-bg contact">
                 <div class="head">
                     Get in touch
                     <div class="img-wrapper">
@@ -130,7 +133,7 @@
     <script>
         $(document).on('click', '.with-popup', function(e) {
             if ($(e.target).closest('.close-popup').length) return;
-
+            $('.with-popup').not(this).removeClass('active');
             $(this).addClass('active');
         });
 
@@ -174,31 +177,51 @@
         });
     </script>
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
+            function updateBodyClass(page) {
+                $("body").removeClass("home team blog contact works 404").addClass(page);
+            }
+
+            function updateActiveLink(page) {
+                $("[data-page]").removeClass("enabled");
+                $(`[data-page='${page}']`).addClass("enabled");
+            }
+
+            function renderContent(page, data) {
+                $("#content").html(data);
+                history.pushState({ page }, "", `/${page}`);
+                window.scrollTo(0, 0);
+                updateActiveLink(page);
+                updateBodyClass(page);
+            }
+
+            const cache = {};
+
             function loadPage(page) {
-                $.get(`pages/${page}.html`, function(data) {
-                    $("#content").html(data);
-                    history.pushState({ page }, "", `/${page}`);
-                    window.scrollTo(0, 0);
-                    $("[id]").removeClass("enabled");
-                    $(`#${page}`).addClass("enabled");
-                    $("body").addClass(page).removeClass("home team blog contact");
-                }).fail(function() {
-                    $("#content").html("<h1>Ошибка 404</h1>");
+                if (cache[page]) {
+                    renderContent(page, cache[page]);
+                    return;
+                }
+                $.get(`pages/${page}.html`, function (data) {
+                    cache[page] = data;
+                    renderContent(page, data);
+                }).fail(function () {
+                    $.get("pages/404.html", function (data) {
+                        renderContent("404", data);
+                    });
                 });
             }
 
-            loadPage("home");
-             
-            $("a[data-page]").click(function(e) {
+            function handleClick(e) {
                 e.preventDefault();
                 const page = $(this).data("page");
                 loadPage(page);
-                // Add the class to the body element
-                $("body").addClass(page).removeClass("home team blog contact works");
-            });
+                if (page !== "works") updateBodyClass(page);
+            }
 
-            $(window).on("popstate", function(e) {
+            $("a[data-page]").click(handleClick);
+
+            $(window).on("popstate", function (e) {
                 if (e.originalEvent.state?.page) {
                     loadPage(e.originalEvent.state.page);
                 }
