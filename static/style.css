@@ -607,6 +607,7 @@ footer{
 
 .page.hero {
     overflow: hidden;
+    height: 70vh;
 
     .wave-wrapper {
         display: flex;
