@@ -551,6 +551,7 @@ footer{
 }
 
 .page{
+    z-index: 2;
     display: flex;
     flex-direction: column;
     gap: 32px;
@@ -561,6 +562,9 @@ footer{
     padding: var(--padding-vertical) var(--padding-horizontal);
     color: var(--primary-color);
 
+    *{
+        z-index: 2;
+    }
     h1{
         font-size: 48px;
         font-weight: 400;
@@ -619,24 +623,73 @@ footer{
         -webkit-user-drag: none;
         -webkit-user-select: none;
     }
-    h1,h2,p{
+    h1, h2, p{
         z-index: 2;
     }
-    canvas{
-        z-index: 1;
-        opacity: 0.4;
 
-        margin: 0 -76px;
-        margin-top: -220px;
-        
-        mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+}
 
-        user-select: none;
-        -webkit-user-drag: none;
-        -webkit-user-select: none;
-        overflow: visible;
+
+.page.hero.works{
+    .card-wrapper{
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+    }
+    .tags{
+        display: flex;
+        gap: 4px;
+
+        button{
+            display: flex;
+            align-items: center;
+            gap: 18px;
+
+            padding: 12px 18px;
+
+            border-radius: 51px;
+            background: #2B2B2B;
+
+            p{
+                font-size: 18px;
+                font-weight: 550;
+            }
+        }
+    }
+    .card{
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+
+        img{
+            width: 100%;
+            height: 380px;
+            max-height: 380px;
+
+            border-radius: 18px;
+            object-fit: cover;
+        }
+        .text{
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+
+            padding-left: 12px;
+
+            h3{
+                font-size: 24px;
+                font-weight: 600;
+            }
+            p{
+                font-size: 14px;
+                font-weight: 400;
+
+                opacity: 0.5;
+            }
+        }
     }
 }
+
 
 
 .page.service {
@@ -826,8 +879,11 @@ footer{
 
 
 .page.error{
-    justify-content: center;
+    padding-top: 30vh;
+    justify-content: flex-start;
     align-items: center;
+    text-align: center;
+
     height: 90vh;
 }
 
@@ -1013,7 +1069,20 @@ body::-webkit-scrollbar-thumb:hover {
 
 
 
+canvas{
+    z-index: 0;
+    position: absolute;
 
+    opacity: 0.4;
+    margin-top: -220px;
+    top: 50vh;
+    
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+    user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    overflow: visible;
+}
 
 body.works{
     background-color: #222222;
@@ -1023,15 +1092,25 @@ body.works{
         color: white !important;
     }
 
-
     header{
         .logo{
             filter: brightness(0) contrast(100%) invert(100%);
         }
-        .link-wr a{
-            background-color: #FFFFFF0A;
+
+        .after-bg::after {
+            background-color: rgba(256, 256, 256, 0.04);
         }
-        .link-wr a:not(.contact) img {
+        .after-bg:hover::after {
+            background: rgba(256, 256, 256, 0.08);
+        }
+        .after-bg.contact::after{
+            background-color: #5F00FF;
+        }
+        .with-popup.active::after{
+            background-color: rgba(256, 256, 256, 0.08);
+            inset: 0;
+        }
+        .link-wr a:not(.contact) img, .invert-on-works {
             filter: invert(100%);
         }
         .with-popup .popup *{
@@ -1045,6 +1124,11 @@ body.works{
         background-color: #0000003D;
         backdrop-filter: blur(64px);
         
+    }
+
+    canvas{
+        filter: invert(100%) contrast(0);
+        opacity: 0.7;
     }
 
     footer{
