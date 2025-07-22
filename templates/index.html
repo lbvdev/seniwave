@@ -51,7 +51,7 @@
             </a>
             <div class="with-popup after-bg menu">
                 <div class="head">
-                    Menu
+                    <span>Menu</span>
                     <img class="first" src="static/images/icons/menu.svg">
                 </div>
                 <div class="popup">
@@ -86,7 +86,7 @@
             </div>
             <div class="with-popup after-bg contact">
                 <div class="head">
-                    Get in touch
+                    <span>Get in touch</span>
                     <div class="img-wrapper">
                         <img class="first" src="static/images/icons/contact.svg">
                         <img class="second" src="static/images/icons/message.svg">
@@ -353,12 +353,28 @@
         </div>
     </footer>
     <script>
-        $(window).scroll(function() {
-            if ($(this).scrollTop() > 0) {
-                $('header').addClass('scrolled');
-            } else {
-                $('header').removeClass('scrolled');
+        $(window).scroll(function () {
+            const themeMetaTag = document.querySelector('meta[name="theme-color"]');
+            const isSmallScreen = window.innerWidth <= 580;
+            const scrollTop = $(this).scrollTop();
+            const isScrolled = scrollTop > 0;
+
+            console.log(`ScrollTop: ${scrollTop}, isScrolled: ${isScrolled}, isSmallScreen: ${isSmallScreen}`);
+
+            $('header').toggleClass('scrolled', isScrolled);
+
+            if (themeMetaTag) {
+                const newColor = isSmallScreen 
+                    ? (isScrolled ? '#ffffff' : '#F7F2FF') 
+                    : '#F7F2FF';
+                
+                console.log(`New theme-color: ${newColor}`);
+                themeMetaTag.setAttribute('content', newColor);
             }
+        });
+
+        $(document).ready(function() {
+            $(window).scroll();
         });
     </script>
     <script>
