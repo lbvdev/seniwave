@@ -3,38 +3,248 @@
         Portfolio
     </h1>
     <h3 class="mono">
-        We are a full-service creative agency with in-house production capabilities, building bold, memorable brands
-        ready for the future.
+        See What Happens When Technology Meets Creativity.Dive into a collection of AI-fueled visuals, immersive AR, and next-gen web experiences.
     </h3>
     <div class="tags">
-        <button>
-            <p>all</p>
-            <p>/</p>
+        <button class="tag" data-filter="brand">
+            <img src="/static/images/icons/brand.svg" alt="brand">
+            <img src="/static/images/icons/slash.svg" alt="/">
         </button>
-        <button>
-            <p>brand</p>
-            <p>/</p>
+        <button class="tag" data-filter="web">
+            <img src="/static/images/icons/web.svg" alt="web">
+            <img src="/static/images/icons/slash.svg" alt="/">
         </button>
-        <button>
-            <p>web</p>
-            <p>/</p>
+        <button class="tag" data-filter="ai">
+            <img src="/static/images/icons/ai.svg" alt="ai">
+            <img src="/static/images/icons/slash.svg" alt="/">
         </button>
-        <button>
-            <p>ai</p>
-            <p>/</p>
+        <button class="tag" data-filter="ar">
+            <img src="/static/images/icons/ar.svg" alt="ar">
+            <img src="/static/images/icons/slash.svg" alt="/">
         </button>
-        <button>
-            <p>ar</p>
-            <p>/</p>
+        <button class="tag" data-filter="3d">
+            <img src="/static/images/icons/3d.svg" alt="3d">
+            <img src="/static/images/icons/slash.svg" alt="/">
         </button>
     </div>
+
     <div class="card-wrapper">
-        <div class="card">
-            <img src="/static/images/works/arspatially.png" alt="error">
-            <div class="text">
-                <h3>AR Spatially</h3>
-                <p>Branding, Website UI/UX, 3D Modelling</p>
-            </div>
-        </div>
+        <work-card image="arspatially" title="AR Spatially" desc="Branding, Website UI/UX, 3D Modelling" tags="brand,web"></work-card>
+        <work-card image="arspatially2" title="AR Spatially" desc="Web-based AR viewer integration and 3D modeling" tags="3d,ar"></work-card>
     </div>
-</div>
+
+    <work-single-card image="arspatially3" desc="CGI Promo Video for Dubai AR Exhibition" tags="3d,ar"></work-single-card>
+
+    <div class="card-wrapper">
+        <work-card image="dges" title="DGES" desc="Full brand identity and responsive website design." tags="brand,web"></work-card>
+        <work-card video="mint" title="MINT" desc="3D modeling and CGI for product showcase." tags="3d"></work-card>
+    </div>
+
+    <work-single-card image="" desc="3D Modeling Dubai AR Exhibition" tags="3d,ar"></work-single-card>
+
+    <div class="card-wrapper">
+        <work-card video="sad-blood" title="SAD Blood " desc="AI video generation using LoRA training. " tags="ai"></work-card>
+        <work-card video="monna" title="AI Avatar «Monna»" desc="AI video generation based on a custom-rendered 3D model. Designed for digital campaigns, social media, and virtual presence." tags="ai"></work-card>
+    </div>
+
+    <work-single-card video="house" desc="AI-powered 3D animation based on renders for real estate marketing" tags="3d,ar"></work-single-card>
+
+    <div class="card-wrapper">
+        <work-card image="istra" title="«Istra» Country Club" desc="Luxury real estate and architectural visualization." tags="ai"></work-card>
+        <work-card image="lahta" title="Lahta Hall Saint Petersburg" desc="Art exhibition with AI-enhanced visuals." tags="ai"></work-card>
+    </div>
+
+    <work-single-card image="" desc="3D Modeling Dubai AR Exhibition" tags="3d,ar"></work-single-card>
+
+    <div class="card-wrapper">
+        <work-card image="nastya-ryba" title="«Nastya Ryba» Video Clip" desc="AI-generated music video from a single image reference. Produced for music/art campaign." tags="ai"></work-card>
+        <work-card image="music-theater" title="Music Theater" desc="AI-powered video generation based on real person image references. Created for theater production campaign." tags="ai"></work-card>
+    </div>
+
+    <work-single-card video="laser" desc="«AIR TOUCH». 3D modeling and CGI animation for product marketing. Rendered for digital ad campaign" tags="3d"></work-single-card>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script>
+        class WorkCard extends HTMLElement {
+            connectedCallback() {
+                const image = this.getAttribute('image') || '';
+                const video = this.getAttribute('video') || '';
+                const title = this.getAttribute('title') || '';
+                const desc = this.getAttribute('desc') || '';
+                const tags = (this.getAttribute('tags') || '').split(',').filter(Boolean);
+                let mediaHtml = '';
+                if (video) {
+                    mediaHtml = `<video src="/static/images/works/${video}.mp4" controls loop muted autoplay playsinline style="width:100%;height:auto;display:block;"></video>`;
+                } else if (image) {
+                    mediaHtml = `<img src="/static/images/works/${image}.png" alt="СКОРО ЗАГРУЖУ">`;
+                }
+                this.innerHTML = `
+                    <div class="card" data-tags="${tags.join(',')}">
+                        ${mediaHtml}
+                        <div class="info">
+                            <div class="text">
+                                <h3>${title}</h3>
+                                <p>${desc}</p>
+                            </div>
+                            <div class="card-tags">
+                                ${tags.map(tag => `
+                                    <button class="tag">
+                                        <img src="/static/images/icons/${tag.trim()}.svg" alt="${tag}">
+                                    </button>`).join('')}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        class WorkSingleCard extends HTMLElement {
+            connectedCallback() {
+                const image = this.getAttribute('image') || '';
+                const video = this.getAttribute('video') || '';
+                const desc = this.getAttribute('desc') || '';
+                const tags = (this.getAttribute('tags') || '').split(',').filter(Boolean);
+                let mediaHtml = '';
+                if (video) {
+                    mediaHtml = `<video src="/static/images/works/${video}.mp4" controls loop muted autoplay playsinline style="width:100%;height:auto;display:block;"></video>`;
+                } else if (image) {
+                    mediaHtml = `<img src="/static/images/works/${image}.png" alt="">`;
+                }
+                this.innerHTML = `
+                    <div class="card single" data-tags="${tags.join(',')}">
+                        ${mediaHtml}
+                        <p>${desc}</p>
+                    </div>
+                `;
+            }
+        }
+
+        customElements.define('work-card', WorkCard);
+        customElements.define('work-single-card', WorkSingleCard);
+
+        function filterCards(filter) {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                const cardTags = card.getAttribute('data-tags') || '';
+                const tags = cardTags.split(',').map(tag => tag.trim());
+                if (!filter || tags.includes(filter)) {
+                    gsap.to(card, {
+                        opacity: 1,
+                        scale: 1,
+                        y: 0,
+                        duration: 0.3,
+                        ease: "power2.out",
+                        onComplete: updateLayout
+                    });
+                } else {
+                    gsap.to(card, {
+                        opacity: 0,
+                        scale: 0.8,
+                        y: -40,
+                        duration: 0.3,
+                        ease: "power2.in",
+                        onComplete: updateLayout
+                    });
+                }
+            });
+            updateFilteredTags(filter);
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            filterCards(null);
+        });
+        document.addEventListener('click', function(e) {
+            const tagsContainer = e.target.closest('.tags');
+            if (tagsContainer && e.target.closest('.tag')) {
+                const button = e.target.closest('.tag');
+                const filter = button.getAttribute('data-filter');
+                const filterButtons = document.querySelectorAll('.tags .tag');
+                if (button.classList.contains('active')) {
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    filterCards(null);
+                } else {
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    filterCards(filter);
+                }
+                return;
+            }
+            const tagBtn = e.target.closest('.card-tags .tag');
+            if (tagBtn) {
+                const img = tagBtn.querySelector('img');
+                if (img && img.alt) {
+                    const filter = img.alt;
+                    const filterButtons = document.querySelectorAll('.tags .tag');
+                    const isActive = Array.from(filterButtons).some(btn => btn.classList.contains('active') && btn.getAttribute('data-filter') === filter);
+                    if (isActive) {
+                        filterButtons.forEach(btn => btn.classList.remove('active'));
+                        filterCards(null);
+                    } else {
+                        filterButtons.forEach(btn => {
+                            if (btn.getAttribute('data-filter') === filter) {
+                                btn.classList.add('active');
+                            } else {
+                                btn.classList.remove('active');
+                            }
+                        });
+                        filterCards(filter);
+                    }
+                }
+            }
+        });
+        function updateLayout() {
+            const cardWrappers = document.querySelectorAll('.card-wrapper');
+            const singleCards = document.querySelectorAll('.card.single');
+            cardWrappers.forEach(wrapper => {
+                const visibleCards = wrapper.querySelectorAll('.card');
+                const hasVisibleCards = Array.from(visibleCards).some(card => {
+                    const computedStyle = window.getComputedStyle(card);
+                    return computedStyle.opacity !== '0';
+                });
+                if (!hasVisibleCards) {
+                    gsap.to(wrapper, {
+                        height: 0,
+                        marginBottom: 0,
+                        duration: 0.3,
+                        ease: "power2.in"
+                    });
+                } else {
+                    gsap.to(wrapper, {
+                        height: 'auto',
+                        marginBottom: '18px',
+                        duration: 0.3,
+                        ease: "power2.out"
+                    });
+                }
+            });
+            singleCards.forEach(card => {
+                const computedStyle = window.getComputedStyle(card);
+                if (computedStyle.opacity === '0') {
+                    gsap.to(card, {
+                        height: 0,
+                        marginBottom: 0,
+                        duration: 0.3,
+                        ease: "power2.in"
+                    });
+                } else {
+                    gsap.to(card, {
+                        height: 'auto',
+                        marginBottom: '18px',
+                        duration: 0.3,
+                        ease: "power2.out"
+                    });
+                }
+            });
+        }
+        function updateFilteredTags(filter) {
+            document.querySelectorAll('.card-tags').forEach(cardTags => {
+                cardTags.querySelectorAll('.tag').forEach(tagBtn => {
+                    const img = tagBtn.querySelector('img');
+                    if (img && img.alt === filter) {
+                        tagBtn.classList.add('filtered');
+                    } else {
+                        tagBtn.classList.remove('filtered');
+                    }
+                });
+            });
+        }
+    </script>

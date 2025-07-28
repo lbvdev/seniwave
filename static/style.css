@@ -54,6 +54,13 @@ img{
     -webkit-user-drag: none;
 }
 
+.flex-cl{
+    display: flex;
+    flex-direction: column;
+}
+.gap-12{
+    gap: 12px;
+}
 .typical {
     position: relative;
     z-index: 2;
@@ -642,6 +649,16 @@ footer{
         font-size: 20px;
         font-weight: 500;
     }
+    h2.mono{
+        max-width: 840px;
+
+        color: var(--secondary-color);
+
+        font-size: 24px;
+        font-weight: 400;
+        font-family: 'Martian Mono';
+        line-height: 180%;
+    }
     h3.mono{
         max-width: 840px;
 
@@ -661,7 +678,7 @@ footer{
 
 
 .page.hero {
-    height: 70vh;
+    min-height: 70vh;
 
     .wave-wrapper {
         display: flex;
@@ -686,43 +703,120 @@ footer{
 
 
 .page.hero.works{
+    height: initial;
     .card-wrapper{
         display: flex;
-        flex-direction: column;
-        gap: 32px;
+        gap: 24px;
+    }
+    
+    .works-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 24px;
+    }
+    
+    work-card {
+        flex: 0 0 calc(50% - 12px);
+        width: calc(50% - 12px);
+    }
+    
+    work-single-card {
+        flex: 0 0 100%;
+        width: 100%;
+        margin-bottom: 18px;
     }
     .tags{
         display: flex;
         gap: 4px;
+    }
 
-        button{
-            display: flex;
-            align-items: center;
-            gap: 18px;
+    .tag {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+    
+        padding: 12px 18px;
+        height: fit-content;
+    
+        border-radius: 51px;
+        background: #2B2B2B;
+        transition: background 0.3s, transform 0.3s;
+        cursor: pointer;
+    
+        img{
+            width: fit-content !important;
+            height: 13px !important;
+            border-radius: 0 !important;
 
-            padding: 12px 18px;
-
-            border-radius: 51px;
-            background: #2B2B2B;
-
-            p{
-                font-size: 18px;
-                font-weight: 550;
-            }
+            transition: filter 0.3s;
         }
     }
-    .card{
+
+    .tag.active {
+        background: var(--accent-color);
+        transform: scale(1.05);
+    }
+    .tag.filtered{
+        background: white;
+        
+        img{
+            filter: invert(1);
+        }
+    }
+    .tag:hover {
+        background: #3B3B3B;
+        transform: scale(1.02);
+    }
+    .tag.filtered:hover {
+        background: var(--accent-color) !important;
+        transform: scale(1.02);
+        img{
+            filter: invert(0) !important;
+        }
+    }
+
+    .tag.active:hover {
+        background: var(--accent-color);
+        transform: scale(1.05);
+    }
+    work-card{
+        width: 100%;
+    }
+    .card {
         display: flex;
         flex-direction: column;
         gap: 18px;
+        margin-bottom: 18px;
+        width: 100%;
 
-        img{
+        img, video{
             width: 100%;
             height: 380px;
             max-height: 380px;
 
             border-radius: 18px;
             object-fit: cover;
+        }
+        video{
+            height: 630px;
+            max-height: 630px;
+        }
+        .info{
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+
+            .card-tags{
+                display: flex;
+                .tag{
+                    border: 2px solid #222222;
+                }
+                .tag:not(:last-child){
+                    margin-right: -20px;
+                    padding-right: 24px;
+                    width: fit-content;
+                }
+            }
         }
         .text{
             display: flex;
@@ -741,6 +835,20 @@ footer{
 
                 opacity: 0.5;
             }
+        }
+    }
+    .card.single{
+        img, video{
+            height: initial;
+            max-height: initial;
+        }
+        p{
+            width: 100%;
+
+            text-align: center;
+            font-size: 16px;
+
+            opacity: 0.5;
         }
     }
 }
