@@ -27,7 +27,6 @@
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script type="module" src="https://lbvo.ru/utils/init.js"></script>
-
     <script type="module" src="static/scripts/waveRenderer.js"></script>
     <script type="module" src="static/scripts/router.js"></script>
     
@@ -121,15 +120,15 @@
                         </svg>
                     </button> 
                     <div class="info-wr">
-                        <a href="https://wa.me/971585820390" class="info">
+                        <a tabindex="0" href="https://wa.me/971585820390" class="info">
                             <h3>Whatsapp</h3>
                             <p>+971 58 582 0390</p>
                         </a>
-                        <a href="https://t.me/seniwave" class="info">
+                        <a tabindex="0" href="https://t.me/seniwave" class="info">
                             <h3>Telegram</h3>
                             <p>@seniwave</p>
                         </a>
-                        <a class="info" href="mailto:info@seniwave.com">
+                        <a tabindex="0" class="info" href="mailto:info@seniwave.com">
                             <h3>Email</h3>
                             <p>info@seniwave.com</p>
                         </a>
@@ -177,6 +176,7 @@
             e.stopPropagation();
             $(this).closest('.with-popup').removeClass('active');
         });
+        
     </script>
 
     <div class="header-gap"></div>

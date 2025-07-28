@@ -14,6 +14,15 @@
         --padding-horizontal: 26px !important;
     }
 }
+@media (max-width: 480px) {
+    .legal{
+        a, p{
+            padding: 0 !important;
+            background-color: transparent !important;
+            font-size: 14px !important;
+        }
+    }
+}
 
 
 ::selection {
@@ -463,6 +472,37 @@ header{
         }
     }
 }
+
+@media (max-width: 768px) {
+    .with-popup .popup {
+        position: fixed;
+
+        top: 0;
+        right: 0;
+        width: 310px !important;
+
+        background: white;
+
+        .info{
+            flex-direction: column;
+            align-items: flex-start !important;
+            gap: 0 !important;
+        }
+    }
+    .with-popup.menu .popup{
+        margin-right: -64px !important;
+        .invisible{
+            opacity: 0.5 !important;
+            padding: 0 !important;
+            font-size: 14px !important;
+        }
+    }
+
+    .with-popup.active .popup {
+        transform: initial;
+    }
+}
+
 .contact .head {
 
     img {
@@ -507,7 +547,10 @@ header.scrolled{
 }
 @media (max-width: 1100px) {
     h1{
-        font-size: 48px !important;
+        font-size: 32px !important;
+    }
+    .mono{
+        font-size: 14px !important;
     }
     p{
         font-size: 16px;
@@ -708,6 +751,11 @@ footer{
         display: flex;
         gap: 24px;
     }
+    @media (max-width: 960px) {
+        .card-wrapper{
+            flex-direction: column;
+        }
+    }
     
     .works-container {
         display: flex;
@@ -727,6 +775,7 @@ footer{
     }
     .tags{
         display: flex;
+        flex-wrap: wrap;
         gap: 4px;
     }
 
@@ -886,6 +935,21 @@ footer{
         }
     }
 
+    @media (max-width: 960px) {
+        .card-wrapper{
+            gap: 32px;
+        }
+        .card {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 18px;
+
+            h1{
+                font-size: 36px !important;
+                font-weight: 500 !important;
+            }
+        }
+    }
     .card:hover {
         img {
             margin-left: calc(-1 * var(--padding-horizontal));

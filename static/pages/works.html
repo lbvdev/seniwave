@@ -65,6 +65,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script>
+
         class WorkCard extends HTMLElement {
             connectedCallback() {
                 const image = this.getAttribute('image') || '';
@@ -119,9 +120,14 @@
             }
         }
 
-        customElements.define('work-card', WorkCard);
-        customElements.define('work-single-card', WorkSingleCard);
+        if (!customElements.get('work-card')) {
+            customElements.define('work-card', WorkCard);
+        }
 
+        if (!customElements.get('work-single-card')) {
+            customElements.define('work-single-card', WorkSingleCard);
+        }
+        
         function filterCards(filter) {
             const cards = document.querySelectorAll('.card');
             cards.forEach(card => {
