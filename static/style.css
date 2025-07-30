@@ -38,6 +38,7 @@ body{
 
     background-color: var(--background-color);
     font-family: 'Manrope';
+    -webkit-font-smoothing: antialiased;
 
     overflow-x: hidden;
     overflow-y: scroll;
@@ -63,13 +64,25 @@ img{
     -webkit-user-drag: none;
 }
 
+.flex{
+    display: flex;
+}
 .flex-cl{
     display: flex;
     flex-direction: column;
     width: fit-content;
 }
+.pos-rel{
+    position: relative;
+}
 .gap-12{
     gap: 12px;
+}
+.gap-8{
+    gap: 8px;
+}
+.gap-4{
+    gap: 4px;
 }
 .typical {
     position: relative;
@@ -548,7 +561,10 @@ header.scrolled{
 }
 @media (max-width: 1100px) {
     h1{
-        font-size: 32px !important;
+        font-size: 48px !important;
+    }
+    h2{
+        font-size: 24px !important;
     }
     h2.mono{
         font-size: 18px !important;
@@ -571,6 +587,9 @@ header.scrolled{
     }
 }
 @media (max-width: 580px) {
+    h1{
+        font-size: 32px !important;
+    }
     header{
         .menu, .contact{
             max-width: 48px;
@@ -718,7 +737,7 @@ footer{
     }
     p{
         font-size: 14px;
-        font-weight: 400;
+        font-weight: 500;
         line-height: 140%;
     }
 }
@@ -997,6 +1016,154 @@ footer{
             font-size: 32px;
             font-weight: 700;
         }
+    }
+}
+
+
+.page.pricing{
+    h1{
+        font-size: 96px;
+        font-weight: 700;
+        color: var(--accent-color);
+    }
+    h2{
+        font-weight: 600;
+    }
+
+    .price-wrapper{
+        position: relative;
+
+        display: flex;
+        gap: 4px;
+
+        span{
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            width: 100%;
+            padding-left: 12px;
+
+            p{
+                color: var(--accent-color);
+                font-size: 24px;
+                font-weight: 500;
+            }
+            .line{
+                height: 2px;
+                width: calc(100% - 12px);
+                background-color: var(--accent-color);
+                opacity: 0.1;
+            }
+        }
+    }
+
+    .card-wrapper{
+        display: flex;
+        gap: 4px;
+    }
+    .card{
+        display: flex;
+        flex: 1;
+
+        padding: 24px;
+
+        background-color: #FFFFFF;
+        border-radius: 24px;
+
+        cursor: pointer;
+
+        .left-side, .right-side{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 24px;
+            width: 100%;
+        }
+        .right-side{
+            align-items: flex-end;
+            max-width: 0;
+            opacity: 0;
+
+            overflow: hidden;
+
+            p{
+                text-align: right;
+            }
+            .flex-cl{
+                align-items: flex-end;
+            }
+        }
+    }
+    .card{
+        transition: background-color 0.3s, color 0.2s, flex 0.2s;
+        .right-side{
+            transition: max-width 0.5s, opacity 0.5s;
+        }
+    }
+    .card.disabled{
+        opacity: 0.5;
+        background-color: #1E1E1E40;
+    }
+    .card.selected{
+        background-color: var(--accent-color);
+        color: #FFFFFF;
+    }
+    .card.enabled{
+        flex: 2;
+        z-index: 5;
+        background-color: var(--accent-color);
+        .right-side{
+            opacity: initial;
+            max-width: initial;
+        }
+    }
+    .continue-pricing{
+        position: absolute;
+    }
+    .continue-pricing, .book-pricing{
+        overflow: hidden;
+        transition: opacity 0.3s, filter 0.3s, color 0.2s, background-color 0.3s, transform 0.3s !important;
+    }
+    a.book-pricing{
+        background-color: var(--accent-color);
+        color: white;
+    }
+    .continue-pricing.hidden, .book-pricing.hidden{
+        filter: blur(14px);
+        color: white;
+        background-color: white;
+        transform: translateX(-50px);
+        opacity: 0;
+    }
+
+    .card.enabled {
+        transform: scale(1.04);
+        z-index: 5;
+        box-shadow: 0 0 40px rgba(0,0,0,0.15);
+    }
+    a, button{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 36px;
+
+        width: fit-content;
+        height: 48px;
+        padding: 12px 18px;
+
+        background-color: #FFFFFF;
+        border-radius: 32px;
+        color: var(--accent-color);
+        font-size: 18px;
+        font-weight: 500;
+        
+        cursor: pointer;
+    }
+    .continue-pricing{
+        opacity: 0.5;
+    }
+    .continue-pricing.active{
+        opacity: 1;
     }
 }
 

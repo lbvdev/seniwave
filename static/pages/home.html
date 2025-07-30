@@ -39,50 +39,150 @@
         </div>
     </div>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+<div class="page pricing">
+
+    <h1>What is your budget?</h1>
+    <div class="flex-cl gap-12">
+        <div class="price-wrapper">
+            <span>
+                <p>3.000$</p>
+                <div class="line"></div>
+            </span>
+            <span>
+                <p>5.000$</p>
+                <div class="line"></div>
+            </span>
+            <span>
+                <p>10.000$</p>
+                <div class="line"></div>
+                <p>$$$</p>
+            </span>
+        </div>
+        <div class="card-wrapper">
+            <div class="card card-pricing">
+                <div class="left-side">
+                    <h2>Start up pack</h2>
+
+                    <p>For new brands and founders who want to launch confidently.</p>
+                </div>
+                <div class="right-side">
+                    <h3>3000$ - 5000$</h3>
+
+                    <div class="flex-cl gap-8">
+                        <p>Branding essentials</p>
+                        <p>Basic product (up to 5 pages)</p>
+                        <p>Structure creation (site map & wireframes) </p>
+                        <p>Responsive design</p>
+                        <p>SEO Optimization</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card card-pricing">
+                <div class="left-side">
+                    <h2>Scale up pack</h2>
+
+                    <p>For growing businesses ready to level up their digital presence.</p>
+                </div>
+                <div class="right-side">
+                    <h3>3000$ - 5000$</h3>
+
+                    <div class="flex-cl gap-8">
+                        <p>Branding essentials</p>
+                        <p>Basic product (up to 5 pages)</p>
+                        <p>Structure creation (site map & wireframes) </p>
+                        <p>Responsive design</p>
+                        <p>SEO Optimization</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card card-pricing">
+                <div class="left-side">
+                    <h2>Enterprise suite</h2>
+
+                    <p>Comprehensive solutions designed for large organizations to enhance their operations.</p>
+                </div>
+                <div class="right-side">
+                    <h3>3000$ - 5000$</h3>
+
+                    <div class="flex-cl gap-8">
+                        <p>Branding essentials</p>
+                        <p>Basic product (up to 5 pages)</p>
+                        <p>Structure creation (site map & wireframes) </p>
+                        <p>Responsive design</p>
+                        <p>SEO Optimization</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex gap-4 pos-rel">
+            <button class="continue-pricing">
+                Continue
+            </button>
+            <button class="book-pricing hidden">Back</button>
+            <a class="book-pricing hidden">
+                Book a consultation
+                <img src="/static/images/icons/contact.svg" alt="">
+            </a>
+        </div>
+    </div>
+</div>
+
+
 <script>
 $(document).ready(function () {
-    let activeCard = null;
-    const info = $(".absolute");
+    const $cards = $('.card-pricing');
+    const $continueBtn = $('.continue-pricing');
+    const $bookPricing = $('.book-pricing');
 
-    $(".absolute").click(function () {
-        const $this = $(this);
-        const text = $this.data("text");
+    function updateUI() {
+        const hasEnabled = $cards.hasClass('enabled');
+        const hasSelected = $cards.hasClass('selected');
 
-        gsap.to(info, { opacity: 0, duration: 0.2 });
-        activeCard = null;
-        return;
+        if (hasEnabled) {
+            $bookPricing.removeClass('hidden');
+            $continueBtn.addClass('hidden');
+        } else if (hasSelected) {
+            $bookPricing.addClass('hidden');
+            $continueBtn.removeClass('hidden').addClass('active');
+        } else {
+            $bookPricing.addClass('hidden');
+            $continueBtn.addClass('hidden').removeClass('active');
+        }
+    }
+
+    $cards.hover(function () {
+        if ($cards.hasClass('enabled')) return;
+
+        $cards.removeClass('selected');
+        $(this).addClass('selected');
+        updateUI();
     });
-    $(".card").click(function () {
-        const $this = $(this);
-        if (activeCard?.is($this)) {
-            gsap.to(info, { opacity: 0, duration: 0.2 });
-            activeCard = null;
-            return;
+
+    $cards.on('click', function () {
+        const $clicked = $(this);
+        const hasEnabled = $cards.hasClass('enabled');
+
+        if (hasEnabled) {
+            $cards.removeClass('enabled disabled selected');
+            $clicked.addClass('selected');
+        } else {
+            $clicked.addClass('enabled');
+            $cards.not($clicked).addClass('disabled');
         }
 
-        const text = $this.data("text");
-        const offset = $this.offset();
-        const top = offset.top - $this.closest(".card-wrapper").offset().top;
-        const left = offset.left - $this.closest(".card-wrapper").offset().left;
+        updateUI();
+    });
 
-        gsap.to(info, {
-            top: top + 10,
-            left: left + $this.outerWidth() - info.outerWidth() - 10,
-            duration: 0.4,
-            ease: "back.out(1.7)"
-        });
+    $continueBtn.on('click', function () {
+        const $selected = $cards.filter('.selected');
 
-        gsap.to(info, {
-            opacity: 0.8,
-            duration: 0.2,
-            onComplete: () => {
-                gsap.fromTo(info, { opacity: 0.8, y: 10 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" });
-                info.html(text + "<span>/</span>");
-                $this.closest(".card-wrapper").prepend(info);
-            }
-        });
-        activeCard = $this;
+        if ($selected.length) {
+            $selected.addClass('enabled');
+            $cards.not($selected).addClass('disabled');
+        }
+
+        updateUI();
     });
 });
 </script>
