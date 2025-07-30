@@ -40,7 +40,7 @@ $(document).ready(function () {
         if (page !== "works") updateBodyClass(page);
     }
 
-    $("a[data-page].link").click(handleClick);
+    $("a[data-page]").click(handleClick);
 
     $(window).on("popstate", function (e) {
         if (e.originalEvent.state?.page) {
