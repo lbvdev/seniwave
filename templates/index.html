@@ -11,14 +11,14 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="SeniWave — Web Development & Branding AI, AR | Dubai">
     <meta property="og:description" content="Dubai-based creative studio delivering full web development, branding, AI content, and AR experiences. We design, build, and launch digital products and websites for clients in Dubai and worldwide.">
-    <meta property="og:image" content="https://seniwave.com/static/og-image.png">
+    <meta property="og:image" content="https://seniwave.com/static/images/logos/og-image.png">
 
-    <meta name="twitter:card" content="summary_large_image">
     <meta property="twitter:domain" content="seniwave.com">
     <meta property="twitter:url" content="https://seniwave.com/">
+    <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="SeniWave – Web Development & Branding AI, AR | Dubai">
     <meta name="twitter:description" content="Dubai-based creative studio delivering full web development, branding, AI content, and AR experiences. We design, build, and launch digital products and websites for clients in Dubai and worldwide.">
-    <meta name="twitter:image" content="https://seniwave.com/static/og-image.png">
+    <meta name="twitter:image" content="https://seniwave.com/static/images/logos/og-image.png">
 
     <link rel="icon" href="/static/favicon/fav.svg" type="image/svg+xml">
     <link rel="icon" href="/static/favicon/fav.ico" sizes="48x48" type="image/x-icon">
@@ -144,42 +144,6 @@
         </div>
     </header>
 
-    <script>
-        $(window).scroll(function () {
-            const themeMetaTag = document.querySelector('meta[name="theme-color"]');
-            const isSmallScreen = window.innerWidth <= 580;
-            const scrollTop = $(this).scrollTop();
-            const isScrolled = scrollTop > 0;
-
-            $('header').toggleClass('scrolled', isScrolled);
-
-            if (themeMetaTag) {
-                const newColor = isSmallScreen 
-                    ? (isScrolled ? '#ffffff' : '#F7F2FF') 
-                    : '#F7F2FF';
-                
-                themeMetaTag.setAttribute('content', newColor);
-            }
-        });
-
-        $(document).ready(function() {
-            $(window).scroll();
-        });
-
-
-        $(document).on('click', '.with-popup', function(e) {
-            if ($(e.target).closest('.close-popup').length) return;
-            $('.with-popup').not(this).removeClass('active');
-            $(this).addClass('active');
-        });
-
-        $(document).on('click', '.with-popup .close-popup', function(e) {
-            e.stopPropagation();
-            $(this).closest('.with-popup').removeClass('active');
-        });
-        
-    </script>
-
     <div class="header-gap"></div>
 
     <canvas id="canvas" height="550px"></canvas>
@@ -197,12 +161,56 @@
     </div>
     
     <footer>
-        <img src="static/images/footer.svg">
+        <img loading="lazy" src="static/images/logos/footer.svg">
         <div class="legal">
             <p>All Rights Reserved ©2024-2025</p>
             <a href="/legal">Privacy Policy</a>
         </div>
     </footer>
-
 </body>
+
+<script>
+    $(window).scroll(function () {
+        const themeMetaTag = document.querySelector('meta[name="theme-color"]');
+        const isSmallScreen = window.innerWidth <= 580;
+        const isScrolled = $(this).scrollTop() > 0;
+        const pathName = window.location.pathname;
+
+        $('header').toggleClass('scrolled', isScrolled);
+
+        // работает только на сафари :(
+        if (themeMetaTag) {
+            let newColor;
+
+            if (path.startsWith('/works')) {
+                newColor = '#1e1e1e';
+            } else {
+                if (isSmallScreen) {
+                    newColor = isScrolled ? '#ffffff' : '#F7F2FF';
+                } else {
+                    newColor = '#F7F2FF';
+                }
+            }
+
+            themeMetaTag.setAttribute('content', newColor);
+        }
+    });
+
+    $(document).ready(function () {
+        $(window).scroll();
+    });
+
+    $(document).on('click', '.with-popup', function (e) {
+        if ($(e.target).closest('.close-popup').length) return;
+        $('.with-popup').not(this).removeClass('active');
+        $(this).addClass('active');
+    });
+
+    $(document).on('click', '.with-popup .close-popup', function (e) {
+        e.stopPropagation();
+        $(this).closest('.with-popup').removeClass('active');
+    });
+
+</script>
+
 </html>

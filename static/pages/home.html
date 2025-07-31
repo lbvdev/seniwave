@@ -7,19 +7,11 @@
         We are a full-service creative agency with in-house production capabilities, building bold, memorable brands
         ready for the future.
     </h3>
-    
-    <!-- <div class="wave-wrapper">
-        <img src="static/images/wave.svg">
-    </div> -->
 </div>
 
 <div class="page service">
     <h1>Our services</h1>
     <div class="card-wrapper">
-        <div class="absolute" data-text="byee">
-            Click to services to expand
-            <span>/</span>
-        </div>
         <div class="card" data-text="We build your complete brand identity from the ground up or refresh your current one to match your growth. This includes a custom-designed logo, a cohesive color palette and typography, a full brand guideline PDF, and clearly defined brand voice and messaging. You’ll also receive a visual moodboard and mockups to see your brand in action.">
             <img src="static/images/service/brand.svg" alt="brand">
             <h1 class="bold">Branding</h1>
@@ -46,15 +38,15 @@
     <div class="flex-cl gap-12 w-100 wrap-on-mobile">
             <div class="price-wrapper">
                 <span>
-                    <p>3.000$</p>
+                    <p>$3.000</p>
                     <div class="line"></div>
                 </span>
                 <span>
-                    <p>5.000$</p>
+                    <p>$5.000</p>
                     <div class="line"></div>
                 </span>
                 <span>
-                    <p>10.000$</p>
+                    <p>$10.000</p>
                     <div class="line"></div>
                     <p>$$$</p>
                 </span>
@@ -69,7 +61,7 @@
                         <p>For new brands and founders who want to launch confidently.</p>
                     </div>
                     <div class="right-side">
-                        <h3>3000$ - 5000$</h3>
+                        <h3>$3.000 - $5.000</h3>
 
                         <div class="flex-cl gap-8">
                             <p>Branding essentials</p>
@@ -87,7 +79,7 @@
                         <p>For growing businesses ready to level up their digital presence.</p>
                     </div>
                     <div class="right-side">
-                        <h3>3000$ - 5000$</h3>
+                        <h3>$5.000 - $10.000</h3>
 
                         <div class="flex-cl gap-8">
                             <p>Branding essentials</p>
@@ -105,7 +97,7 @@
                         <p>Comprehensive solutions designed for large organizations to enhance their operations.</p>
                     </div>
                     <div class="right-side">
-                        <h3>3000$ - 5000$</h3>
+                        <h3></h3>
 
                         <div class="flex-cl gap-8">
                             <p>Branding essentials</p>
@@ -121,9 +113,9 @@
                 <button class="white-fill continue-pricing">
                     Continue
                 </button>
-                <button class="white-fill book-pricing hidden">Back</button>
+                <button class="white-fill book-pricing back hidden">Back</button>
                 <a href="/contact" class="white-fill book-pricing hidden">
-                    Book a consultation
+                    Consultation
                     <img src="/static/images/icons/contact.svg">
                 </a>
             </div>
@@ -140,7 +132,8 @@
                     <img src="static/images/something-more/ar-slash.svg" alt="/">
                 </div>
                 <img class="preview" src="static/images/something-more/ai.png" alt=""> 
-                <p>Web Viewer, 3D Modeling, AR Showcase and more</p>
+                <p>From $5.000</p>
+                <h3>Web Viewer, 3D Modeling, AR Showcase and more</h3>
             </div>
             <a href="/contact" class="white-fill">Learn more<img src="static/images/icons/arrow-up.svg"></a>
         </div>
@@ -151,7 +144,8 @@
                     <img src="static/images/something-more/ai-slash.svg" alt="/">
                 </div>
                 <img class="preview" src="static/images/something-more/ar.png" alt=""> 
-                <p>AI-powered custom visuals and videos</p>
+                <p>$5.000 - $10.000</p>
+                <h3>AI-powered custom visuals and videos</h3>
             </div>
             <a href="/contact" class="white-fill">Learn more<img src="static/images/icons/arrow-up.svg"></a>
         </div>
@@ -166,7 +160,7 @@ $(document).ready(function () {
     const $bookPricing = $('.book-pricing');
     const $priceWrapper = $('.price-wrapper');
 
-    function updateUI() {
+    function updateButtons() {
         const hasEnabled = $cards.hasClass('enabled');
         const hasSelected = $cards.hasClass('selected');
 
@@ -184,12 +178,14 @@ $(document).ready(function () {
             $priceWrapper.removeClass('muted');
         }
     }
-
+                
     $cards.hover(function () {
+        if ('ontouchstart' in window || navigator.maxTouchPoints > 0) return;
         if ($cards.hasClass('enabled')) return;
         $cards.removeClass('selected');
         $(this).addClass('selected');
-        updateUI();
+        
+        updateButtons();
     });
 
     $cards.on('click', function () {
@@ -198,13 +194,16 @@ $(document).ready(function () {
 
         if (hasEnabled) {
             $cards.removeClass('enabled disabled selected');
-            $clicked.addClass('selected');
+
+            // фикс на тачскрин
+            if (!('ontouchstart' in window || navigator.maxTouchPoints > 0)) {
+                $clicked.addClass('selected');
+            }
         } else {
-            $clicked.addClass('enabled selected');
+            $clicked.addClass('enabled');
             $cards.not($clicked).addClass('disabled').removeClass('selected');
         }
-
-        updateUI();
+        updateButtons();
     });
 
     $continueBtn.on('click', function () {
@@ -215,12 +214,13 @@ $(document).ready(function () {
             $cards.not($selected).addClass('disabled').removeClass('selected');
         }
 
-        updateUI();
+        updateButtons();
     });
 
-    $('.book-pricing').on('click', function () {
+    $('.book-pricing.back').on('click', function () {
         $cards.removeClass('enabled disabled selected');
-        updateUI();
+
+        updateButtons();
     });
 });
 

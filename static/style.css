@@ -617,7 +617,10 @@ header.scrolled{
 }
 @media (max-width: 580px) {
     h1{
-        font-size: 32px !important;
+        font-size: 42px !important;
+    }
+    h1.big{
+        font-size: 48px !important;
     }
     header{
         .menu, .contact{
@@ -810,7 +813,7 @@ footer{
 }
 
 
-.page.hero.works{
+.page.works{
     height: initial;
     .card-wrapper{
         display: flex;
@@ -935,7 +938,7 @@ footer{
         .text{
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 4px;
 
             padding-left: 12px;
 
@@ -1021,40 +1024,6 @@ footer{
             padding-left: var(--padding-horizontal);
         }
     }
-
-    .absolute {
-        position: absolute;
-        z-index: 6;
-
-        display: flex;
-        gap: 28px;
-        position: absolute;
-        transition: none;
-        top: 0;
-        right: 0;
-        max-width: 780px;
-        width: 780px;
-        padding: 18px 32px;
-
-        background-color: var(--accent-color);
-        color: var(--background-color);
-
-        font-family: "Martian Mono";
-        font-size: 18px;
-        font-weight: 300;
-        line-height: 180%;
-
-        font-size: 24px;
-        line-height: 170%;
-
-        opacity: 0.2;
-        pointer-events: none;
-
-        span {
-            font-size: 32px;
-            font-weight: 700;
-        }
-    }
 }
 
 
@@ -1120,7 +1089,10 @@ footer{
         }
         .right-side{
             align-items: flex-end;
+
             max-width: 0;
+            height: 100%;
+            
             opacity: 0;
 
             overflow: hidden;
@@ -1154,6 +1126,7 @@ footer{
         flex: 2;
         z-index: 5;
         background-color: var(--accent-color);
+        color: #FFFFFF;
 
         .right-side{
             opacity: initial;
@@ -1200,7 +1173,7 @@ footer{
 
     @media (max-width: 960px) {
         .wrap-on-mobile{
-            flex-direction: row;
+            flex-direction: row-reverse;
         }
         .card-wrapper{
             flex-direction: column;
@@ -1220,6 +1193,7 @@ footer{
             flex-direction: column;
             span{
                 flex-direction: column;
+                align-items: flex-start;
                 gap: 12px;
                 height: 100%;
                 padding-left: initial;
@@ -1256,7 +1230,7 @@ footer{
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        gap: 18px;
+        gap: 2px;
 
         padding: 21px 24px;
 
@@ -1265,11 +1239,16 @@ footer{
 
         cursor: pointer;
 
+        h3{
+            font-size: 21px;
+        }
+        p{
+            padding-top: 14px;
+        }
         .preview{
             width: 100%;
             border-radius: 999px;
         }
-
         .absolute{
             position: absolute;
             display: flex;
@@ -1282,7 +1261,6 @@ footer{
 
             border-radius: 99px;
             backdrop-filter: blur(25.5px);
-
         }
         img, .absolute{
             transition: filter 0.3s, transform 0.3s;
@@ -1299,11 +1277,12 @@ footer{
         }
     }
 
-    @media (max-width: 960px) {
+    @media (max-width: 750px) {
         .card-wrapper{
             flex-direction: column;
             gap: 32px;
             .card{
+                gap: 2px;
                 width: 100%;
             }
             .preview{
@@ -1673,10 +1652,10 @@ body.works{
     }
 
     footer{
-        background: linear-gradient(180deg, rgba(34, 34, 34, 0.00) 0%, rgba(95, 0, 255, 0.24) 100%);
-
+        background: radial-gradient(100% 100% at 50% 100%, rgba(95, 0, 255, 0.80) 0%, #222 100%);
+        
         img{
-            opacity: 0.2;
+            opacity: 0.3;
         }
     }
 

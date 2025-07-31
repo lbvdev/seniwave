@@ -47,11 +47,13 @@
         <work-card video="monna" title="AI Avatar «Monna»" desc="AI video generation based on a custom-rendered 3D model. Designed for digital campaigns, social media, and virtual presence." tags="ai"></work-card>
     </div>
 
-    <work-single-card video="house" desc="AI-powered 3D animation based on renders for real estate marketing" tags="3d,ar"></work-single-card>
+    <work-single-card video="house" desc="AI-powered 3D animation based on renders for real estate marketing" ztags="3d,ar"></work-single-card>
 
     <div class="card-wrapper">
-        <work-card image="istra" title="«Istra» Country Club" desc="Luxury real estate and architectural visualization." tags="ai"></work-card>
-        <work-card image="lahta" title="Lahta Hall Saint Petersburg" desc="Art exhibition with AI-enhanced visuals." tags="ai"></work-card>
+        <work-card image="istra" title="«Istra» Country Club" desc="Luxury real estate and architectural visualization."
+            tags="ai"></work-card>
+        <work-card image="lahta" title="Lahta Hall Saint Petersburg" desc="Art exhibition with AI-enhanced visuals."
+            tags="ai"></work-card>
     </div>
 
     <work-single-card image="" desc="3D Modeling Dubai AR Exhibition" tags="3d,ar"></work-single-card>
@@ -63,21 +65,23 @@
 
     <work-single-card video="laser" desc="«AIR TOUCH». 3D modeling and CGI animation for product marketing. Rendered for digital ad campaign" tags="3d"></work-single-card>
 
-    <script>
-        class WorkCard extends HTMLElement {
-            connectedCallback() {
-                const image = this.getAttribute('image') || '';
-                const video = this.getAttribute('video') || '';
-                const title = this.getAttribute('title') || '';
-                const desc = this.getAttribute('desc') || '';
-                const tags = (this.getAttribute('tags') || '').split(',').filter(Boolean);
-                let mediaHtml = '';
-                if (video) {
-                    mediaHtml = `<video src="/static/images/works/${video}.mp4" controls loop muted autoplay playsinline style="width:100%;height:auto;display:block;"></video>`;
-                } else if (image) {
-                    mediaHtml = `<img src="/static/images/works/${image}.png" alt="СКОРО ЗАГРУЖУ">`;
-                }
-                this.innerHTML = `
+</div>
+
+<script>
+    class WorkCard extends HTMLElement {
+        connectedCallback() {
+            const image = this.getAttribute('image') || '';
+            const video = this.getAttribute('video') || '';
+            const title = this.getAttribute('title') || '';
+            const desc = this.getAttribute('desc') || '';
+            const tags = (this.getAttribute('tags') || '').split(',').filter(Boolean);
+            let mediaHtml = '';
+            if (video) {
+                mediaHtml = `<video src="/static/images/works/${video}.mp4" controls loop muted autoplay playsinline style="width:100%;height:auto;display:block;"></video>`;
+            } else if (image) {
+                mediaHtml = `<img src="/static/images/works/${image}.png" alt="СКОРО ЗАГРУЖУ">`;
+            }
+            this.innerHTML = `
                     <div class="card" data-tags="${tags.join(',')}">
                         ${mediaHtml}
                         <div class="info">
@@ -94,161 +98,178 @@
                         </div>
                     </div>
                 `;
-            }
         }
+    }
 
-        class WorkSingleCard extends HTMLElement {
-            connectedCallback() {
-                const image = this.getAttribute('image') || '';
-                const video = this.getAttribute('video') || '';
-                const desc = this.getAttribute('desc') || '';
-                const tags = (this.getAttribute('tags') || '').split(',').filter(Boolean);
-                let mediaHtml = '';
-                if (video) {
-                    mediaHtml = `<video src="/static/images/works/${video}.mp4" controls loop muted autoplay playsinline style="width:100%;height:auto;display:block;"></video>`;
-                } else if (image) {
-                    mediaHtml = `<img src="/static/images/works/${image}.png" alt="">`;
-                }
-                this.innerHTML = `
+    class WorkSingleCard extends HTMLElement {
+        connectedCallback() {
+            const image = this.getAttribute('image') || '';
+            const video = this.getAttribute('video') || '';
+            const desc = this.getAttribute('desc') || '';
+            const tags = (this.getAttribute('tags') || '').split(',').filter(Boolean);
+            let mediaHtml = '';
+            if (video) {
+                mediaHtml = `<video src="/static/images/works/${video}.mp4" controls loop muted autoplay playsinline style="width:100%;height:auto;display:block;"></video>`;
+            } else if (image) {
+                mediaHtml = `<img src="/static/images/works/${image}.png" alt="">`;
+            }
+            this.innerHTML = `
                     <div class="card single" data-tags="${tags.join(',')}">
                         ${mediaHtml}
                         <p>${desc}</p>
                     </div>
                 `;
+        }
+    }
+
+    if (!customElements.get('work-card')) {
+        customElements.define('work-card', WorkCard);
+    }
+    if (!customElements.get('work-single-card')) {
+        customElements.define('work-single-card', WorkSingleCard);
+    }
+
+    function filterCards(filter) {
+        const cards = document.querySelectorAll('.card');
+        cards.forEach(card => {
+            const cardTags = card.getAttribute('data-tags') || '';
+            const tags = cardTags.split(',').map(tag => tag.trim());
+            if (!filter || tags.includes(filter)) {
+                gsap.to(card, {
+                    opacity: 1,
+                    scale: 1,
+                    y: 0,
+                    duration: 0.3,
+                    ease: "power2.out",
+                    onComplete: updateLayout
+                });
+            } else {
+                gsap.to(card, {
+                    opacity: 0,
+                    scale: 0.8,
+                    y: -40,
+                    duration: 0.3,
+                    ease: "power2.in",
+                    onComplete: updateLayout
+                });
             }
-        }
-
-        if (!customElements.get('work-card')) {
-            customElements.define('work-card', WorkCard);
-        }
-
-        if (!customElements.get('work-single-card')) {
-            customElements.define('work-single-card', WorkSingleCard);
-        }
-        
-        function filterCards(filter) {
-            const cards = document.querySelectorAll('.card');
-            cards.forEach(card => {
-                const cardTags = card.getAttribute('data-tags') || '';
-                const tags = cardTags.split(',').map(tag => tag.trim());
-                if (!filter || tags.includes(filter)) {
-                    gsap.to(card, {
-                        opacity: 1,
-                        scale: 1,
-                        y: 0,
-                        duration: 0.3,
-                        ease: "power2.out",
-                        onComplete: updateLayout
-                    });
-                } else {
-                    gsap.to(card, {
-                        opacity: 0,
-                        scale: 0.8,
-                        y: -40,
-                        duration: 0.3,
-                        ease: "power2.in",
-                        onComplete: updateLayout
-                    });
-                }
-            });
-            updateFilteredTags(filter);
-        }
-        document.addEventListener('DOMContentLoaded', function() {
-            filterCards(null);
         });
-        document.addEventListener('click', function(e) {
-            const tagsContainer = e.target.closest('.tags');
-            if (tagsContainer && e.target.closest('.tag')) {
-                const button = e.target.closest('.tag');
-                const filter = button.getAttribute('data-filter');
+        updateFilteredTags(filter);
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        filterCards(null);
+    });
+
+    document.addEventListener('click', function (e) {
+        const tagsContainer = e.target.closest('.tags');
+
+        if (tagsContainer && e.target.closest('.tag')) {
+            const button = e.target.closest('.tag');
+            const filter = button.getAttribute('data-filter');
+            const filterButtons = document.querySelectorAll('.tags .tag');
+            if (button.classList.contains('active')) {
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                filterCards(null);
+            } else {
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                filterCards(filter);
+            }
+            return;
+        }
+
+        const tagBtn = e.target.closest('.card-tags .tag');
+
+        if (tagBtn) {
+            const img = tagBtn.querySelector('img');
+            if (img && img.alt) {
+                const filter = img.alt;
                 const filterButtons = document.querySelectorAll('.tags .tag');
-                if (button.classList.contains('active')) {
+                const isActive = Array.from(filterButtons).some(btn => btn.classList.contains('active') && btn.getAttribute('data-filter') === filter);
+                if (isActive) {
                     filterButtons.forEach(btn => btn.classList.remove('active'));
                     filterCards(null);
                 } else {
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-                    button.classList.add('active');
+                    filterButtons.forEach(btn => {
+                        if (btn.getAttribute('data-filter') === filter) {
+                            btn.classList.add('active');
+                        } else {
+                            btn.classList.remove('active');
+                        }
+                    });
                     filterCards(filter);
                 }
-                return;
             }
-            const tagBtn = e.target.closest('.card-tags .tag');
-            if (tagBtn) {
-                const img = tagBtn.querySelector('img');
-                if (img && img.alt) {
-                    const filter = img.alt;
-                    const filterButtons = document.querySelectorAll('.tags .tag');
-                    const isActive = Array.from(filterButtons).some(btn => btn.classList.contains('active') && btn.getAttribute('data-filter') === filter);
-                    if (isActive) {
-                        filterButtons.forEach(btn => btn.classList.remove('active'));
-                        filterCards(null);
-                    } else {
-                        filterButtons.forEach(btn => {
-                            if (btn.getAttribute('data-filter') === filter) {
-                                btn.classList.add('active');
-                            } else {
-                                btn.classList.remove('active');
-                            }
-                        });
-                        filterCards(filter);
-                    }
-                }
+        }
+    });
+
+    function updateLayout() {
+        const cardWrappers = document.querySelectorAll('.card-wrapper');
+
+        cardWrappers.forEach(wrapper => {
+            const visibleCards = wrapper.querySelectorAll('.card');
+            const hasVisibleCards = Array.from(visibleCards).some(card => {
+                const computedStyle = window.getComputedStyle(card);
+                return computedStyle.opacity !== '0';
+            });
+
+            if (!hasVisibleCards) {
+                gsap.to(wrapper, {
+                    height: 0,
+                    marginBottom: 0,
+                    duration: 0.3,
+                    ease: "power2.in"
+                });
+                gsap.to(wrapper.querySelectorAll('.card'), {
+                    height: 0,
+                    duration: 0.3,
+                    ease: "power2.in"
+                });
+            } else {
+                gsap.to(wrapper, {
+                    height: 'auto',
+                    marginBottom: '18px',
+                    duration: 0.3,
+                    ease: "power2.out"
+                });
+                gsap.to(wrapper.querySelectorAll('.card'), {
+                    height: 'auto',
+                    duration: 0.3,
+                    ease: "power2.out"
+                });
             }
         });
-        function updateLayout() {
-            const cardWrappers = document.querySelectorAll('.card-wrapper');
-            const singleCards = document.querySelectorAll('.card.single');
-            cardWrappers.forEach(wrapper => {
-                const visibleCards = wrapper.querySelectorAll('.card');
-                const hasVisibleCards = Array.from(visibleCards).some(card => {
-                    const computedStyle = window.getComputedStyle(card);
-                    return computedStyle.opacity !== '0';
+        singleCards.forEach(card => {
+            const computedStyle = window.getComputedStyle(card);
+            if (computedStyle.opacity === '0') {
+                gsap.to(card, {
+                    height: 0,
+                    marginBottom: 0,
+                    duration: 0.3,
+                    ease: "power2.in"
                 });
-                if (!hasVisibleCards) {
-                    gsap.to(wrapper, {
-                        height: 0,
-                        marginBottom: 0,
-                        duration: 0.3,
-                        ease: "power2.in"
-                    });
+            } else {
+                gsap.to(card, {
+                    height: 'auto',
+                    marginBottom: '18px',
+                    duration: 0.3,
+                    ease: "power2.out"
+                });
+            }
+        });
+    }
+
+    function updateFilteredTags(filter) {
+        document.querySelectorAll('.card-tags').forEach(cardTags => {
+            cardTags.querySelectorAll('.tag').forEach(tagBtn => {
+                const img = tagBtn.querySelector('img');
+                if (img && img.alt === filter) {
+                    tagBtn.classList.add('filtered');
                 } else {
-                    gsap.to(wrapper, {
-                        height: 'auto',
-                        marginBottom: '18px',
-                        duration: 0.3,
-                        ease: "power2.out"
-                    });
+                    tagBtn.classList.remove('filtered');
                 }
             });
-            singleCards.forEach(card => {
-                const computedStyle = window.getComputedStyle(card);
-                if (computedStyle.opacity === '0') {
-                    gsap.to(card, {
-                        height: 0,
-                        marginBottom: 0,
-                        duration: 0.3,
-                        ease: "power2.in"
-                    });
-                } else {
-                    gsap.to(card, {
-                        height: 'auto',
-                        marginBottom: '18px',
-                        duration: 0.3,
-                        ease: "power2.out"
-                    });
-                }
-            });
-        }
-        function updateFilteredTags(filter) {
-            document.querySelectorAll('.card-tags').forEach(cardTags => {
-                cardTags.querySelectorAll('.tag').forEach(tagBtn => {
-                    const img = tagBtn.querySelector('img');
-                    if (img && img.alt === filter) {
-                        tagBtn.classList.add('filtered');
-                    } else {
-                        tagBtn.classList.remove('filtered');
-                    }
-                });
-            });
-        }
-    </script>
+        });
+    }
+</script>
