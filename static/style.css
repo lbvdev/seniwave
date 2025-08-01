@@ -986,7 +986,8 @@ footer{
     .card {
         position: relative;
         display: flex;
-        align-items: center;
+        align-items: flex-start;
+
         gap: 48px;
 
         width: 100%;
@@ -1000,6 +1001,7 @@ footer{
         }
 
         img {
+            margin-top: 24px;
             background-color: var(--accent-color);
             height: fit-content;
 
@@ -1007,6 +1009,46 @@ footer{
         }
     }
 
+    .span-wrapper{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+
+        overflow: hidden;
+
+
+        span{
+            display: flex;
+            padding: 16px 21px;
+            align-items: flex-start;
+            gap: 28px;
+
+
+            border-radius: 24px;
+            background: #FFFFFF;
+
+            font-weight: 500;
+
+        }
+    }
+    .card{
+        .span-wrapper{
+            max-height: 0;
+            opacity: 0;
+            pointer-events: none;
+            transition: max-height 1s, opacity 0.5s;
+
+        }
+    }
+    .card.enabled{
+        .span-wrapper{
+            opacity: initial;
+            pointer-events: initial;
+            max-height: 100vh;
+
+            transition: max-height 2s, opacity 0.1s;
+        }
+    }
     @media (max-width: 960px) {
         .card-wrapper{
             gap: 32px;

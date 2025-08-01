@@ -12,25 +12,76 @@
 <div class="page service">
     <h1>Our services</h1>
     <div class="card-wrapper">
-        <div class="card" data-text="We build your complete brand identity from the ground up or refresh your current one to match your growth. This includes a custom-designed logo, a cohesive color palette and typography, a full brand guideline PDF, and clearly defined brand voice and messaging. You’ll also receive a visual moodboard and mockups to see your brand in action.">
+        <div class="card service">
             <img src="static/images/service/brand.svg" alt="brand">
-            <h1 class="bold">Branding</h1>
-
+            <div class="flex-cl gap-12">
+                <h1 class="bold">Branding</h1>
+                <div class="span-wrapper">
+                    <span>Logo Design</span>
+                    <span>Brand Guidelines</span>
+                    <span>Visual Identity</span>
+                    <span>Business Cards</span>
+                    <span>Social Media Kit</span>
+                    <span>Brand Voice</span>
+                    <span>Structure Creation</span>
+                </div>
+            </div>
         </div>
-        <div class="card" data-text="We create fully custom websites from concept to launch — responsive, fast, and designed to convert. You get a complete live website with tailored UI/UX, mobile optimization, and advanced features like 3D object integration, animations, and XR experiences. No templates — just unique, high-impact web presence built for your brand.">
+        <div class="card service">
             <img src="static/images/service/web.svg" alt="brand">
-            <h1 class="bold">Web Dev & Design</h1>
+            <div class="flex-cl gap-12">
+                <h1 class="bold">Web Dev & Design</h1>
+                <div class="span-wrapper">
+                    <span>Website UI/UX Design</span>
+                    <span>Responsive Web Development</span>
+                    <span>Landing Page Design</span>
+                    <span>Web App Prototyping</span>
+                    <span>Web App Dev</span>
+                    <span>SEO Optimization</span>
+                    <span>Custom Integration</span>
+                </div>
+            </div>
         </div>
-        <div class="card" data-text="We create custom AR modules and 3D content that let users interact with your products or spaces directly through your website or app. Whether it's visualizing a handbag in a retail app, walking through a property in real estate, or showcasing digital assets at events, we design the content and build the viewer — fully integrated for web and mobile platforms.">
+        <div class="card service">
             <img src="static/images/service/ar.svg" alt="brand">
-            <h1 class="bold">Augmented Reality Integration </h1>
+            <div class="flex-cl gap-12">
+                <h1 class="bold">AR/XR & 3D Modeling</h1>
+                <div class="span-wrapper">
+                    <span>AR Web Viewer</span>
+                    <span>AR Filters</span>
+                    <span>3D Modeling</span>
+                    <span>AR/VR/Game-ready optimized</span>
+                    <span>Hard-surface modelling</span>
+                    <span>Sculpt</span>
+                    <span>3D—Promotion animation</span>
+                    <span>3D Product Presentation</span>
+                    <span>Blender & UE5 workflow</span>
+                </div>
+            </div>
         </div>
-        <div class="card" data-text="We create a full content plan for your brand and generate everything you need — from posts and visuals to captions and video scripts. We can also create a realistic avatar based on you or design a custom one from scratch, so your brand can stay active, grow its presence, and build a following on platforms like Instagram and TikTok — even while you focus on other things.">
+        <div class="card service">
             <img src="static/images/service/ai.svg" alt="brand">
-            <h1 class="bold">Augmented Reality Integration </h1>
+            <div class="flex-cl gap-12">
+                <h1 class="bold">AI Content & Avatar Generation</h1>
+                <div class="span-wrapper">
+                    <span>AI Digital assets</span>
+                    <span>AI Avatar</span>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(() => {
+        const $cards = $('.card.service');
+
+        $cards.on('click', function () {
+            $(this).toggleClass('enabled');
+        });
+    });
+
+</script>
 
 <div class="page pricing">
 
@@ -82,11 +133,12 @@
                         <h3>$5.000 - $10.000</h3>
 
                         <div class="flex-cl gap-8">
-                            <p>Branding essentials</p>
-                            <p>Basic product (up to 5 pages)</p>
-                            <p>Structure creation (site map & wireframes) </p>
-                            <p>Responsive design</p>
+                            <p>Full branding deck</p>
+                            <p>Landing page</p>
+                            <p>Product UI/UX & dev (up to 12 pages)</p>
+                            <p>Advanced structure & web app prototyping</p>
                             <p>SEO Optimization</p>
+                            <p>Social media templates</p>
                         </div>
                     </div>
                 </div>
@@ -100,11 +152,11 @@
                         <h3></h3>
 
                         <div class="flex-cl gap-8">
-                            <p>Branding essentials</p>
-                            <p>Basic product (up to 5 pages)</p>
-                            <p>Structure creation (site map & wireframes) </p>
-                            <p>Responsive design</p>
-                            <p>SEO Optimization</p>
+                            <p>Custom branding suite</p>
+                            <p>Full website design & dev (no page limit)</p>
+                            <p>E-commerce, custom integrations</p>
+                            <p>AR/AI services as needed</p>
+                            <p>Dedicated project manager</p>
                         </div>
                     </div>
                 </div>
