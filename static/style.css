@@ -1051,7 +1051,7 @@ footer{
     }
     @media (max-width: 960px) {
         .card-wrapper{
-            gap: 32px;
+            gap: 0;
         }
         .card {
             flex-direction: column;
@@ -1445,6 +1445,109 @@ footer{
 }
 
 
+body.custom-vs-framer{
+    canvas{
+        opacity: 0;
+        display: none;
+    }
+}
+
+.page.hero.blog-page{
+    z-index: 12;
+    align-items: center;
+    background-color: var(--background-color);
+
+    .wrapper{
+        position: relative;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        height: 520px;
+        width: 65vw;
+        max-width: 1200px;
+        min-width: fit-content;
+        margin-bottom: 24px;
+
+        background-color: var(--accent-color);
+        border-radius: 64px;
+        overflow: hidden;
+
+        h1{
+            color: #FFFFFF;
+            font-weight: 400;
+            span{
+                color: #FFFFFF;
+            }
+        }
+        img{
+            position: absolute;
+            
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            min-height: 100%;
+        }
+    }
+    .blog-wrapper{
+        display: flex;
+        flex-direction: column;
+        max-width: 720px;
+        gap: 18px;
+
+        h2{
+            font-size: 32px;
+            font-weight: 600;
+        }
+        p{
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 180%;
+        }
+    }
+}
+
+
+.animated {
+    display: inline-block;
+    animation: pulseText 3s cubic-bezier(0.2, 0.66, 0.1, 0.7) infinite;
+    transform-origin: center;
+}
+
+@keyframes pulseText {
+    0%, 100% {
+        font-weight: 400;
+        letter-spacing: 0px;
+        transform: scaleX(1);
+        margin: 0px;
+    }
+    50% {
+        font-weight: 700;
+        letter-spacing: 2px;
+        transform: scaleX(1.08);
+        margin: 0 15px;
+    }
+}
+
+
+.animated-reverse {
+    display: inline-block;
+    animation: pulseTextReverse 3s cubic-bezier(0.2, 0.66, 0.1, 0.7) infinite;
+    transform-origin: center;
+}
+
+@keyframes pulseTextReverse {
+    0%, 100% {
+        font-weight: 400;
+    }
+    50% {
+        font-weight: 200;
+    }
+
+}
+
+
 .page.error{
     padding-top: 30vh;
     justify-content: flex-start;
@@ -1713,11 +1816,6 @@ body.works{
         }
     }
 }
-
-
-
-
-
 
 
 .with-popup.menu{

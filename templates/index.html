@@ -47,7 +47,7 @@
 
         gtag('config', 'G-HWD19QE7P4');
     </script>
-    
+
     <link rel="stylesheet" href="static/style.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -201,12 +201,10 @@
 
             if (path.startsWith('/works')) {
                 newColor = '#1e1e1e';
+            } else if (isSmallScreen) {
+                newColor = isScrolled ? '#ffffff' : '#F7F2FF';
             } else {
-                if (isSmallScreen) {
-                    newColor = isScrolled ? '#ffffff' : '#F7F2FF';
-                } else {
-                    newColor = '#F7F2FF';
-                }
+                newColor = '#F7F2FF';
             }
 
             themeMetaTag.setAttribute('content', newColor);
@@ -215,19 +213,18 @@
 
     $(document).ready(function () {
         $(window).scroll();
-    });
 
-    $(document).on('click', '.with-popup', function (e) {
-        if ($(e.target).closest('.close-popup').length) return;
-        $('.with-popup').not(this).removeClass('active');
-        $(this).addClass('active');
-    });
+        $(document).on('click', '.with-popup', function (e) {
+            if ($(e.target).closest('.close-popup').length) return;
+            $('.with-popup').not(this).removeClass('active');
+            $(this).addClass('active');
+        });
 
-    $(document).on('click', '.with-popup .close-popup', function (e) {
-        e.stopPropagation();
-        $(this).closest('.with-popup').removeClass('active');
+        $(document).on('click', '.with-popup .close-popup', function (e) {
+            e.stopPropagation();
+            $(this).closest('.with-popup').removeClass('active');
+        });
     });
-
 </script>
 
 </html>
