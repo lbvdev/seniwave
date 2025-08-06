@@ -1354,7 +1354,7 @@ footer{
         gap: 21px;
 
         width: 450px;
-        min-width: 350px;
+        min-width: 440px;
         padding: 0 21px 21px 21px;
 
         border-radius: 24px;
@@ -1477,9 +1477,13 @@ body.custom-vs-framer{
         h1{
             color: #FFFFFF;
             font-weight: 400;
+            text-align: center;
             span{
                 color: #FFFFFF;
             }
+        }
+        li{
+            margin-bottom: 12px;
         }
         img{
             position: absolute;
