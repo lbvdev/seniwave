@@ -1,6 +1,6 @@
 $(document).ready(function () {
     function updateBodyClass(page) {
-        $("body").removeClass("home team blog contact works 404").addClass(page);
+        $("body").removeClass("home team blog contact works 404 legal").addClass(page);
     }
 
     function updateActiveLink(page) {
