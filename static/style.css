@@ -1525,6 +1525,18 @@ body.custom-vs-framer{
 }
 
 
+
+.page.legal{
+    gap: 12px;
+
+    h2{
+        font-size: 24px;
+        font-weight: 600;
+        padding-top: 12px;
+    }
+}
+
+
 .animated {
     display: inline-block;
     animation: pulseText 3s cubic-bezier(0.2, 0.66, 0.1, 0.7) infinite;
