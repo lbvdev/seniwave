@@ -1129,6 +1129,12 @@ footer{
             gap: 24px;
             width: 100%;
         }
+        .left-side{
+            p{
+                font-size: 16px;
+                opacity: 0.8;
+            }
+        }
         .right-side{
             align-items: flex-end;
 
