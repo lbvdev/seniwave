@@ -1534,7 +1534,15 @@ body.custom-vs-framer{
 
 .page.legal{
     gap: 12px;
+    background-color: var(--background-color);
+    z-index: 23;
 
+    h1, h2, p{
+        max-width: 720px;
+    }
+    h1{
+        font-size: 48px;
+    }
     h2{
         font-size: 24px;
         font-weight: 600;
