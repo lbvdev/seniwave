@@ -681,6 +681,8 @@ footer{
         background: #FFFFFF;
         border-radius: 32px;
 
+        overflow: hidden;
+
         .links{
             display: flex;
             flex-direction: column;
@@ -728,7 +730,7 @@ footer{
         width: 100%;
 
         a, p{
-            color: var(--accent-color) !important;
+            color: var(--accent-color);
 
             font-size: 16px;
             opacity: 0.5;
@@ -1889,8 +1891,10 @@ body.works{
     background-color: #222222;
     color: white !important;
 
-    *{
-        color: white !important;
+    header, .page{
+        *{
+            color: white !important;
+        }
     }
 
     header{
@@ -1933,11 +1937,29 @@ body.works{
     }
 
     footer{
+
         background: radial-gradient(100% 100% at 50% 100%, rgba(95, 0, 255, 0.80) 0%, #222 100%);
-        
-        img{
-            opacity: 0.3;
+        color: initial;
+
+        .footer-wrapper{
+            background: rgba(255, 255, 255, 0.70);
+
+            img{
+                opacity: 0.1;
+            }
         }
+
+        .content-wrapper{
+            color: var(--primary-color) !important;
+        }
+
+        .legal{
+            a, p{
+                color: var(--background-color) !important;
+                opacity: 0.8;
+            }
+        }
+
     }
 
 
