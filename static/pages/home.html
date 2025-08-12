@@ -1,3 +1,11 @@
+<script>
+    $(document).ready(function() {
+        if (typeof AOS !== 'undefined') {
+            AOS.init();
+        }
+    });
+</script>
+
 <div class="page hero">
     <h1 class="bold">
         <span>Where</span> Creativity<br>
@@ -11,7 +19,7 @@
 <div class="page service">
     <h1>Our services</h1>
     <div class="card-wrapper">
-        <div class="card service">
+        <div class="card service" data-aos="fade-left" data-aos-delay="0">
             <img src="static/images/service/brand.svg" alt="brand">
             <div class="flex-cl gap-12">
                 <h1 class="bold">Branding</h1>
@@ -26,7 +34,7 @@
                 </div>
             </div>
         </div>
-        <div class="card service">
+        <div class="card service" data-aos="fade-left" data-aos-delay="100">
             <img src="static/images/service/web.svg" alt="brand">
             <div class="flex-cl gap-12">
                 <h1 class="bold">Web Dev & Design</h1>
@@ -41,7 +49,7 @@
                 </div>
             </div>
         </div>
-        <div class="card service">
+        <div class="card service" data-aos="fade-left" data-aos-delay="200">
             <img src="static/images/service/ar.svg" alt="brand">
             <div class="flex-cl gap-12">
                 <h1 class="bold">AR/XR & 3D Modeling</h1>
@@ -58,7 +66,7 @@
                 </div>
             </div>
         </div>
-        <div class="card service">
+        <div class="card service" data-aos="fade-left" data-aos-delay="300">
             <img src="static/images/service/ai.svg" alt="brand">
             <div class="flex-cl gap-12">
                 <h1 class="bold">AI Content & Avatar Generation</h1>
@@ -82,19 +90,19 @@
 
 </script>
 
-<div class="page pricing">
+<div class="page pricing" id="pricing">
     <h1>What is your budget?</h1>
     <div class="flex-cl gap-12 w-100 wrap-on-mobile">
             <div class="price-wrapper">
-                <span>
+                <span data-aos="slide-up">
                     <p>$5,000</p>
                     <div class="line"></div>
                 </span>
-                <span>
+                <span data-aos="slide-up" data-aos-delay="100">
                     <p>$10,000</p>
                     <div class="line"></div>
                 </span>
-                <span>
+                <span data-aos="slide-up" data-aos-delay="200">
                     <p>$30,000</p>
                     <div class="line"></div>
                     <p>$$$</p>
@@ -102,7 +110,7 @@
             </div>
         <div class="flex-cl gap-12 w-100">
             <div class="card-wrapper">
-                <div class="card card-pricing">
+                <div class="card card-pricing" data-aos="slide-up">
                     <div class="left-side">
                         <h2>Start-Up Package</h2>
 
@@ -122,7 +130,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="card card-pricing">
+                <div class="card card-pricing" data-aos="slide-up" data-aos-delay="100">
                     <div class="left-side">
                         <h2>Scale Up Package</h2>
 
@@ -143,7 +151,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="card card-pricing">
+                <div class="card card-pricing" data-aos="slide-up" data-aos-delay="200">
                     <div class="left-side">
                         <h2>Professional Package</h2>
 
@@ -167,7 +175,7 @@
                     </div>
                 </div>
             </div>
-            <div class="flex gap-4 pos-rel">
+            <div class="flex gap-4 pos-rel" data-aos="fade-up" data-aos-delay="200">
                 <button class="white-fill continue-pricing">
                     Continue
                 </button>
@@ -181,11 +189,11 @@
     </div>
 </div>
 <div class="page something-more">
-    <h2 class="big">something more...</h2>
+    <h2 class="big" data-aos="fade-zoom-in" data-aos-duration="2000" data-aos-delay="100" data-aos-once="true">something more...</h2>
     <div class="card-wrapper">
         <div class="card-content">
-            <div class="card">
-                <div class="absolute ar">
+            <div class="card" data-aos="fade-up" data-aos-delay="800" data-aos-once="true">
+                <div class="absolute ar" data-aos="slide-up" data-aos-delay="990" data-aos-duration="3000">
                     <img src="static/images/something-more/ar.svg" alt="ai">
                     <img src="static/images/something-more/ar-slash.svg" alt="/">
                 </div>
@@ -193,11 +201,11 @@
                 <p>From $5.000</p>
                 <h3>Web Viewer, 3D Modeling, AR Showcase and more</h3>
             </div>
-            <a href="/contact" class="white-fill">Learn more<img src="static/images/icons/arrow-up.svg"></a>
+            <a href="/contact" class="white-fill" data-aos="fade-up" data-aos-delay="800" data-aos-once="true">Learn more<img src="static/images/icons/arrow-up.svg"></a>
         </div>
         <div class="card-content">
-            <div class="card">
-                <div class="absolute ai">
+            <div class="card" data-aos="fade-up" data-aos-delay="1200" data-aos-once="true">
+                <div class="absolute ai" data-aos="slide-up" data-aos-delay="1330" data-aos-duration="3000">
                     <img src="static/images/something-more/ai.svg" alt="ai">
                     <img src="static/images/something-more/ai-slash.svg" alt="/">
                 </div>
@@ -205,7 +213,7 @@
                 <p>$5.000 - $10.000</p>
                 <h3>AI-powered custom visuals and videos</h3>
             </div>
-            <a href="/contact" class="white-fill">Learn more<img src="static/images/icons/arrow-up.svg"></a>
+            <a href="/contact" class="white-fill" data-aos="fade-up" data-aos-delay="1200" data-aos-once="true">Learn more<img src="static/images/icons/arrow-up.svg"></a>
         </div>
     </div>
 </div>
@@ -284,7 +292,7 @@ $(document).ready(function () {
 
 </script>
 
-<div class="page blog">
+<div class="page blog" id="blog">
     <h1>Blog</h1>
     <div class="card-wrapper scroll-x transparent-scroll">
         <a class="card" class="link after-bg" href="/atomic" data-page="blog">

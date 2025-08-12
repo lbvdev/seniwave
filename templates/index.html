@@ -35,7 +35,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Martian+Mono:wght@100..800&display=swap" rel="stylesheet">
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>    
+
 </head>
+
 
 <body>
     <header>
@@ -160,7 +165,34 @@
     </div>
     
     <footer>
-        <img loading="lazy" src="static/images/logos/footer.svg">
+        <div class="footer-wrapper">
+            <div class="content-wrapper">
+                
+                <p class="mono">We are a full-service creative agency, building and launching brands and digital products—always with a business mindset.</p>
+                <div class="links">
+                    <p>Navigate</p>
+                    <a href="/home" data-page="home">Home</a>
+                    <a href="/team" data-page="team">Story</a>
+                    <a href="/home#blog" data-page="home#blog">Blog</a>
+                    <a href="/works" data-page="works">Works</a>
+                </div>
+                <div class="links">
+                    <p>Learn more</p>
+                    <a href="ai" data-page="ai">Artificial Intelligence</a>
+                    <a href="ar" data-page="ar">Augmented reality</a>
+                    <a href="home#pricing" data-page="home#pricing">Packs</a>
+                </div>
+                <div class="links">
+                    <p>Contact</p>
+                    <a href="https://wa.me/971585820390" target="_blank">Whatsapp</a>
+                    <a href="https://t.me/seniwave" target="_blank">Telegram</a>
+                    <a href="mailto:info@seniwave.com" target="_blank">Email</a>
+                </div>
+            </div>
+            
+            <img class="footer-logo" src="static/images/logos/footer.svg" alt="SeniWave">
+
+        </div>
         <div class="legal">
             <p>All Rights Reserved ©2024-2025</p>
             <a class="link" href="/legal" data-page="legal">Privacy Policy</a>

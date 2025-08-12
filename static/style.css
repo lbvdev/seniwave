@@ -656,26 +656,79 @@ header.scrolled{
 }
 
 
-
 footer{
     display: flex;
     flex-direction: column;
+    gap: 32px;
 
     width: 100%;
-    padding-top: 48px;
 
-    background: radial-gradient(100% 100% at 50% 100%, #5F00FF 0%, #F7F2FF 100%);
+    padding: 32px var(--padding-horizontal) 48px var(--padding-horizontal);
+
+    .content-wrapper{
+        display: flex;
+        gap: 48px;
+    }
+
+    .footer-wrapper{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 36px;
+
+        padding: 48px var(--padding-horizontal) 0 var(--padding-horizontal);
+
+        background: #FFFFFF;
+        border-radius: 32px;
+
+        .links{
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+
+            min-width: fit-content;
+
+            p{
+                font-size: 16px;
+                font-weight: 500;
+                color: var(--secondary-color);
+            }
+        }
+
+        a{
+            color: var(--accent-color);
+            font-size: 16px;
+            font-weight: 600;
+
+            text-decoration-line: underline;
+            text-decoration-style: wavy;
+            text-decoration-skip-ink: none;
+            text-decoration-color: rgba(95, 0, 255, 0.24);
+
+            text-decoration-thickness: 12%;
+            text-underline-offset: 21%;
+        }
+        a:hover{
+            color: var(--primary-color);
+            text-decoration-color: rgba(30, 30, 30, 0.24);
+        }
+
+        img{
+            width: calc(100% + var(--padding-horizontal) * 2);
+        }
+
+    }
 
     .legal{
         display: flex;
         justify-content: space-between;
         align-items: center;
 
-        padding: 32px var(--padding-horizontal) 48px var(--padding-horizontal);
+        padding: 0 32px 0 32px;
         width: 100%;
 
         a, p{
-            color: white !important;
+            color: var(--accent-color) !important;
 
             font-size: 16px;
             opacity: 0.5;
@@ -702,8 +755,30 @@ footer{
     }
 }
 
+@media (max-width: 1020px) {
+    footer{
+        .footer-wrapper{
+            padding: 18px;
+            padding-top: 24px;
+            padding-bottom: 0;
+        }
 
+        .content-wrapper{
+            flex-direction: column;
+            gap: 32px;
+        }
+        a, p{
+            font-size: 18px !important;
+        }
+        img{
+            width: calc(100% + 18px * 2) !important;
+        }
 
+        .legal{
+            padding: 0;
+        }
+    }
+}
 
 
 #content{
@@ -780,8 +855,15 @@ footer{
         font-weight: 500;
         line-height: 140%;
     }
+
 }
 
+p.mono{
+    font-family: 'Martian Mono' !important;
+    font-weight: 300;
+    line-height: 180%;
+    font-size: 14px;
+}
 
 .page.hero {
     min-height: 70vh;
