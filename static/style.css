@@ -686,7 +686,6 @@ footer{
         .links{
             display: flex;
             flex-direction: column;
-            gap: 12px;
 
             min-width: fit-content;
 
@@ -694,6 +693,7 @@ footer{
                 font-size: 16px;
                 font-weight: 500;
                 color: var(--secondary-color);
+                margin-bottom: 6px;
             }
         }
 
@@ -702,6 +702,8 @@ footer{
             font-size: 16px;
             font-weight: 600;
 
+            padding: 8px 0;
+
             text-decoration-line: underline;
             text-decoration-style: wavy;
             text-decoration-skip-ink: none;
@@ -709,6 +711,8 @@ footer{
 
             text-decoration-thickness: 12%;
             text-underline-offset: 21%;
+
+            transition: color 0.15s, text-decoration-color 0.1s;
         }
         a:hover{
             color: var(--primary-color);
@@ -745,7 +749,7 @@ footer{
             text-decoration-thickness: 1px;
             text-underline-offset: 1px;
             text-underline-position: from-font;
-            text-decoration-color: #FFFFFF70;
+            text-decoration-color: #5F00FF30;
 
             transition: background-color 0.3s, text-decoration-color 0.2s;
         }
@@ -753,6 +757,8 @@ footer{
             text-decoration-color: transparent;
 
             background-color: var(--accent-color);
+            color: var(--background-color) !important;
+            opacity: 1;
         }
     }
 }
@@ -1942,8 +1948,15 @@ body.works{
         color: initial;
 
         .footer-wrapper{
-            background: rgba(255, 255, 255, 0.70);
-
+            background: rgba(255, 255, 255, 0.26);
+            
+            a, p{
+                color: #FFFFFF !important;
+                text-decoration-color: #FFFFFF30 !important;
+            }
+            p{
+                opacity: 0.5;
+            }
             img{
                 opacity: 0.1;
             }

@@ -115,6 +115,7 @@ window.addEventListener('load', () => {
                     } else {
                         p.y += (p.origY - p.y) * 0.2;
                     }
+                    p.y = Math.max(0, Math.min(height, p.y));
                 });
                 ctx.beginPath();
                 ctx.moveTo(points[0].x, points[0].y);
