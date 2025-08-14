@@ -31,14 +31,14 @@
     <div class="flex-cl">
 
         <div class="card-wrapper">
-            <work-card image="arspatially" title="AR Spatially" desc="Branding, Website UI/UX, 3D Modelling" tags="brand,web"></work-card>
+            <work-card image="arspatially" title="AR Spatially" desc="Branding, Website UI/UX, 3D Modelling" tags="brand,web" live_link="https://arspatially.com"></work-card>
             <work-card image="arspatially2" title="AR Spatially" desc="Web-based AR viewer integration and 3D modeling" tags="3d,ar"></work-card>
         </div>
 
         <work-single-card image="arspatially3" desc="CGI Promo Video for Dubai AR Exhibition" tags="3d,ar"></work-single-card>
 
         <div class="card-wrapper">
-            <work-card image="dges" title="DGES" desc="Full brand identity and responsive website design." tags="brand,web"></work-card>
+            <work-card image="dges" title="DGES" desc="Full brand identity and responsive website design." tags="brand,web" live_link="https://dges.io"></work-card>
             <work-card video="mint" title="MINT" desc="3D modeling and CGI for product showcase." tags="3d"></work-card>
         </div>
 
@@ -76,6 +76,7 @@
             const title = this.getAttribute('title') || '';
             const desc = this.getAttribute('desc') || '';
             const tags = (this.getAttribute('tags') || '').split(',').filter(Boolean);
+            const live_link = (this.getAttribute('live_link') || '')
             let mediaHtml = '';
             if (video) {
                 mediaHtml = `<video src="/static/images/works/${video}.mp4" controls loop muted autoplay playsinline style="width:100%;height:auto;display:block;"></video>`;
@@ -90,11 +91,16 @@
                                 <h3>${title}</h3>
                                 <p>${desc}</p>
                             </div>
-                            <div class="card-tags">
-                                ${tags.map(tag => `
-                                    <button class="tag">
-                                        <img src="/static/images/icons/${tag.trim()}.svg" alt="${tag}">
-                                    </button>`).join('')}
+                            <div class="flex-cl flex-end">
+                                <div class="card-tags">
+                                    ${tags.map(tag => `
+                                        <button class="tag">
+                                            <img src="/static/images/icons/${tag.trim()}.svg" alt="${tag}">
+                                        </button>`).join('')}
+                                </div>
+                                ${live_link ? `<a href="${live_link}" target="_blank" class="live-link">
+                                    View live
+                                </a>` : ''}
                             </div>
                         </div>
                     </div>
