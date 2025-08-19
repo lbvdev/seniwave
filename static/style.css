@@ -828,12 +828,16 @@ div.legal{
         z-index: 2;
     }
     h1{
-        font-size: 96px;
+        font-size: 58px;
         font-weight: 700;
         color: var(--accent-color);
+
         span{
             color: var(--secondary-color);
         }
+    }
+    h1.center{
+        text-align: center;
     }
     h2.big{
         width: 100%;
@@ -844,7 +848,7 @@ div.legal{
         color: var(--accent-color);
     }
     h1.bold{
-        font-size: 86px;
+        font-size: 58px;
     }
     h2{
         font-size: 32px;
@@ -893,7 +897,33 @@ p.mono{
 }
 
 .page.hero {
+    align-items: center;
+    gap: 18px;
+
     min-height: 70vh;
+
+    h3{
+        text-align: center;
+        color: rgba(30, 30, 30, 0.45);
+        text-align: center;
+        font-family: Manrope;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 180%; /* 25.2px */
+        letter-spacing: 0.28px;
+        
+        span{
+            color: var(--primary-color);
+
+            text-decoration: underline;
+            text-decoration-style: wavy;
+            text-decoration-skip-ink: none;
+            text-decoration-color: rgba(95, 0, 255, 0.64);
+            text-decoration-thickness: 8.5%;
+            text-underline-offset: 35%;
+        }
+    }
 
     .wave-wrapper {
         display: flex;
@@ -1660,6 +1690,7 @@ body.custom-vs-framer, body.atomic, body.custom-cms-vs-wordpress{
             color: #FFFFFF;
             font-weight: 400;
             text-align: center;
+
             span{
                 color: #FFFFFF;
             }
