@@ -51,7 +51,7 @@ window.addEventListener('load', () => {
         let animationId = null;
         let isVisible = true;
         let lastTime = 0;
-        const targetFPS = 60;
+        const targetFPS = 120;
         const frameInterval = 1000 / targetFPS;
         function isCanvasVisible() {
             const rect = canvas.getBoundingClientRect();

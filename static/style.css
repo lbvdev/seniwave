@@ -903,17 +903,13 @@ p.mono{
     min-height: 70vh;
 
     h3{
-        text-align: center;
         color: rgba(30, 30, 30, 0.45);
-        text-align: center;
-        font-family: Manrope;
-        font-size: 14px;
-        font-style: normal;
+        font-size: 16px;
         font-weight: 500;
-        line-height: 180%; /* 25.2px */
+        line-height: 180%;
         letter-spacing: 0.28px;
         
-        span{
+        a{
             color: var(--primary-color);
 
             text-decoration: underline;
@@ -923,6 +919,10 @@ p.mono{
             text-decoration-thickness: 8.5%;
             text-underline-offset: 35%;
         }
+    }
+    h3.center{
+        text-align: center;
+        max-width: 740px;
     }
 
     .wave-wrapper {
@@ -948,7 +948,13 @@ p.mono{
 
 
 .page.works{
+    align-items: flex-start;
     height: initial;
+
+    h3.hero{
+        max-width: 720px;
+        margin: 18px 0;
+    }
 
     .card-wrapper{
         display: flex;
@@ -986,6 +992,8 @@ p.mono{
         display: flex;
         flex-wrap: wrap;
         gap: 4px;
+
+        margin-bottom: 48px;
     }
 
     .tag {
@@ -1715,6 +1723,7 @@ body.custom-vs-framer, body.atomic, body.custom-cms-vs-wordpress{
 
 
         h2{
+            margin-top: 12px;
             font-size: 32px;
             font-weight: 600;
         }
@@ -2089,7 +2098,7 @@ body.works{
 
 
 
-body.legal, body.blog, body.team{
+body.legal, body.blog, body.team, body.privacy, body.terms{
     canvas{
         display: none;
     }
