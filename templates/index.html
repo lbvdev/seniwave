@@ -1,3 +1,6 @@
+{% from "components/google_modal.j2" import google_modal %}
+{% from "components/header_view.j2" import header_view %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,10 +59,10 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script type="module" src="static/scripts/waveRenderer.js"></script>
-    <script type="module" src="static/scripts/router.js"></script>
+    <script type="module" src="/static/scripts/waveRenderer.js"></script>
+    <script type="module" src="/static/scripts/router.js"></script>
 
-    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="/static/style.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -71,196 +74,9 @@
 </head>
 
 <body>
+    {{ google_modal() }}
 
-    <noscript>
-        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M66VJ44S"
-            height="0" width="0" style="display:none;visibility:hidden"></iframe>
-    </noscript>
-
-    <div id="cookie-banner" style="position:fixed;left:0;right:0;bottom:0;z-index:9999;background:#111;color:#fff;padding:16px 20px;display:none;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif">
-        <div style="max-width:980px;margin:0 auto;display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap">
-            <div style="flex:1;min-width:260px">
-                We use analytics cookies to understand traffic and improve our services. You can accept or reject analytics. See our Privacy Policy for details.
-            </div>
-            <div style="display:flex;gap:4px;flex-shrink:0;align-items:center">
-                <button id="cookie-accept" style="padding:10px 14px;border:0;border-radius:32px;background:#5f00ff;color:#ffff;font-weight:700;cursor:pointer">Accept</button>
-                <button id="cookie-reject" style="padding:10px 14px;border:0;border-radius:32px;background:#222;color:#fff;cursor:pointer">Reject</button>
-                <div style="width:1px;height:24px;background:#333;margin:0 4px"></div>
-                <button id="cookie-settings" style="padding:10px 14px;border:0;border-radius:32px;background:#222;color:#fff;cursor:pointer">Settings</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="cookie-modal" role="dialog" aria-modal="true" aria-labelledby="cookie-modal-title" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:10000;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif">
-        <div style="background:#fff;color:#1e1e1e;max-width:560px;margin:10vh auto;padding:20px;border-radius:24px">
-            <h2 id="cookie-modal-title" style="margin-top:0; margin-bottom:14px">Cookie settings</h2>
-            <p><b>Strictly necessary</b> cookies are always on and do not require consent.</p>
-            <p><b>Analytics</b> cookies help measure performance. Turn this on to allow Google Analytics 4.</p>
-            <label style="display:flex;align-items:center;gap:10px;margin:12px 0">
-                <input type="checkbox" id="toggle-analytics">
-                <span>Enable analytics cookies</span>
-            </label>
-            <div style="display:flex;gap:4px;justify-content:flex-end;margin-top:10px">
-                <button id="cookie-save" style="padding:10px 14px;border:0;border-radius:32px;background:#5f00ff;color:#fff;font-weight:700;cursor:pointer">Save</button>
-                <button id="cookie-cancel" style="padding:10px 14px;border:0;border-radius:32px;background:#ccc;color:#1e1e1e;cursor:pointer">Cancel</button>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        (function () {
-          var KEY = 'consent_choice';
-          var K_AN = 'consent_analytics';
-        
-          function setItem(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
-          function getItem(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
-        
-          function showBanner(){ var el=document.getElementById('cookie-banner'); if(el) el.style.display='block'; }
-          function hideBanner(){ var el=document.getElementById('cookie-banner'); if(el) el.style.display='none'; }
-          function openModal(){ var m=document.getElementById('cookie-modal'); if(!m) return;
-            var t=document.getElementById('toggle-analytics'); if(t) t.checked=(getItem(K_AN)==='true');
-            m.style.display='block'; }
-          function closeModal(){ var m=document.getElementById('cookie-modal'); if(m) m.style.display='none'; }
-        
-          // показать баннер при первом визите
-          if (!getItem(KEY)) showBanner();
-          document.addEventListener('click', function(e){
-            var id = (e.target && e.target.id) || '';
-            if (id === 'cookie-accept') {
-              setItem(KEY,'accepted'); setItem(K_AN,'true');
-              hideBanner();
-              gtag('consent','update', { analytics_storage:'granted' });
-            } else if (id === 'cookie-reject') {
-              setItem(KEY,'rejected'); setItem(K_AN,'false');
-              hideBanner();
-              gtag('consent','update', {
-                analytics_storage:'denied',
-                ad_storage:'denied',
-                ad_user_data:'denied',
-                ad_personalization:'denied'
-              });
-            } else if (id === 'cookie-settings') {
-              openModal();
-            } else if (id === 'cookie-cancel') {
-              closeModal();
-            } else if (id === 'cookie-save') {
-              var enable = !!document.getElementById('toggle-analytics')?.checked;
-              setItem(KEY, enable ? 'accepted' : 'rejected');
-              setItem(K_AN, enable ? 'true' : 'false');
-              closeModal(); hideBanner();
-              gtag('consent','update', { analytics_storage: enable ? 'granted' : 'denied' });
-            } else if (id === 'manage-cookies-link') {
-              e.preventDefault(); openModal();
-            }
-          });
-        })();
-    </script>
-
-
-    <header>
-        <a class="logo" href="/home" data-page="home">
-            <img src="static/images/logos/header.svg" alt="SeniWave Logo">
-        </a>
-        <div class="link-wr">
-            <a class="link after-bg" href="/home" data-page="home" id="home" class="enabled">
-                Home
-                <img class="outline" src="static/images/icons/home.svg" alt="Active home image">
-                <img class="fill" src="static/images/icons/home-fill.svg" alt="Active home image">
-            </a>
-            <a class="link after-bg" href="/team" data-page="team" id="team">
-                Team
-                <img class="outline" src="static/images/icons/team.svg" alt="Team image">
-                <img class="fill" src="static/images/icons/team-fill.svg" alt="Active team image">
-            </a>
-            <a class="link after-bg" href="/home#blog">
-                Blog
-                <img src="static/images/icons/blog.svg" alt="">
-            </a>
-            <a class="link after-bg" href="/works" data-page="works" id="works">
-                Works
-                <img class="outline" src="static/images/icons/works.svg" alt="Works image">
-                <img class="fill" src="static/images/icons/works-fill.svg" alt="Active works image">
-            </a>
-            <div class="with-popup after-bg menu">
-                <div class="head">
-                    <span>Menu</span>
-                    <img class="first invert-on-works" src="static/images/icons/menu.svg">
-                </div>
-                <div class="popup">
-                    <div class="absolute-head close-popup">
-                        Menu
-                        <div class="img-wrapper">
-                            <img class="first" src="static/images/icons/menu.svg">
-                            <img class="second" src="static/images/icons/close.svg">
-                        </div>
-                    </div>
-                    <div class="info-wr">
-                        <a class="info" href="/home" data-page="home" id="home" class="enabled">
-                            <h3>Home</h3>
-                        </a>
-                        <a class="info" href="/team" data-page="team" id="team">
-                            <h3>Story</h3>
-                        </a>
-                        <a class="info" href="https://medium.com/@SeniWave" target="_blank">
-                            <h3>Blog</h3>
-                            <p class="invisible">redirects to Medium</p>
-                        </a>
-                        <a class="info" href="/works" data-page="works" id="works">
-                            <h3>Works</h3>
-                        </a>
-                    </div>
-
-                    <div class="legal-mini">
-                        <p>All Rights Reserved ©2024-2025</p>
-                        <a href="/legal">Privacy Policy</a>
-                    </div>
-                </div>
-            </div>
-            <div class="with-popup after-bg contact">
-                <div class="head">
-                    <span>Get in touch</span>
-                    <div class="img-wrapper">
-                        <img class="first" src="static/images/icons/contact.svg">
-                        <img class="second" src="static/images/icons/message.svg">
-                    </div>
-                </div>
-                <div class="popup">
-                    <div class="absolute-head close-popup">
-                        Let's talk
-                        <div class="img-wrapper">
-                            <img class="first" src="static/images/icons/message.svg">
-                            <img class="second" src="static/images/icons/close.svg">
-                        </div>
-                    </div>
-                    <a href="https://book.seniwave.com/" class="book">
-                        Book a consultation
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="27" viewBox="0 0 24 27" fill="none">
-                            <path d="M7.38477 1.90039V6.70039M16.9848 1.90039V6.70039M1.38477 11.5004H22.9848M10.6848 15.5976H12.1848V21.5976M10.6848 21.5976H13.6848M7.14477 25.9004H17.2248C19.241 25.9004 20.249 25.9004 21.0191 25.508C21.6965 25.1629 22.2472 24.6121 22.5924 23.9348C22.9848 23.1647 22.9848 22.1566 22.9848 20.1404V10.0604C22.9848 8.0442 22.9848 7.03611 22.5924 6.26602C22.2472 5.58864 21.6965 5.03791 21.0191 4.69277C20.249 4.30039 19.241 4.30039 17.2248 4.30039H7.14477C5.12858 4.30039 4.12048 4.30039 3.3504 4.69277C2.67302 5.03791 2.12229 5.58864 1.77714 6.26602C1.38477 7.03611 1.38477 8.0442 1.38477 10.0604L1.38477 20.1404C1.38477 22.1566 1.38477 23.1647 1.77714 23.9348C2.12229 24.6121 2.67302 25.1629 3.3504 25.508C4.12048 25.9004 5.12858 25.9004 7.14477 25.9004Z" stroke="white" stroke-width="1.95" stroke-linecap="square"/>
-                        </svg>
-                    </a> 
-                    <div class="info-wr">
-                        <a tabindex="0" href="https://wa.me/971585820390" class="info">
-                            <h3>Whatsapp</h3>
-                            <p>+971 58 582 0390</p>
-                        </a>
-                        <a tabindex="0" href="https://t.me/seniwave" class="info">
-                            <h3>Telegram</h3>
-                            <p>@seniwave</p>
-                        </a>
-                        <a tabindex="0" class="info" href="mailto:info@seniwave.com">
-                            <h3>Email</h3>
-                            <p>info@seniwave.com</p>
-                        </a>
-                    </div>
-
-                    <div class="legal-mini">
-                        <p>All Rights Reserved ©2024-2025</p>
-                        <a href="/legal">Privacy Policy</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+    {{ header_view() }}
 
     <div class="header-gap"></div>
 
@@ -286,6 +102,7 @@
                     <p>Navigate</p>
                     <a href="/home" data-page="home">Home</a>
                     <a href="/team" data-page="team">Team</a>
+                    <a href="/pricing" data-page="pricing">Pricing</a>
                     <a href="/home#blog" data-page="home#blog">Blog</a>
                     <a href="/works" data-page="works">Works</a>
                 </div>
@@ -303,7 +120,7 @@
                 </div>
             </div>
             
-            <img class="footer-logo" src="static/images/logos/footer.svg" alt="SeniWave">
+            <img class="footer-logo" src="/static/images/logos/footer.svg" alt="SeniWave">
 
         </div>
         <div class="legal">
