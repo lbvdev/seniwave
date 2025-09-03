@@ -1,0 +1,31 @@
+{% from "components/service_page.j2" import service_page %}
+
+{% set title %}
+    AI Content & Avatar Generation
+{% endset %}
+
+{% set text %}
+<p>Why We Only Offer Custom Solutions in Web Design and Branding? 
+<br>Digital solutions tailored to a brand's unique needs hit the target more effectively than generic templates. In today's saturated digital marketplace, businesses can't afford to blend in. One of the biggest decisions when creating a website or brand identity is whether to go with a cookie-cutter template or invest in a custom solution. Our agency firmly believes in the power of custom solutions – every website, branding element, and digital experience we create is uniquely tailored. We do not use one-size-fits-all templates or off-the-shelf "packages," and for good reason. In this article, we'll explore why we take this custom-only approach and how it benefits your business.
+<br>The Problem with One-Size-Fits-All Solutions (Templates & Turnkey Packages)
+<br>Pre-made templates and turnkey agency "packages" promise quick fixes – a ready-made website or a branding kit at a low price. While they can be tempting for their speed and upfront cost, templates come with significant drawbacks. They are designed to serve the broadest possible audience, meaning they often sacrifice uniqueness and flexibility. Your brand could end up looking like countless others using the same template. Moreover, templated sites typically have bloated code and generic features you might not need, potentially slowing down your site and hurting user experience.
+</p>
+{% endset %}
+
+{% set info %}
+<p>From $5,000</p>
+<p>AI-powered custom visuals and  videos</p>
+<p>Avatars for branding or XR</p>
+<p>Visuals and avatars tailored specifically for your business needs.</p>
+{% endset %}
+
+{% set tags %}
+    ["avatars", "videos", "ai"]
+{% endset %}
+
+{{ service_page(
+    title = title,
+    text = text | safe,
+    info = info | safe,
+    tags = ["avatars", "videos", "ai"],
+) }}

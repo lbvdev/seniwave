@@ -19,6 +19,13 @@
     font-style: normal;
     font-display: swap;
 }
+@font-face {
+    font-family: 'Transforma Mix';
+    src: url('/static/fonts/TransformaMix-SemiBold.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
 
 :root{
     --accent-color: #5F00FF;
@@ -73,18 +80,14 @@ body{
 }
 
 
-h1, h2, h3, h4, h5, p{
-    margin: 0;
-}
+h1, h2, h3, h4, h5, p{margin: 0;}
 a{
     text-decoration: none;
-
     transition: var(--animation-default-03);
 }
 button{
     cursor: pointer;
     border: none;
-
     transition: var(--animation-default-03);
 }
 img{
@@ -92,38 +95,20 @@ img{
     -webkit-user-drag: none;
 }
 
-.flex{
-    display: flex;
-}
-.flex-cl{
-    display: flex;
-    flex-direction: column;
-    width: fit-content;
-}
-.flex-wrap{
-    flex-wrap: wrap;
-}
-.flex-end{
-    align-items: flex-end;
-}
-.w-100{
-    width: 100%;
-}
-.pos-rel{
-    position: relative;
-}
-.gap-12{
-    gap: 12px;
-}
-.gap-8{
-    gap: 8px;
-}
-.gap-6{
-    gap: 6px;
-}
-.gap-4{
-    gap: 4px;
-}
+.flex{display: flex;}
+.flex-cl{display: flex;flex-direction: column;width: fit-content;}
+.flex-wrap{flex-wrap: wrap;}
+.flex-end{align-items: flex-end;}
+.flex-between{justify-content: space-between;}
+.w-100{width: 100%;}
+.pos-rel{position: relative;}
+.gap-86{gap: 86px;}
+.gap-48{gap: 48px;}
+.gap-24{gap: 24px;}
+.gap-12{gap: 12px;}
+.gap-8{gap: 8px;}
+.gap-6{gap: 6px;}
+.gap-4{gap: 4px;}
 
 .default{
     display: flex;
@@ -808,6 +793,9 @@ footer{
             color: var(--primary-color);
             text-decoration-color: rgba(30, 30, 30, 0.24);
         }
+        a.enabled{
+            text-decoration-color: rgba(95, 30, 255, 0.8);
+        }
 
         img{
             width: calc(100% + var(--padding-horizontal) * 2);
@@ -919,24 +907,24 @@ div.legal{
         font-weight: 700;
         line-height: 130%;
         color: var(--accent-color);
-
-        span{
-            color: var(--secondary-color);
-        }
     }
     h1.center{
         text-align: center;
     }
-    h2.big{
-        width: 100%;
-
-        text-align: center;
-        font-size: 48px;
-        font-weight: 500;
-        color: var(--accent-color);
+    h1.primary, span.primary{
+        color: var(--primary-color);
     }
     h1.bold{
         font-size: 58px;
+    }
+    h1 span.secondary{
+        color: var(--secondary-color);
+        font-weight: 400;
+    }
+    span.trnsf{
+        font-family: 'Transforma Mix';
+        font-weight: 600;
+        color: var(--accent-color);
     }
     h2{
         font-size: 32px;
@@ -944,6 +932,14 @@ div.legal{
         b{
             font-weight: 600;
         }
+    }
+    h2.big{
+        width: 100%;
+
+        text-align: center;
+        font-size: 48px;
+        font-weight: 500;
+        color: var(--secondary-color);
     }
     h3{
         font-size: 20px;
@@ -1317,6 +1313,71 @@ p.mono{
             padding-left: var(--padding-horizontal);
         }
     }
+}
+
+.page.service-page{
+    gap: 64px;
+
+    .main{
+        width: 100%;
+        height: 70vh;
+        background-color: #ffffff;
+        border-radius: 999px;
+    }
+    .tag-wrapper{
+        position: relative;
+        display: flex;
+        
+        span{
+            position: absolute;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            gap: 56px;
+
+            height: 72px;
+            padding: 12px 32px;
+            padding-bottom: 8px;
+            background-color: var(--accent-color);
+            border-radius: 96px;
+            color: #ffffff;
+            font-size: 36px;
+
+            cursor: grab;
+            user-select: none;
+            -webkit-user-drag: none;
+            -webkit-user-select: none;
+            -webkit-user-select: none;
+            box-sizing: border-box;
+
+            *{
+                font-size: inherit;
+            }
+        }
+        span:active{
+            cursor: grabbing;
+        }
+    }
+    .right-side{
+        max-width: 530px;
+        h2{
+            font-size: 24px;
+        }
+        p{
+            font-size: 18px;
+        }
+    }
+}
+@media (max-width: 960px) {
+    .page.service-page{
+        .wrapper{
+            flex-direction: column;
+        }
+    }
+}
+
+body.services/ai{
+    background-color: red;
 }
 
 
@@ -1898,6 +1959,12 @@ body.custom-vs-framer, body.atomic, body.custom-cms-vs-wordpress{
         .card-wrapper{
             flex-direction: column;
             gap: 48px;
+        }
+        .wave-img{
+            display: none;
+        }
+        h1:not(:first-child){
+            margin-top: 32px;
         }
     }
 }

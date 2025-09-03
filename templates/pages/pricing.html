@@ -189,49 +189,48 @@
             </div>
         </div>
     </div>
-    
-    <script>
-        function toggleAccordion(item, shouldExpand) {
-            if (shouldExpand) {
-                item.addClass('active');
-                item.css('maxHeight', item[0].scrollHeight + 'px');
-                item.closest('.accordion-js').find('.accordion-js-chevron').css('transform', 'rotate(180deg)');
-            } else {
-                item.removeClass('active');
-                item.css('maxHeight', '0px');
-                item.closest('.accordion-js').find('.accordion-js-chevron').css('transform', 'rotate(0deg)');
-            }
-        }
-
-        function toggleAllAccordions(card, shouldExpand) {
-            card.find('.accordion-js-item').each(function() {
-                const item = $(this);
-                const isActive = item.hasClass('active');
-                
-                if (shouldExpand && !isActive) {
-                    toggleAccordion(item, true);
-                } else if (!shouldExpand && isActive) {
-                    toggleAccordion(item, false);
-                }
-            });
-        }
-
-        $('.toggle-info').on('click', function () {
-            const card = $(this).closest('.card');
-            const isExpanding = $(this).text() === 'Expand all';
-            
-            toggleAllAccordions(card, isExpanding);
-            $(this).text(isExpanding ? 'Collapse all' : 'Expand all');
-        });
-
-        $('.accordion-js').on('click', function () {
-            const item = $(this).find('.accordion-js-item');
-            const isActive = item.hasClass('active');
-            
-            toggleAccordion(item, !isActive);
-        });
-    </script>
-    
-    <img class="margin-to-window" src="/static/images/bg-wave.svg" alt="Pricing">
+    <img class="wave-img margin-to-window" src="/static/images/bg-wave.svg" alt="Pricing">
     <h1>Artificial Intelligence</h1>
 </div>
+
+<script>
+    function toggleAccordion(item, shouldExpand) {
+        if (shouldExpand) {
+            item.addClass('active');
+            item.css('maxHeight', item[0].scrollHeight + 'px');
+            item.closest('.accordion-js').find('.accordion-js-chevron').css('transform', 'rotate(180deg)');
+        } else {
+            item.removeClass('active');
+            item.css('maxHeight', '0px');
+            item.closest('.accordion-js').find('.accordion-js-chevron').css('transform', 'rotate(0deg)');
+        }
+    }
+
+    function toggleAllAccordions(card, shouldExpand) {
+        card.find('.accordion-js-item').each(function() {
+            const item = $(this);
+            const isActive = item.hasClass('active');
+            
+            if (shouldExpand && !isActive) {
+                toggleAccordion(item, true);
+            } else if (!shouldExpand && isActive) {
+                toggleAccordion(item, false);
+            }
+        });
+    }
+
+    $('.toggle-info').on('click', function () {
+        const card = $(this).closest('.card');
+        const isExpanding = $(this).text() === 'Expand all';
+        
+        toggleAllAccordions(card, isExpanding);
+        $(this).text(isExpanding ? 'Collapse all' : 'Expand all');
+    });
+
+    $('.accordion-js').on('click', function () {
+        const item = $(this).find('.accordion-js-item');
+        const isActive = item.hasClass('active');
+        
+        toggleAccordion(item, !isActive);
+    });
+</script>

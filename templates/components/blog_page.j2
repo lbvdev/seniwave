@@ -1,0 +1,15 @@
+{% macro blog_page(title, text, image_name='default') %}
+
+<article class="page hero blog-page">
+    <div class="wrapper">
+        <img src="/static/images/blog/{{ image_name }}.svg">
+        <h1 class="big">
+            {{ title }}
+        </h1>
+    </div>
+    <div class="blog-wrapper">
+        {{ text | safe }}
+    </div>
+</article>
+
+{% endmacro %}

@@ -1,0 +1,30 @@
+{% macro service_page(title, text, tags, info) %}
+
+<script src="/static/scripts/tagPhysics.js"></script>
+
+<div class="page hero service-page">
+    <img class="main" src="/static/images/services/ai.svg" alt="ai">
+
+    <div class="wrapper flex gap-48">
+        <div class="tag-wrapper left-side flex-cl gap-86 flex-between">
+            <div class="flex-cl gap-86">
+                <h1 class="bold">
+                    {{ title }}
+                </h1>
+
+                <div class="flex-cl gap-24">
+                    {{ info | safe }}
+                </div>
+            </div>
+            {% for tag in tags %}
+                <span class="trnsf">{{ tag }} <p>/</p></span>
+            {% endfor %}
+        </div>
+
+        <div class="right-side">
+            {{ text | safe }}
+        </div>
+    </div>
+</div>
+
+{% endmacro %}
