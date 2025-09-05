@@ -1,0 +1,37 @@
+{% from "components/service_page.j2" import service_page %}
+
+{% set title %}
+    Design System
+{% endset %}
+
+{% set text %}
+<h3>Process</h3>
+<p class="numered">Audit & Research — goals, audience, competitors, content inventory → map of problems/opportunities.</p>
+<p class="numered">IA & Flows — information architecture, user scenarios.</p>
+<p class="numered">Wireframes — key screen skeletons, UX patterns.</p>
+<p class="numered">Visual Concepts — 1–2 visual directions for UI.</p>
+<p class="numered">Design Tokens — color, type, spacing, radii, shadows, states.</p>
+<p class="numered">Components — buttons, forms, cards, navigation + variants.</p>
+<p class="numered">Layouts — core pages in responsive.</p>
+<p class="numered">Prototype & Spec — clickable prototype + dev spec.</p>
+{% endset %}
+
+{% set info %}
+<p>Token/component consistency</p>
+<p>Development readiness</p>
+<p>WCAG AA accessibility</p>
+{% endset %}
+
+{% set tags %}
+    ["logo", "colors", "typography"]
+{% endset %}
+ 
+
+
+{{ service_page(
+    title = title,
+    text = text | safe,
+    info = info | safe,
+    tags = ["tokens", "components", "layouts"],
+    image = "branding",
+) }}

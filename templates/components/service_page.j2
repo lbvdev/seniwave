@@ -1,12 +1,12 @@
-{% macro service_page(title, text, tags, info) %}
+{% macro service_page(title, text, tags, info, image='default') %}
 
 <script src="/static/scripts/tagPhysics.js"></script>
 
 <div class="page hero service-page">
-    <img class="main" src="/static/images/services/ai.svg" alt="ai">
+    <img class="main" src="/static/images/service/{{ image }}.png">
 
-    <div class="wrapper flex gap-48">
-        <div class="tag-wrapper left-side flex-cl gap-86 flex-between">
+    <div class="wrapper flex gap-48 w-100">
+        <div class="tag-wrapper left-side flex-cl gap-86 flex-between w-100">
             <div class="flex-cl gap-86">
                 <h1 class="bold">
                     {{ title }}
@@ -16,9 +16,12 @@
                     {{ info | safe }}
                 </div>
             </div>
+
+            <div class="flex-cl">
             {% for tag in tags %}
                 <span class="trnsf">{{ tag }} <p>/</p></span>
             {% endfor %}
+            </div>
         </div>
 
         <div class="right-side">
@@ -26,5 +29,105 @@
         </div>
     </div>
 </div>
+
+
+<style>
+h3{
+    margin-top: 48px;
+}
+.page.service-page{
+    gap: 64px;
+
+    .main{
+        width: 100%;
+        height: 70vh;
+        background-color: #ffffff;
+        border-radius: 999px;
+    }
+    .tag-wrapper{
+        position: relative;
+        display: flex;
+        
+        span{
+            position: absolute;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            gap: 56px;
+
+            height: 72px;
+            padding: 12px 32px;
+            padding-bottom: 8px;
+            background-color: var(--accent-light-color);
+            color: var(--accent-color);
+            border: 3px solid var(--background-color);
+            border-radius: 96px;
+            font-size: 36px;
+
+            cursor: grab;
+            user-select: none;
+            -webkit-user-drag: none;
+            -webkit-user-select: none;
+            -webkit-user-select: none;
+            box-sizing: border-box;
+
+            *{
+                font-size: inherit;
+            }
+        }
+        span:active{
+            cursor: grabbing;
+        }
+    }
+    .right-side{
+        max-width: 530px;
+        counter-reset: numered;
+        h2{
+            font-size: 24px;
+        }
+        p{
+            font-size: 18px;
+        }
+    }
+}
+@media (max-width: 960px) {
+    .page.service-page{
+        .wrapper{
+            flex-direction: column;
+        }
+        .tag-wrapper{
+            span{
+                position: initial;
+                transform: initial !important;
+            }
+        }
+    }
+}
+
+body.services{
+    canvas{
+        display: none;
+    }
+}
+body.branding{
+    --accent-color: #5F00FF;
+    --accent-light-color: #C19DFF;
+}
+body.design{
+    --accent-color: #187969;
+    --accent-light-color: #BBF4F0;
+    --background-color: #F5FFFE;
+}
+body.web{
+    --accent-color: #F25E56;
+    --accent-light-color: #FFEEAB;
+    --background-color: #FFFCF8;
+}
+body.animation{
+    --accent-color: #064e78;
+    --accent-light-color: #97d7ff;
+    --background-color: rgb(245, 252, 255);
+}
+</style>
 
 {% endmacro %}

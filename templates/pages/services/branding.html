@@ -1,0 +1,35 @@
+{% from "components/service_page.j2" import service_page %}
+
+{% set title %}
+    Branding
+{% endset %}
+
+{% set text %}
+<h3>Process</h3>
+<p class="numered">Discovery & Audit — brief, interviews, competitive landscape, audit of visuals and comms → task map.</p>
+<p class="numered">Brand Strategy — positioning, brand personality, tone of voice, messaging matrix → strategic core.</p>
+<p class="numered">Creative Directions — 2–3 art routes (mood boards, refs) → align the vector.</p>
+<p class="numered">Identity Design — logos, color, typography, composition principles → first visible skeleton.</p>
+<p class="numered">Brand System — grids, patterns, illustration style, icon set → modular system.</p>
+<p class="numered">Guidelines — brand book (PDF + online) with rules → ready to scale.</p>
+<p class="numered">Collateral — business cards, decks, social templates, key visuals → starter media kit.</p>
+<p class="numered">Launch & Handover — final packages, source files, folder structure → confident launch.</p>
+{% endset %}
+
+{% set info %}
+<p>WCAG 2.2 AA contrast</p>
+<p>Unified tokens (color/type/spacing)</p>
+<p>Brand guide with usability examples</p>
+{% endset %}
+
+{% set tags %}
+    ["logo", "colors", "typography"]
+{% endset %}
+
+{{ service_page(
+    title = title,
+    text = text | safe,
+    info = info | safe,
+    tags = ["logo", "colors", "typography"],
+    image = "branding",
+) }}

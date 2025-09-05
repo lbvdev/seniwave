@@ -1,5 +1,5 @@
-{% from "components/google_modal.j2" import google_modal %}
-{% from "components/gtag_script.j2" import gtag_script %}
+{% from "components/gtag/modal.j2" import google_modal %}
+{% from "components/gtag/script.j2" import gtag_script %}
 {% from "components/header_view.j2" import header_view %}
 
 <!DOCTYPE html>
@@ -35,6 +35,15 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script type="module" src="/static/scripts/waveRenderer.js"></script>
     <script type="module" src="/static/scripts/router.js"></script>
+
+    <style>
+        /* css for cls improvments */
+        :root{--accent-color:#5F00FF;--primary-color:#000000;--secondary-color:#1E1E1E;--background-color:#F7F2FF;--padding-horizontal:76px;--padding-vertical:56px;}
+        body{width:100vw;max-width:100vw;margin:0;padding:0;background-color:var(--background-color);font-family:'Manrope';-webkit-font-smoothing:antialiased;overflow-x:hidden;overflow-y:scroll;}
+        header{position:fixed;z-index:100;display:flex;justify-content:space-between;width:calc(100% - var(--padding-horizontal) - var(--padding-horizontal) + 16px);height:64px;margin:0 calc(var(--padding-horizontal) - 8px);margin-top:24px;padding:8px;border-radius:32px;transition:margin 0.3s,width 0.3s,border-radius 0.3s;}
+        .header-gap{height:96px;pointer-events:none;}
+        canvas{z-index:2;pointer-events:none;position:absolute;opacity:0.4;margin-top:0;top:40vh;mask-image:linear-gradient(to bottom,rgba(0,0,0,1),rgba(0,0,0,0));user-select:none;-webkit-user-drag:none;-webkit-user-select:none;overflow:visible;will-change:contents;}
+    </style>
 
     <link rel="stylesheet" href="/static/style.css">
 
@@ -82,8 +91,10 @@
                 </div>
                 <div class="links">
                     <p>Services</p>
-                    <a href="services/ai" data-page="services/ai">Artificial Intelligence</a>
-                    <a href="services/ar" data-page="services/ar">Augmented reality</a>
+                    <a href="services/branding" data-page="services/branding">Branding</a>
+                    <a href="services/design" data-page="services/design">Design System</a>
+                    <a href="services/web" data-page="services/web">Web Development</a>
+                    <a href="services/animation" data-page="services/animation">3D, AR and AI Animation</a>
                 </div>
                 <div class="links">
                     <p>Contact</p>

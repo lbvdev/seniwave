@@ -1,3 +1,5 @@
+{% from "components/icon.j2" import icon %}
+
 <script>
     $(document).ready(function() {
         if (typeof AOS !== 'undefined') {
@@ -182,7 +184,7 @@
                 <button class="white-fill book-pricing back hidden">Back</button>
                 <a href="https://book.seniwave.com/" class="white-fill book-pricing hidden">
                     Consultation
-                    <img src="/static/images/icons/contact.svg">
+                    {{ icon('contact') }}
                 </a>
             </div>
         </div>
@@ -201,7 +203,10 @@
                 <p>From $5.000</p>
                 <h3>Web Viewer, 3D Modeling, AR Showcase and more</h3>
             </div>
-            <a href="/contact" class="white-fill" data-aos="fade-up" data-aos-delay="800" data-aos-once="true">Learn more<img src="/static/images/icons/arrow-up.svg"></a>
+            <a href="/contact" class="white-fill" data-aos="fade-up" data-aos-delay="800" data-aos-once="true">
+                Learn more
+                {{ icon('arrow-up') }}
+            </a>
         </div>
         <div class="card-content">
             <div class="card" data-aos="fade-up" data-aos-delay="1200" data-aos-once="true">
@@ -213,7 +218,10 @@
                 <p>$5.000 - $10.000</p>
                 <h3>AI-powered custom visuals and videos</h3>
             </div>
-            <a href="/contact" class="white-fill" data-aos="fade-up" data-aos-delay="1200" data-aos-once="true">Learn more<img src="/static/images/icons/arrow-up.svg"></a>
+            <a href="/contact" class="white-fill" data-aos="fade-up" data-aos-delay="1200" data-aos-once="true">
+                Learn more
+                {{ icon('arrow-up') }}
+            </a>
         </div>
     </div>
 </div>
@@ -260,7 +268,7 @@ $(document).ready(function () {
         if (hasEnabled) {
             $cards.removeClass('enabled disabled selected');
 
-            // фикс на тачскрин
+            // touchscreen fix
             if (!('ontouchstart' in window || navigator.maxTouchPoints > 0)) {
                 $clicked.addClass('selected');
             }

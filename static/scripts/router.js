@@ -5,6 +5,8 @@ $(document).ready(function () {
     }
 
     function renderContent(page, data, $transition, isCached) {
+        $(".with-popup").removeClass('active')
+
         setTimeout(() => {
             $("#content").html(data);
             history.pushState({ page }, "", `/${page}`);
@@ -34,7 +36,14 @@ $(document).ready(function () {
     }
 
     function updateBodyClass(page) {
-        $("body").removeClass("home team blog contact works 404 legal privacy terms pricing").addClass(page);
+        $("body").removeClass();
+        
+        if (page.includes('/')) {
+            const classes = page.split('/');
+            classes.forEach(cls => $("body").addClass(cls));
+        } else {
+            $("body").addClass(page);
+        }
     }
 
     const cache = {};
