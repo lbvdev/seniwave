@@ -20,6 +20,12 @@ $(document).ready(function () {
                     AOS.init();
                 }
                 
+                if (typeof initAnimations === 'function') {
+                    setTimeout(() => {
+                        initAnimations();
+                    }, 100);
+                }
+                
                 if ($transition) {
                     if (isCached) {
                         $transition.removeClass('slide-in').addClass('slide-fast-out');

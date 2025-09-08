@@ -1,25 +1,19 @@
 {% from "components/icon.j2" import icon %}
 
-<script>
-    $(document).ready(function() {
-        if (typeof AOS !== 'undefined') {
-            AOS.init();
-        }
-    });
-</script>
-
 <div class="page hero">
-    <h1 class="bold center">
-        <span class="secondary">Where</span> <span class="trnsf">Creativity</span><br>
-        <span class="secondary">Meets</span> <span class="trnsf">Technical Expertise</span>
-    </h1>
-    <h3 class="center">
-        We are a <a href="/home#services">full-service creative agency</a>, building and launching brands <br> and digital products—always with a <a href="/home#pricing">business mindset</a>.
-    </h3>
+    <span class="split">
+        <h1 class="bold center words">
+            <span class="secondary">Where</span> <span class="trnsf">Creativity</span><br>
+            <span class="secondary">Meets</span> <span class="trnsf">Technical Expertise</span>
+        </h1>
+        <h3 class="center split">
+            We are a <a href="/home#services">full-service creative agency</a>, building and launching brands <br> and digital products—always with a <a href="/home#pricing">business mindset</a>.
+        </h3>
+    </span>
 </div>
 
 <div class="page service">
-    <h1>Our services</h1>
+    <h1 data-aos="fade-up">Our services</h1>
     <div class="card-wrapper">
         <div class="card service" data-aos="fade-left" data-aos-delay="0">
             <img src="/static/images/service/brand.svg" alt="brand">
@@ -89,11 +83,10 @@
             $(this).toggleClass('enabled');
         });
     });
-
 </script>
 
 <div class="page pricing" id="pricing">
-    <h1>What is your budget?</h1>
+    <h1 data-aos="fade-up">What is your budget?</h1>
     <div class="flex-cl gap-12 w-100 wrap-on-mobile">
             <div class="price-wrapper">
                 <span data-aos="slide-up">
@@ -116,19 +109,17 @@
                     <div class="left-side">
                         <h2>Start-Up Package</h2>
 
-                        <p>For new brands and founders who want to launch confidently.</p>
+                        <p>For new brands and founders who want to launch confidently</p>
                     </div>
                     <div class="right-side">
                         <h3>From $5k to $10k</h3>
 
                         <div class="flex-cl gap-8">
-                            <p>Branding essentials</p>
-                            <p>Basic Web Product ( up to 5 pages )</p>
-                            <p>Copyrighting</p>
-                            <p>Marketing essentials</p>
-                            <p>Legal docs</p>
-                            <p>Custom booking</p>
-                            <p>Basic infographics</p>
+                            <p>Branding Essentials</p>
+                            <p>Design & UX</p>
+                            <p>Development up to 5 pages</p>
+                            <p>Marketing Set Up</p>
+                            <p>2D Motion/Basic Infographic</p>
                         </div>
                     </div>
                 </div>
@@ -136,20 +127,17 @@
                     <div class="left-side">
                         <h2>Scale Up Package</h2>
 
-                        <p>For growing businesses ready to level up their digital presence.</p>
+                        <p>For growing teams ready to systemise and expand</p>
                     </div>
                     <div class="right-side">
                         <h3>From $10k to $30k</h3>
 
                         <div class="flex-cl gap-8">
-                            <p>Advanced branding</p>
-                            <p>Digital product up to 12 pages</p>
-                            <p>Copyrighting</p>
-                            <p>Marketing Advances</p>
-                            <p>Legal docs</p>
-                            <p>Custom booking</p>
-                            <p>3D Motions, Infographics</p>
-                            <p>CMS, CRM Integration</p>
+                            <p>Branding</p>
+                            <p>Design System</p>
+                            <p>Development up to 12 pages</p>
+                            <p>Marketing Set Up</p>
+                            <p>2D Motion/Infographic/WebGL</p>
                         </div>
                     </div>
                 </div>
@@ -157,22 +145,19 @@
                     <div class="left-side">
                         <h2>Professional Package</h2>
 
-                        <p>Comprehensive solutions designed for large organizations to enhance their operations.</p>
+                        <p>For complex products, enterprise requirements, or launch with 3D/AR</p>
                     </div>
                     <div class="right-side">
                         <h3>From $30-50k</h3>
 
                         <div class="flex-cl gap-8">
-                            <p>Brand Book</p>
-                            <p>Digital product no limits</p>
-                            <p>Copyrighting</p>
-                            <p>Marketing Advanced</p>
-                            <p>Legal docs</p>
-                            <p>Custom booking</p>
-                            <p>3D-2D Motions, Infographics</p>
-                            <p>CMS, CRM Integration</p>
-                            <p>AR Web integration</p>
-                            <p>AI Avatar integration</p>
+                            <p>Copywriting + Legal Docs</p>
+                            <p>3D Modelling + Web AR Viewer</p>
+                            <p>Branding Advanced</p>
+                            <p>Design System</p>
+                            <p>Development(Unlimited)</p>
+                            <p>Marketing Set Up</p>
+                            <p>2D/3D Motion/ Infographic/WebGL</p>
                         </div>
                     </div>
                 </div>
@@ -181,7 +166,7 @@
                 <button class="white-fill continue-pricing">
                     Continue
                 </button>
-                <button class="white-fill book-pricing back hidden">Back</button>
+                <button class="white-fill book-pricing back hidden">Learn more</button>
                 <a href="https://book.seniwave.com/" class="white-fill book-pricing hidden">
                     Consultation
                     {{ icon('contact') }}
@@ -195,12 +180,12 @@
     <div class="card-wrapper">
         <div class="card-content">
             <div class="card" data-aos="fade-up" data-aos-delay="800" data-aos-once="true">
-                <div class="absolute ar" data-aos="slide-up" data-aos-delay="990" data-aos-duration="3000">
+                <div class="absolute ar" data-aos="slide-up" data-aos-delay="990" data-aos-duration="3000" data-aos-once="true">
                     <img src="/static/images/something-more/ar.svg" alt="ai" loading="lazy">
                     <img src="/static/images/something-more/ar-slash.svg" alt="/" loading="lazy">
                 </div>
                 <img class="preview" src="/static/images/something-more/ai.png" alt="" loading="lazy"> 
-                <p>From $5.000</p>
+                <p>From $5,000</p>
                 <h3>Web Viewer, 3D Modeling, AR Showcase and more</h3>
             </div>
             <a href="/services/animation" class="white-fill" data-aos="fade-up" data-aos-delay="800" data-aos-once="true">
@@ -210,12 +195,12 @@
         </div>
         <div class="card-content">
             <div class="card" data-aos="fade-up" data-aos-delay="1200" data-aos-once="true">
-                <div class="absolute ai" data-aos="slide-up" data-aos-delay="1330" data-aos-duration="3000">
+                <div class="absolute ai" data-aos="slide-up" data-aos-delay="1330" data-aos-duration="3000" data-aos-once="true">
                     <img src="/static/images/something-more/ai.svg" alt="ai" loading="lazy">
                     <img src="/static/images/something-more/ai-slash.svg" alt="/" loading="lazy">
                 </div>
                 <img class="preview" src="/static/images/something-more/ar.png" alt="" loading="lazy"> 
-                <p>$5.000 - $10.000</p>
+                <p>From $5,000</p>
                 <h3>AI-powered custom visuals and videos</h3>
             </div>
             <a href="/services/animation" class="white-fill" data-aos="fade-up" data-aos-delay="1200" data-aos-once="true">
@@ -299,8 +284,8 @@ $(document).ready(function () {
 </script>
 
 <div class="page blog" id="blog">
-    <h1>Blog</h1>
-    <div class="card-wrapper scroll-x transparent-scroll ">
+    <h1 data-aos="fade-up">Blog</h1>
+    <div class="card-wrapper scroll-x transparent-scroll">
         <a class="card" class="link after-bg" href="/blog/custom-cms-vs-wordpress" data-page="blog">
             <div class="img-wrapper">
                 <img src="/static/images/blog/cms-preview.png" loading="lazy">

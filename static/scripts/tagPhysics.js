@@ -2,7 +2,7 @@ if (typeof window.TagPhysics === 'undefined') {
     window.TagPhysics = class TagPhysics {
     constructor(container) {
         this.container = $(container);
-        this.tags = this.container.find('span');
+        this.tags = this.container.find('span.gravity');
         this.gravity = 0.01;
         this.friction = 0.95;
         this.bounce = 0.9;
