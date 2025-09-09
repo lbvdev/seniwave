@@ -157,6 +157,16 @@
     </div>
 </header>
 
+<script>
+$(window).on('scroll', function () {
+    $('.with-popup').removeClass('active');
+});
+$(document).on("click", function(e) {
+    if (!$(e.target).closest("header").length) {
+        $(".with-popup").removeClass("active");
+    }
+});
+</script>
 
 <style>
 header{
@@ -179,96 +189,88 @@ header{
     .link-wr{
         display: flex;
         gap: 5px;
-
-        .link{
-            position: relative;
-            z-index: 2;
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 12px;
-
-            height: 48px;
-            padding: 12px 18px;
-            padding-right: 6px !important;
-
-            color: var(--secondary-color);
-            font-weight: 600;
-
-            user-select: none;
-            -moz-user-select: none;
-
-            transition: padding-right 0.3s, color 0.1s !important;
-
-            img.fill{
-                display: none;
-            }
-            img{
-                max-width: 0;
-                opacity: 0;
-                transform: translateX(8px);
-
-                transition: var(--animation-default-03), max-width 0.3s, transform 0.3s;
-            }
-        }
-        .link:not(.enabled){
-            color: #1E1E1EA0;
-            img{
-                opacity: 0.5;
-            }
-        }
-        .link:hover{
-            padding-right: 18px !important;
-            color: var(--secondary-color);
-            img{
-                max-width: 40px;
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-
-        .after-bg {
-            position: relative;
-        }
-        .after-bg::after {
-            content: '';
-            position: absolute;
-            z-index: -1;
-
-            background: rgba(30, 30, 30, 0);
-            border-radius: 64px;
-            
-            transition: var(--animation-default-03);
-
-            inset: 0;
-        }
-        .after-bg.fill::after {
-            background: rgba(30, 30, 30, 0.04);
-        }
-        .after-bg:hover::after {
-            background: rgba(30, 30, 30, 0.08);
-
-            inset: -5px;
-        }
-
-
-        .after-bg.contact::after{
-            background-color: var(--accent-color);
-        }
-
-        a:active { 
-            opacity: 0.5;
-        }
-
-        a.enabled{
-            img.fill{
-                display: flex;
-            }
-            img.outline{
-                display: none;
-            }
-        }
+    }
+}
+.link-wr .link{
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    height: 48px;
+    padding: 12px 18px;
+    padding-right: 6px !important;
+    color: var(--secondary-color);
+    font-weight: 600;
+    user-select: none;
+    -moz-user-select: none;
+    transition: padding-right 0.3s, color 0.1s !important;
+    img.fill{
+        display: none;
+    }
+    img{
+        max-width: 0;
+        opacity: 0;
+        transform: translateX(8px);
+        transition: var(--animation-default-03), max-width 0.3s, transform 0.3s;
+    }
+}
+.link:not(.enabled){
+    color: #1E1E1EA0;
+    img{
+        opacity: 0.5;
+    }
+}
+.link:hover{
+    padding-right: 18px !important;
+    color: var(--secondary-color);
+    img{
+        max-width: 40px;
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+.after-bg {
+    position: relative;
+}
+.after-bg::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    background: rgba(30, 30, 30, 0);
+    border-radius: 64px;
+    
+    transition: var(--animation-default-03);
+    inset: 0;
+}
+.after-bg.fill::after {
+    background: rgba(30, 30, 30, 0.04);
+}
+.after-bg:hover::after {
+    background: rgba(30, 30, 30, 0.08);
+    inset: -5px;
+}
+@media (max-width: 580px) {
+.after-bg:hover::after {
+    background: rgba(30, 30, 30, 0.04);
+    inset: 0px;
+}
+}
+    
+    
+.after-bg.contact::after{
+    background-color: var(--accent-color);
+}
+a:active { 
+    opacity: 0.5;
+}
+a.enabled{
+    img.fill{
+        display: flex;
+    }
+    img.outline{
+        display: none;
     }
 }
 header.scrolled{

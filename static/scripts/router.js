@@ -4,41 +4,39 @@ $(document).ready(function () {
         $(`[data-page='${page}']`).addClass("enabled");
     }
 
-    function renderContent(page, data, $transition, isCached) {
-        $(".with-popup").removeClass('active')
+    function renderContent(page, data, $transition, isCached) { setTimeout(() => {
+        $("#content").html(data);
+        $(".with-popup").removeClass('active') // hides header menu
 
-        setTimeout(() => {
-            $("#content").html(data);
-            history.pushState({ page }, "", `/${page}`);
-            window.scrollTo(0, 0);
-            updateActiveLink(page);
+        history.pushState({ page }, "", `/${page}`);
+        window.scrollTo(0, 0);
+        updateActiveLink(page);
 
-            $(document).ready(() => {
-                updateBodyClass(page);
-                
-                if (typeof AOS !== 'undefined') {
-                    AOS.init();
+        $(document).ready(() => {
+            updateBodyClass(page);
+            
+            if (typeof AOS !== 'undefined') {
+                AOS.init();
+            }
+            
+            if (typeof initAnimations === 'function') {
+                setTimeout(() => {
+                    initAnimations();
+                }, 100);
+            }
+            
+            if ($transition) {
+                if (isCached) {
+                    $transition.removeClass('slide-in').addClass('slide-fast-out');
+                } else {
+                    $transition.removeClass('slide-in').addClass('slide-out');
                 }
-                
-                if (typeof initAnimations === 'function') {
-                    setTimeout(() => {
-                        initAnimations();
-                    }, 100);
-                }
-                
-                if ($transition) {
-                    if (isCached) {
-                        $transition.removeClass('slide-in').addClass('slide-fast-out');
-                    } else {
-                        $transition.removeClass('slide-in').addClass('slide-out');
-                    }
 
-                    setTimeout(() => {
-                        $transition.remove();
-                    }, 600);
-                }
-            });
-        }, 600);
+                setTimeout(() => {
+                    $transition.remove();
+                }, 600);
+            }
+        }); }, 600);
     }
 
     function updateBodyClass(page) {

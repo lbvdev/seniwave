@@ -101,6 +101,7 @@ img{
 .flex-wrap{flex-wrap: wrap;}
 .flex-end{align-items: flex-end;}
 .flex-start{align-items: flex-start;}
+.flex-center{align-items: center;}
 .flex-between{justify-content: space-between;}
 .w-100{width: 100%;}
 .pos-rel{position: relative;}
@@ -111,6 +112,12 @@ img{
 .gap-8{gap: 8px;}
 .gap-6{gap: 6px;}
 .gap-4{gap: 4px;}
+
+.row-on-680px{
+    @media (max-width: 1100px) {
+        flex-direction: column !important;
+    }
+}
 
 .default{
     display: flex;
@@ -178,14 +185,13 @@ img{
 
     border-radius: 24px;
     color: var(--background-color);
+    font-size: 16px;
     font-weight: 600;
 
-    transition: background 0.5s;
-
+    transition: var(--animation-default-03);
     user-select: none;
     -moz-user-select: none;
 }
-
 .typical::after {
     content: '';
     position: absolute;
@@ -195,17 +201,19 @@ img{
     border-radius: 64px;
 
     transition: var(--animation-default-03);
-
     inset: 0;
 }
-
 .typical:hover::after {
     background: var(--accent-color);
-
     inset: -5px;
 }
-
-
+.typical:active{
+    color: var(--accent-color);
+}
+.typical:active::after {
+    opacity: 0.2;
+    inset: -3px;
+}
 
 
 a.wavy{
@@ -291,6 +299,9 @@ a.wavy:hover{
         font-size: 42px !important;
     }
     h1.center{
+        font-size: 42px !important;
+    }
+    h1.home-page{
         font-size: 32px !important;
     }
     h3.center{
@@ -552,7 +563,7 @@ div.legal{
     p{
         font-size: 14px;
         font-weight: 500;
-        line-height: 140%;
+        line-height: 160% !important;
     }
 
 }
@@ -967,7 +978,6 @@ p.numered::before{
         padding: 24px;
         max-height: 410px;
 
-        background-color: #FFFFFF;
         border-radius: 24px;
 
         cursor: pointer;
@@ -1037,13 +1047,15 @@ p.numered::before{
     .card.enabled{
         flex: 2;
         z-index: 5;
-        background-color: var(--accent-color);
         color: #FFFFFF;
 
         .right-side{
             opacity: initial;
             max-width: initial;
         }
+    }
+    .card.enabled::before{
+        background-color: var(--accent-color);
     }
     .continue-pricing{
         position: absolute;
@@ -1097,9 +1109,13 @@ p.numered::before{
                     transform: translateX(96px);
                     max-width: initial;
                 }
+                p{
+                    font-size: 14px;
+                }
             }
         }
         .price-wrapper{
+            display: none;
             opacity: 1 !important;
             padding-bottom: 60px;
             flex-direction: column;
@@ -1461,7 +1477,12 @@ body.custom-vs-framer, body.atomic, body.custom-cms-vs-wordpress{
     position: relative;
     display: flex;
     gap: 3px;
-    width: 100%;
+    width: calc(100% + 2 * var(--padding-horizontal));
+
+    overflow-x: auto;
+    overflow-y: visible;
+    margin: 0 calc(-1 * var(--padding-horizontal));
+    padding: 0 var(--padding-horizontal);
 }
 
 .team-wrapper .card{
@@ -1472,7 +1493,10 @@ body.custom-vs-framer, body.atomic, body.custom-cms-vs-wordpress{
     align-items: flex-start;
 
     height: 410px;
+    min-width: 320px;
     width: 100%;
+    height: auto;
+    aspect-ratio: 0.8;
 
     color: #ffffff;
     border-radius: 32px;
