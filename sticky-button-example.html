@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sticky Button Example</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        
+        .before-content {
+            height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+        }
+        
+        .wrapper {
+            position: relative;
+            min-height: 100vh;
+            background: linear-gradient(to bottom, #f0f0f0, #e0e0e0);
+            padding: 20px;
+        }
+        
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .after-content {
+            height: 100vh;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+        }
+        
+        .sticky-button {
+            position: fixed;
+            left: 24px;
+            z-index: 100;
+            background-color: #5F00FF;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 32px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            width: fit-content;
+            transition: transform 0.3s ease;
+        }
+        
+        .sticky-button:hover {
+            transform: translateY(-2px);
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        p {
+            line-height: 1.6;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .section {
+            margin: 40px 0;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="before-content">
+        <h1>Контент ДО wrapper'а</h1>
+    </div>
+    
+    <div class="wrapper">
+        <div class="content">
+            <h1>Wrapper с контентом</h1>
+            
+            <p>Эта кнопка зафиксирована внизу экрана слева, но не выходит за границы wrapper'а.</p>
+            
+            <div class="section">
+                <h2>Секция 1</h2>
+                <p>Скроллите вниз, чтобы увидеть, как кнопка следует за wrapper'ом.</p>
+            </div>
+            
+            <div class="section">
+                <h2>Секция 2</h2>
+                <p>Кнопка остается внизу экрана, но не выходит за границы wrapper'а.</p>
+            </div>
+            
+            <div class="section">
+                <h2>Секция 3</h2>
+                <p>Когда wrapper заканчивается, кнопка остается внизу wrapper'а.</p>
+            </div>
+            
+            <div class="section">
+                <h2>Секция 4</h2>
+                <p>Попробуйте скроллить быстро - кнопка будет плавно следовать за wrapper'ом.</p>
+            </div>
+            
+            <div class="section">
+                <h2>Секция 5</h2>
+                <p>Этот эффект достигается через JavaScript, который отслеживает позицию wrapper'а.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="after-content">
+        <h1>Контент ПОСЛЕ wrapper'а</h1>
+    </div>
+    
+    <button class="sticky-button">Sticky Button</button>
+    
+    <script>
+        const wrapper = document.querySelector('.wrapper');
+        const button = document.querySelector('.sticky-button');
+        
+        function updateButtonPosition() {
+            const wrapperRect = wrapper.getBoundingClientRect();
+            const viewportHeight = window.innerHeight;
+            
+            if (wrapperRect.bottom < 0) {
+                // Wrapper еще не появился - скрываем кнопку
+                button.style.display = 'none';
+            } else if (wrapperRect.top > viewportHeight) {
+                // Wrapper уже прошел - скрываем кнопку
+                button.style.display = 'none';
+            } else if (wrapperRect.bottom < viewportHeight) {
+                // Wrapper закончился - кнопка внизу wrapper'а
+                button.style.top = `${wrapperRect.bottom - 60}px`;
+                button.style.display = 'block';
+            } else {
+                // Wrapper в процессе скролла - кнопка внизу экрана
+                button.style.top = `${viewportHeight - 60}px`;
+                button.style.display = 'block';
+            }
+        }
+        
+        // Обновляем позицию при скролле
+        window.addEventListener('scroll', updateButtonPosition);
+        window.addEventListener('resize', updateButtonPosition);
+        
+        // Инициализация
+        updateButtonPosition();
+    </script>
+</body>
+</html>

@@ -1,35 +1,76 @@
-<div class="page hero">
-    <h1 class="bold">
-        <span>Our Story — Where</span> Creativity<br>
-        <span>Meets</span> Technical Expertise
+<div class="page split">
+    <h1 class="center">
+        <span class="secondary">Our</span> <span class="trnsf">Team</span>
     </h1>
-    <div class="flex-cl gap-12">
-        <h2 class="mono">What is SENI WAVE?</h2>
 
-        <h3 class="mono">
-            The name comes from “seni” (“contemporary art” in Indonesian) and “wave,” the energy of digital innovation. Our white and purple palette reflects our belief in clarity, optimism, and the real value technology brings.
-        </h3>
-        <h2 class="mono">
-            Real Story?
-        </h2>
-        <h3 class="mono">
-            <b>SENI WAVE: Created for founders, by someone who’s been there.</b>
-        </h3>
-        <h3 class="mono">
-            But the real story starts with our founder’s own experience: working as a product manager, navigating the maze of branding, web development, and setup—often piecing things together with freelancers. <br>We saw how first-time founders and business owners end up overwhelmed—forced to learn new skills, overpay for partial solutions, or settle for websites that can’t really grow with them. We believed there was a better way.
-        </h3>
+    <div class="team-wrapper no-split">
+        <div class="card">
+            <div class="text">
+            <h3>Maria <br> Abakumova</h3>
+            <p>Founder Strategy Marketing</p>
+            </div>
+            <img src="/static/images/team/maria.png" alt="REAL PERSON, AI GENERATED AVATAR">
+        </div>
+        <div class="card">
+            <div class="text">
+            <h3>Dmitry <br> Gromov</h3>
+            <p>Head of Design and Development</p>
+            </div>
+            <img src="/static/images/team/dmitry.png" alt="REAL PERSON, AI GENERATED AVATAR">
+        </div>
+        <div class="card">
+            <div class="text">
+            <h3>Vitally <br> Dorogov</h3>
+            <p>3D/2D Motion Designer Augmented reality specialist</p>
+            </div>
+            <img src="/static/images/team/vitally.png" alt="REAL PERSON, AI GENERATED AVATAR">
+        </div>
+        <div class="card">
+            <div class="text">
+            <h3>Kate <br> Kurusheva</h3>
+            <p>Art Director AI Creator</p>
+            </div>
+            <img src="/static/images/team/kate.png" alt="REAL PERSON, AI GENERATED AVATAR">
+        </div>
     </div>
-    <div class="flex-cl gap-12">
-        <h2 class="mono">How We Work</h2>
-        <h3 class="mono">
-            SENIWAVE brings together talented creators—designers, AI experts, developers, 3D and AR specialists with a base in Dubai and a network across Europe and Russia. Every project is personally led by our founder, ensuring each case gets the care and attention. <br>We guide founders from raw idea to launch-ready product, without lock-in or unnecessary costs.
-        </h3>
+</div>
 
-        <h2 class="mono">
-            Our Approach
-        </h2>
-        <h3 class="mono">
-           Quality over quantity: we take on a limited number of projects to maintain our high standards and deliver real results.
-        </h3>
+<div class="page story">
+    <div class="flex-cl w-100 split">
+        <h1><span class="secondary">Our Story</span></h1>
+        <a class="fixed-button wavy" href="https://book.seniwave.com">Book a consultation</a>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            const wrapper = $('.page.story');
+            const button = $('.fixed-button');
+            
+            function updateButtonPosition() {
+                if (wrapper.length === 0) return;
+                
+                const wrapperRect = wrapper[0].getBoundingClientRect();
+                const viewportHeight = window.innerHeight;
+                
+                if (wrapperRect.bottom < 0) {
+                    button.hide();
+                } else if (wrapperRect.top > viewportHeight) {
+                    button.hide();
+                } else if (wrapperRect.bottom < viewportHeight) {
+                    button.css('top', `${wrapperRect.bottom - 20}px`).show();
+                } else {
+                    button.css('top', `${viewportHeight - 20}px`).show();
+                }
+            }
+            
+            $(window).on('scroll resize', updateButtonPosition);
+            updateButtonPosition();
+        });
+    </script>
+    <div class="flex-cl gap-12 w-100">
+        <h3>Why We Only Offer Custom Solutions in Web Design and Branding?</h3>
+        <p>Digital solutions tailored to a brand’s unique needs hit the target more effectively than generic templates. In today's saturated digital marketplace, businesses can’t afford to blend in. One of the biggest decisions when creating a website or brand identity is whether to go with a cookie-cutter template or invest in a custom solution. Our agency firmly believes in the power of custom solutions – every website, branding element, and digital experience we create is uniquely tailored. We do not use one-size-fits-all templates or off-the-shelf “packages,” and for good reason. In this article, we’ll explore why we take this custom-only approach and how it benefits your business.</p>
+        <p>The Problem with One-Size-Fits-All Solutions (Templates & Turnkey Packages)</p>
+        <p>Pre-made templates and turnkey agency "packages" promise quick fixes – a ready-made website or a branding kit at a low price. While they can be tempting for their speed and upfront cost, templates come with significant drawbacks. They are designed to serve the broadest possible audience, meaning they often sacrifice uniqueness and flexibility. Your brand could end up looking like countless others using the same template. Moreover, templated sites typically have bloated code and generic features you might not need, potentially slowing down your site and hurting user experience.</p>
     </div>
 </div>

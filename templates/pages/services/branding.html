@@ -22,14 +22,10 @@
 <p>Brand guide with usability examples</p>
 {% endset %}
 
-{% set tags %}
-    ["logo", "colors", "typography"]
-{% endset %}
-
 {{ service_page(
     title = title,
     text = text | safe,
     info = info | safe,
-    tags = ["logo", "colors", "typography"],
+    tags = ["logo", "colors", "typography", "Tone of Voice", "Guide"],
     image = "branding",
 ) }}

@@ -205,6 +205,32 @@ img{
     inset: -5px;
 }
 
+
+
+
+a.wavy{
+    color: var(--accent-color);
+    font-size: 16px;
+    font-weight: 600;
+
+    padding: 8px 0;
+
+    background-color: transparent;
+    text-decoration-line: underline;
+    text-decoration-style: wavy;
+    text-decoration-skip-ink: none;
+    text-decoration-color: rgba(95, 0, 255, 0.24);
+    text-decoration-thickness: 12%;
+    text-underline-offset: 21%;
+
+    transition: color 0.15s, text-decoration-color 0.1s;
+}
+a.wavy:hover{
+    color: var(--primary-color);
+    text-decoration-color: rgba(30, 30, 30, 0.24);
+}
+
+
 .contact .head {
 
     img {
@@ -1416,7 +1442,92 @@ body.custom-vs-framer, body.atomic, body.custom-cms-vs-wordpress{
     }
 }
 
+.page.story{
+    flex-direction: row;
+    gap: 12px;
 
+    h3{
+        font-size: 24px;
+        font-weight: 600;
+    }
+    p{
+        font-size: 16px;
+        font-weight: 400;
+    }
+}
+
+
+.team-wrapper{
+    position: relative;
+    display: flex;
+    gap: 3px;
+    width: 100%;
+}
+
+.team-wrapper .card{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: flex-start;
+
+    height: 410px;
+    width: 100%;
+
+    color: #ffffff;
+    border-radius: 32px;
+    overflow: hidden;
+
+    .text{
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        
+        z-index: 2;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, #000 100%);
+        padding: 24px 21px;
+        width: 100%;
+    }
+    h3{
+        font-size: 32px;
+        font-weight: 600;
+        line-height: 120%;
+        color: #ffffff;
+        margin: 0;
+    }
+    p{
+        opacity: 0.5;
+    }
+    img{
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+
+.fixed-button{
+    position: sticky;
+    z-index: 100;
+    bottom: 24px;
+    left: 24px;
+    float: left;
+    margin-top: 24px;
+    background-color: var(--accent-color);
+    color: #FFFFFF;
+    padding: 12px 24px;
+    width: fit-content;
+    border-radius: 32px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+
+}
 .accordion-js{
     cursor: pointer;
 
