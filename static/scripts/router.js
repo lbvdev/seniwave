@@ -45,6 +45,9 @@ $(document).ready(function () {
         if (page.includes('/')) {
             const classes = page.split('/');
             classes.forEach(cls => $("body").addClass(cls));
+        } else if (contactFlag == true) {
+            $(".contact").addClass('active');
+            $("body").addClass("contact");
         } else {
             $("body").addClass(page);
         }
@@ -101,6 +104,11 @@ $(document).ready(function () {
         }
     });
 
-    const path = window.location.pathname.slice(1);
+    let path = window.location.pathname.slice(1);
+    let contactFlag = false;
+    if (path === "contact") {
+        path = "home";
+        contactFlag = true;
+    }
     loadPage(path || "home");
 });

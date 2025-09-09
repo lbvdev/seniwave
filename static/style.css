@@ -1374,6 +1374,18 @@ body.custom-vs-framer, body.atomic, body.custom-cms-vs-wordpress{
     }
 }
 
+body.contact{
+    header > a, header .link-wr > a, header .link-wr > .services {
+        opacity: 0.2 !important;
+    }
+    #content{
+        opacity: 0.2 !important;
+    }
+    canvas{
+        opacity: 0.2 !important;
+    }
+}
+
 .page.blog-page{
     z-index: 12;
     align-items: center;

@@ -160,10 +160,12 @@
 <script>
 $(window).on('scroll', function () {
     $('.with-popup').removeClass('active');
+    $('body').removeClass('contact')
 });
 $(document).on("click", function(e) {
     if (!$(e.target).closest("header").length) {
         $(".with-popup").removeClass("active");
+        $('body').removeClass('contact')
     }
 });
 </script>
