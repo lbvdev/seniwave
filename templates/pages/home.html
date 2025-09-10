@@ -117,7 +117,7 @@
                         <div class="flex-cl gap-8">
                             <p>Branding Essentials</p>
                             <p>Design & UX</p>
-                            <p>Development up to 5 pages</p>
+                            <p>Dev up to 5 pages</p>
                             <p>Marketing Set Up</p>
                             <p>2D Motion/Basic Infographic</p>
                         </div>
@@ -135,9 +135,9 @@
                         <div class="flex-cl gap-8">
                             <p>Branding</p>
                             <p>Design System</p>
-                            <p>Development up to 12 pages</p>
+                            <p>Dev up to 12 pages</p>
                             <p>Marketing Set Up</p>
-                            <p>2D Motion/Infographic/WebGL</p>
+                            <p>2D Motion/WebGL</p>
                         </div>
                     </div>
                 </div>
@@ -151,13 +151,12 @@
                         <h3>From $30-50k</h3>
 
                         <div class="flex-cl gap-8">
-                            <p>Copywriting + Legal Docs</p>
-                            <p>3D Modelling + Web AR Viewer</p>
+                            <p>Copyrighting + Docs</p>
+                            <p>2D/3D/WebGl</p>
                             <p>Branding Advanced</p>
-                            <p>Design System</p>
-                            <p>Development(Unlimited)</p>
+                            <p>Design system</p>
+                            <p>Development ∞</p>
                             <p>Marketing Set Up</p>
-                            <p>2D/3D Motion/ Infographic/WebGL</p>
                         </div>
                     </div>
                 </div>
@@ -293,28 +292,40 @@ $(document).ready(function () {
             <h3>Maria <br> Abakumova</h3>
             <p>Founder, Strategy <br>and Marketing</p>
             </div>
-            <img src="/static/images/team/maria.png" alt="REAL PERSON, AI GENERATED AVATAR">
+            <img class="def" src="/static/images/team/maria.png" alt="REAL PERSON, AI GENERATED AVATAR">
+            {% for _ in range(3) %}
+            <img class="muted" src="/static/images/team/maria-muted.png">
+            {% endfor %}
         </div>
         <div class="card" data-aos="fade-up" data-aos-delay="150" data-aos-once="true">
             <div class="text">
             <h3>Dmitry <br> Gromov</h3>
             <p>Head of Design <br>and Development</p>
             </div>
-            <img src="/static/images/team/dmitry.png" alt="REAL PERSON, AI GENERATED AVATAR">
+            <img class="def" src="/static/images/team/dmitry.png" alt="REAL PERSON, AI GENERATED AVATAR">
+            {% for _ in range(3) %}
+            <img class="muted" src="/static/images/team/dmitry-muted.png">
+            {% endfor %}
         </div>
         <div class="card" data-aos="fade-up" data-aos-delay="200" data-aos-once="true">
             <div class="text">
             <h3>Vitally <br> Dorogov</h3>
             <p>3D/2D Motion Designer <br>Augmented reality specialist</p>
             </div>
-            <img src="/static/images/team/vitally.png" alt="REAL PERSON, AI GENERATED AVATAR">
+            <img class="def" src="/static/images/team/vitally.png" alt="REAL PERSON, AI GENERATED AVATAR">
+            {% for _ in range(3) %}
+            <img class="muted" class="muted" src="/static/images/team/vitally-muted.png">
+            {% endfor %}
         </div>
         <div class="card" data-aos="fade-up" data-aos-delay="250" data-aos-once="true">
             <div class="text">
             <h3>Kate <br> Kurusheva</h3>
             <p>Art Director <br>AI Creator</p>
             </div>
-            <img src="/static/images/team/kate.png" alt="REAL PERSON, AI GENERATED AVATAR">
+            <img class="def" src="/static/images/team/kate.png" alt="REAL PERSON, AI GENERATED AVATAR">
+            {% for _ in range(3) %}
+            <img class="muted" src="/static/images/team/kate-muted.png">
+            {% endfor %}
         </div>
     </div>
     <div class="flex-cl flex-center w-100">
