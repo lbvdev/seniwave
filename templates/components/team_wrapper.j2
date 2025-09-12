@@ -1,0 +1,45 @@
+{% macro team_wrapper() %}
+
+<div class="team-wrapper transparent-scroll no-split">
+    <div class="card" data-aos="fade-up" data-aos-delay="100" data-aos-once="true">
+        <div class="text">
+        <h3>Maria <br> Abakumova</h3>
+        <p>Founder, Strategy <br>and Marketing</p>
+        </div>
+        <img class="def" src="/static/images/team/maria.png" alt="REAL PERSON, AI GENERATED AVATAR">
+        {% for _ in range(3) %}
+        <img class="muted" src="/static/images/team/maria-muted.png">
+        {% endfor %}
+    </div>
+    <div class="card" data-aos="fade-up" data-aos-delay="150" data-aos-once="true">
+        <div class="text">
+        <h3>Dmitry <br> Gromov</h3>
+        <p>Head of Design <br>and Development</p>
+        </div>
+        <img class="def" src="/static/images/team/dmitry.png" alt="REAL PERSON, AI GENERATED AVATAR">
+        {% for _ in range(3) %}
+        <img class="muted" src="/static/images/team/dmitry-muted.png">
+        {% endfor %}
+    </div>
+    <div class="card" data-aos="fade-up" data-aos-delay="200" data-aos-once="true">
+        <div class="text">
+        <h3>Vitally <br> Dorogov</h3>
+        <p>3D/2D Motion Designer <br>Augmented reality specialist</p>
+        </div>
+        <img class="def" src="/static/images/team/vitally.png" alt="REAL PERSON, AI GENERATED AVATAR">
+        {% for _ in range(3) %}
+        <img class="muted" class="muted" src="/static/images/team/vitally-muted.png">
+        {% endfor %}
+    </div>
+    <div class="card" data-aos="fade-up" data-aos-delay="250" data-aos-once="true">
+        <div class="text">
+        <h3>Kate <br> Kurusheva</h3>
+        <p>Art Director <br>AI Creator</p>
+        </div>
+        <img class="def" src="/static/images/team/kate.png" alt="REAL PERSON, AI GENERATED AVATAR">
+        {% for _ in range(3) %}
+        <img class="muted" src="/static/images/team/kate-muted.png">
+        {% endfor %}
+    </div>
+</div>
+{% endmacro %}

@@ -1,14 +1,27 @@
 $(document).ready(function () {
+    const TRANSITION_DURATION = 600;
+    const ANIMATION_DELAY = 100;
+    const SCROLL_DELAY = 600;
+    
+    const FLAGS = {
+        IS_CACHED: true,
+        NOT_CACHED: false,
+        IS_404: true,
+        NOT_404: false
+    };
+
     function updateActiveLink(page) {
         $("[data-page]").removeClass("enabled");
         $(`[data-page='${page}']`).addClass("enabled");
     }
 
-    function renderContent(page, data, $transition, isCached) { setTimeout(() => {
+    function renderContent(page, data, $transition, isCached, is404) { setTimeout(() => {
         $("#content").html(data);
         $(".with-popup").removeClass('active') // hides header menu
 
-        history.pushState({ page }, "", `/${page}`);
+        if (!is404) {
+            history.pushState({ page }, "", `/${page}`);
+        }
         window.scrollTo(0, 0);
         updateActiveLink(page);
 
@@ -22,7 +35,7 @@ $(document).ready(function () {
             if (typeof initAnimations === 'function') {
                 setTimeout(() => {
                     initAnimations();
-                }, 100);
+                }, ANIMATION_DELAY);
             }
             
             if ($transition) {
@@ -34,9 +47,9 @@ $(document).ready(function () {
 
                 setTimeout(() => {
                     $transition.remove();
-                }, 600);
+                }, TRANSITION_DURATION);
             }
-        }); }, 600);
+        }); }, SCROLL_DELAY);
     }
 
     function updateBodyClass(page) {
@@ -74,7 +87,7 @@ $(document).ready(function () {
     function loadPage(page) {
         if (cache[page]) {
             const $transition = startTransition();
-            renderContent(page, cache[page], $transition, true);
+            renderContent(page, cache[page], $transition, FLAGS.IS_CACHED, FLAGS.NOT_404);
             return;
         }
 
@@ -82,10 +95,10 @@ $(document).ready(function () {
         
         $.get(`/pages/${page}.html`, function (data) {
             cache[page] = data;
-            renderContent(page, data, $transition, false);
+            renderContent(page, data, $transition, FLAGS.NOT_CACHED, FLAGS.NOT_404);
         }).fail(function () {
             $.get("/pages/404.html", function (data) {
-                renderContent("404", data, $transition, false);
+                renderContent("404", data, $transition, FLAGS.NOT_CACHED, FLAGS.IS_404);
             });
         });
     }

@@ -1,4 +1,5 @@
 {% from "components/icon.j2" import icon %}
+{% from "components/team_wrapper.j2" import team_wrapper %}
 
 <div class="page hero">
     <span class="split">
@@ -286,48 +287,7 @@ $(document).ready(function () {
     <h1 class="center" data-aos="fade-up" data-aos-once="true">
         <span class="secondary">Our</span> <span class="trnsf">Team</span>
     </h1>
-    <div class="team-wrapper transparent-scroll no-split">
-        <div class="card" data-aos="fade-up" data-aos-delay="100" data-aos-once="true">
-            <div class="text">
-            <h3>Maria <br> Abakumova</h3>
-            <p>Founder, Strategy <br>and Marketing</p>
-            </div>
-            <img class="def" src="/static/images/team/maria.png" alt="REAL PERSON, AI GENERATED AVATAR">
-            {% for _ in range(3) %}
-            <img class="muted" src="/static/images/team/maria-muted.png">
-            {% endfor %}
-        </div>
-        <div class="card" data-aos="fade-up" data-aos-delay="150" data-aos-once="true">
-            <div class="text">
-            <h3>Dmitry <br> Gromov</h3>
-            <p>Head of Design <br>and Development</p>
-            </div>
-            <img class="def" src="/static/images/team/dmitry.png" alt="REAL PERSON, AI GENERATED AVATAR">
-            {% for _ in range(3) %}
-            <img class="muted" src="/static/images/team/dmitry-muted.png">
-            {% endfor %}
-        </div>
-        <div class="card" data-aos="fade-up" data-aos-delay="200" data-aos-once="true">
-            <div class="text">
-            <h3>Vitally <br> Dorogov</h3>
-            <p>3D/2D Motion Designer <br>Augmented reality specialist</p>
-            </div>
-            <img class="def" src="/static/images/team/vitally.png" alt="REAL PERSON, AI GENERATED AVATAR">
-            {% for _ in range(3) %}
-            <img class="muted" class="muted" src="/static/images/team/vitally-muted.png">
-            {% endfor %}
-        </div>
-        <div class="card" data-aos="fade-up" data-aos-delay="250" data-aos-once="true">
-            <div class="text">
-            <h3>Kate <br> Kurusheva</h3>
-            <p>Art Director <br>AI Creator</p>
-            </div>
-            <img class="def" src="/static/images/team/kate.png" alt="REAL PERSON, AI GENERATED AVATAR">
-            {% for _ in range(3) %}
-            <img class="muted" src="/static/images/team/kate-muted.png">
-            {% endfor %}
-        </div>
-    </div>
+    {{ team_wrapper() }}
     <div class="flex-cl flex-center w-100">
         <a href="/team" data-page="team" class="typical" tabindex="0">Read Our Story</a>
     </div>
@@ -343,7 +303,7 @@ $(document).ready(function () {
             </div>
             <div class="text">
                 <p>AUG 18, 2025</p>
-                <h3>Understanding the Difference: Custom CMS vs WordPress</h3>
+                <h3>Headless CMS VS Custom</h3>
             </div>
         </a>
 
@@ -374,25 +334,25 @@ $(document).ready(function () {
             <h2>read more on <b>Medium</b></h2>
         </a>
 
-        <a class="card" class="link after-bg" href="/blog/ai-visual-content-creation" data-page="blog">
+        <a class="card" class="link after-bg" href="/blog/ai-visuals-vs-production" data-page="blog">
             <div class="img-wrapper">
                 <img src="/static/images/blog/ai-preview.png" loading="lazy">
                 <img src="/static/images/blog/ai-preview-2d.svg" class="hidden" loading="lazy">
             </div>
             <div class="text">
                 <p>AUG 1, 2025</p>
-                <h3>AI Visual Content Creation vs. Traditional Production: The Future of Media</h3>
+                <h3>AI Visuals VS Production</h3>
             </div>
         </a>
 
-        <a class="card" class="link after-bg" href="/blog/ar-in-marketing" data-page="blog">
+        <a class="card" class="link after-bg" href="/blog/why-do-you-need-ar-for-pr" data-page="blog">
             <div class="img-wrapper">
                 <img src="/static/images/blog/ar-preview.png" loading="lazy">
                 <img src="/static/images/blog/ar-preview-2d.svg" class="hidden" loading="lazy">
             </div>
             <div class="text">
                 <p>JUL 21, 2025</p>
-                <h3>Augmented Reality in Marketing: Revolutionizing Customer Engagement</h3>
+                <h3>Why do you need AR for PR</h3>
             </div>
         </a>
     </div>

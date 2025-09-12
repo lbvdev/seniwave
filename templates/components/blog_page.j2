@@ -1,15 +1,14 @@
 {% macro blog_page(title, text, image_name='default') %}
 
-<article class="page hero blog-page">
+<article class="page hero blog-page split">
     <div class="wrapper">
         <img src="/static/images/blog/{{ image_name }}.svg">
         <h1 class="big">
             {{ title }}
         </h1>
     </div>
-    <div class="blog-wrapper">
+    <div class="blog-wrapper no-split">
         {{ text | safe }}
     </div>
 </article>
-
 {% endmacro %}

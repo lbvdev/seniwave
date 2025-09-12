@@ -1,0 +1,8 @@
+{% macro blog_image(image_name, alt) %}
+    <div class="blog-image-grid">
+        <img src="/static/images/blog/{{ image_name }}" alt="{{ alt }}" />
+        {% if alt %}
+            <p>{{ alt }}</p>
+        {% endif %}
+    </div>
+{% endmacro %}

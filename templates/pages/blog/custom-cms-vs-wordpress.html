@@ -1,110 +1,41 @@
 {% from "components/blog_page.j2" import blog_page %}
+{% from "components/blog_image.j2" import blog_image %}
 
 {% set title %}
-    Understanding Custom CMS vs. WordPress
+    <b>Headless CMS</b> VS Custom
 {% endset %}
 
 {% set blog_text %}
-    <p>When deciding between a custom content management system (CMS) and WordPress, it's important to go beyond the surface-level comparison. Let's break down what a CMS actually includes, which tools are used to build custom ones, how much they cost, how long they take, and when each option is the right choice.</p>
-    <h2><b>What Is a CMS, Really?</b></h2>
-    <p>A CMS (Content Management System) is a backend system that helps you manage, organise, and update your website without having to write code every time. But it's much more than just a text editor. A full-featured CMS for modern businesses can include:</p>
+    <h2><b>What is a CMS, really?</b></h2>
+    <p><b>Content Management System</b> is the backstage engine of your product: authoring, structure, permissions, media, and integrations — without tapping engineering for every change. For content‑heavy platforms, the CMS is mission control.</p>
     <ul>
-        <li>A dashboard with content scheduling, search filters, and status tracking.</li>
-        <li>A visual editor for creating and formatting text, uploading images or videos, and embedding other media.</li>
-        <li>Custom content types like product listings, events, or team members, each with tailored input fields.</li>
-        <li>A media library to organize and reuse assets across pages.</li>
-        <li>Role-based access so different team members (like writers, editors, and admins) have specific permissions.</li>
-        <li>SEO tools such as meta tag editors, sitemap generation, and Open Graph settings.</li>
-        <li>Localization tools for managing content in multiple languages.</li>
-        <li>Analytics integration or even built-in performance dashboards.</li>
-        <li>CRM-lite features for managing user data, contact submissions, or newsletter signups.</li>
+        <li>Dashboard with scheduling, filters, and status tracking</li>
+        <li>Visual editor for text, images, video, embeds</li>
+        <li>Custom content types with tailored fields</li>
+        <li>Media library & asset reuse</li>
+        <li>Role‑based access (writers, editors, admins)</li>
+        <li>SEO & Open Graph tools, sitemaps</li>
+        <li>Localization for multi‑language content</li>
+        <li>Analytics hooks & performance insights</li>
+        <li>CRM‑lite: leads, forms, newsletter capture</li>
     </ul>
-    <p>In some cases, lightweight SaaS tools like <a href="https://sanity.io/" target="_blank">Sanity.io</a>, Strapi, or Directus offer headless CMS functionality that can be more flexible and cost-efficient than WordPress, especially when paired with a modern frontend.</p>
-    <p>For content-heavy sites or digital products, the CMS becomes the engine behind your platform. It's what allows non-developers to operate and grow your business smoothly without technical roadblocks.</p>
-    <h2><b>Does a Custom CMS Differ from a Headless CMS?</b></h2>
-    <p><strong>Yes, a custom CMS and a headless CMS are two different concepts, though they can overlap in some cases.</strong></p>
-    <h2><b>Custom CMS</b></h2>
-    <p>A custom CMS refers to a content management system that is built specifically for your project. It's tailored to your needs, your workflows, and your content structure. This system is often designed from scratch or adapted from minimal frameworks. Custom CMS platforms prioritize usability and match exactly what your business needs — whether it's integrating content with a unique digital product, controlling user roles, or handling non-standard content types.</p>
-    <p>Custom CMS can be built as:</p>
-    <ul>
-        <li>Monolithic: where backend and frontend are tightly integrated.</li>
-        <li>Headless: where the backend (CMS) is separate from the frontend and communicates via APIs.</li>
-    </ul>
-    <h2><b>Headless CMS</b></h2>
-    <p>A headless CMS is a backend-only CMS. It focuses solely on managing content and delivering it via APIs (usually REST or GraphQL). The "head" (frontend) is entirely decoupled, giving developers full flexibility to use any framework or technology (React, Vue, mobile apps, etc.) to display the content.</p>
-    <h2><b>Can a CMS Be Both?</b></h2>
-    <p><strong>Yes. A custom CMS can be built in a headless architecture.</strong> For instance, your agency might develop a backend dashboard with Python/Flask and use it to feed content to a Next.js frontend via API. In that case, you're combining custom and headless paradigms.</p>
-    <h2><b>What Tools Are Used to Build a Custom CMS?</b></h2>
-    <p>Building a custom CMS gives you full control over every feature listed above — and more. Here are common tools we use:</p>
-    <h2><b>Backend:</b></h2>
-    <ul>
-        <li>Python (Flask or Django)</li>
-        <li>Node.js (Express)</li>
-        <li>Ruby on Rails</li>
-    </ul>
-    <h2><b>Frontend:</b></h2>
-    <ul>
-        <li>HTML, CSS</li>
-        <li>JavaScript (HTMX for reactive features, or Next.js for dynamic frontends)</li>
-    </ul>
-    <h2><b>Databases:</b></h2>
-    <ul>
-        <li>PostgreSQL, MySQL, or MongoDB for structured data</li>
-    </ul>
-    <h2><b>Authentication:</b></h2>
-    <ul>
-        <li>JWT or Flask session-based login systems, sometimes Redis for performance</li>
-    </ul>
-    <h2><b>Admin Interfaces:</b></h2>
-    <ul>
-        <li>Hand-built or integrated tools like Django Admin, React dashboards, or simple Jinja2 templates</li>
-    </ul>
-    <p>This means your CMS is completely tailored to what your team actually needs — no more, no less.</p>
-    <h2><b>How Much Does It Cost and How Long Does It Take?</b></h2>
-    <h2><b>Custom CMS:</b></h2>
-    <ul>
-        <li><b>Cost:</b> Custom CMS development can start from as low as $5,000 and go up to $30,000 or more depending on complexity. For most content-focused projects, the cost can be similar to advanced WordPress solutions.</li>
-        <li><b>Timeline:</b> It usually takes 2 to 6 months to implement, depending on whether it's a simple admin panel or a full-featured platform with backend logic and frontend customisation.</li>
-    </ul>
-    <h2><b>Why It's Worth It:</b></h2>
-    <ul>
-        <li>You only build the features you need, which improves usability.</li>
-        <li>Long-term savings: no plugin subscriptions, theme licenses, or performance patching.</li>
-        <li>Easier to scale as your platform grows.</li>
-    </ul>
-    <h2><b>WordPress: What You Get and What It Costs</b></h2>
-    <p>WordPress is a great platform for fast launches, but it's not always the best fit for product-led websites or scalable platforms.</p>
-    <h2><b>Includes:</b></h2>
-    <ul>
-        <li>Built-in content editor, media manager, themes, and plugins</li>
-        <li>Thousands of free and premium themes</li>
-        <li>Access to a huge plugin ecosystem (SEO, forms, e-commerce)</li>
-    </ul>
-    <h2><b>Cost Breakdown:</b></h2>
-    <ul>
-        <li><b>Initial Setup:</b> $1,000 to $5,000 for a basic site</li>
-        <li><b>Advanced Customization:</b> $10,000 to $20,000 or more with custom plugins or complex design</li>
-    </ul>
-    <h2><b>Hidden Costs:</b></h2>
-    <ul>
-        <li>Annual fees for premium themes/plugins</li>
-        <li>Developer costs for plugin conflicts or performance optimization</li>
-        <li>Hosting and security subscriptions</li>
-    </ul>
-    <p><b>Timeline:</b> 2 to 6 weeks for simple sites, 2 to 3 months for complex ones</p>
-    <h2><b>So, Which Should You Choose?</b></h2>
-    <h2><b>Choose Custom CMS if:</b></h2>
-    <ul>
-        <li>You're building a digital product, SaaS platform, or scalable web application</li>
-        <li>You care about performance, flexibility, and security</li>
-        <li>You've outgrown the limitations of plugin-based systems</li>
-    </ul>
-    <h2><b>Choose WordPress if:</b></h2>
-    <ul>
-        <li>You need a blog, portfolio, or basic business website</li>
-        <li>Your timeline and budget are limited</li>
-        <li>You're comfortable working with pre-built templates and plugin ecosystems</li>
-    </ul>
+    <p><b>Note: </b>"Custom CMS" refers to a system tailored to your workflow. It can be built <b>monolithic</b> (backend+frontend coupled) or <b>headless</b> (content via API to any frontend).</p>
+    
+    <h2><b>Monolithic (e.g., WordPress)</b></h2>
+    <p>Backend, frontend, and templating live together. Fast to launch, opinionated, plugin-rich. Great for classic sites and content teams who want speed.</p>
+    
+    <h2><b>Headless (Sanity, Strapi, Directus, or WordPress Headless)</b></h2>
+    <p>CMS manages content and serves it via API (REST/GraphQL). Any frontend (web/app/kiosk) consumes it. Flexible, scalable, omnichannel.</p>
+    
+    <h2><b>Custom CMS (Monolithic or Headless)</b></h2>
+    <p>Tailored UX, data model, and permissions. Built with Django/Flask/Node/Rails. Exact workflows, no plugin bloat, scale-ready — either coupled or headless.</p>
+    
+    {{ blog_image('cms-diagram.svg', 'Content System Management diagram') }}
+    
+    <h2><b>Which one should you choose?</b></h2>
+    <p>Choose <b>Monolithic if</b> you need a blog, portfolio, or straightforward business site, your budget is tight with a 2–6 week timeline, and you're comfortable working with themes and a plugin ecosystem.</p>
+    <p>Choose <b>Headless if</b> you need omni-channel distribution across web, app, or kiosk, performance and scalability are non-negotiable, and your developers prefer modern stacks and CI/CD.</p>
+    <p>Choose a <b>Custom CMS if</b> you've outgrown templates and plugin glue, you need exact workflows and permissions with long-term ownership, and you're building a product-led platform with a multi-year roadmap.</p>
 {% endset %}
 
 {{ blog_page(
