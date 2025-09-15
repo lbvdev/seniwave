@@ -1,7 +1,7 @@
 {% macro blog_page(title, text, image_name='default') %}
 
-<article class="page hero blog-page split">
-    <div class="wrapper">
+<article class="page hero blog-page flex-center">
+    <div class="wrapper no-split">
         <img src="/static/images/blog/{{ image_name }}.svg">
         <h1 class="big">
             {{ title }}
@@ -11,4 +11,140 @@
         {{ text | safe }}
     </div>
 </article>
+
+<style>
+.page.blog-page{
+	z-index: 12;
+	align-items: center;
+	background-color: var(--background-color);
+    padding-top: 0 !important;
+    overflow: visible;
+
+	.wrapper{
+		position: relative;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		height: 520px;
+        min-height: 20vh;
+		width: 65vw;
+		max-width: 1200px;
+		min-width: fit-content;
+		overflow: visible;
+
+		h1{
+			color: #8C48FF;
+			font-weight: 400;
+			text-align: center;
+            max-width: 780px;
+
+			span{
+				color: #8C48FF;
+			}
+		}
+
+		li{
+			margin-bottom: 12px;
+		}
+
+		img{
+			position: absolute;
+
+			top: 0;
+			left: 0;
+            width: 100%;
+			min-width: 540px;
+			min-height: 100%;
+			object-fit: contain;
+            object-position: center;
+            opacity: 0.7;
+		}
+	}
+
+	.blog-wrapper{
+		display: flex;
+		flex-direction: column;
+		gap: 18px;
+		max-width: 920px;
+		margin-top: 96px;
+
+		h2{
+			margin-top: 12px;
+			font-size: 32px;
+			font-weight: 600;
+            width: 100%;
+		}
+
+		p{
+			font-size: 16px;
+			font-weight: 400;
+			line-height: 190%;
+		}
+	}
+}
+
+.page.blog-page img{
+	width: 100%;
+	object-fit: cover;
+}
+
+.blog-image-grid{
+  position: relative;
+  --grid-size: 20px;
+  --grid-color: #5d00ff0c;
+  background-image: linear-gradient(var(--grid-color) 1px, transparent 1px), linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+  background-size: var(--grid-size) var(--grid-size);
+  background-position: -1px -1px;
+  background-color: transparent;
+  padding: 12px;
+  border: 1px solid #ECDFFF;
+  border-radius: 12px;
+  
+  p{
+    position: absolute;
+    display: inline-flex;
+    padding: 12px 21px; 
+    align-items: center;
+    gap: 45px;
+    border-radius: 8px;
+    border: 1px solid rgba(95, 0, 255, 0.08);
+    background: #f7f2ffc7;
+    backdrop-filter: blur(8px);
+    top: 12px;
+    left: 12px;
+    color: var(--accent-color);
+    font-size: 21px;
+    font-weight: 700 !important;
+    transition: opacity 0.3s;
+  }
+}
+.blog-image-grid:hover p{
+  opacity: 0.3;
+}
+
+@media (max-width: 768px){
+  .page.blog-page .wrapper{
+    height: fit-content;
+    min-height: 35vw;
+    margin: 0;
+    margin-top: 32px;
+
+    h1{
+        text-align: start;
+    }
+    img{
+        min-width: initial;
+        scale: 2.1;
+        opacity: 0.3;
+    }
+  }
+
+  .page.blog-page .blog-wrapper{
+    margin-top: 32px;
+  }
+}
+</style>
+    
 {% endmacro %}

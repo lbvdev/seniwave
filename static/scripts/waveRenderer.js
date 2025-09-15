@@ -50,8 +50,11 @@ window.addEventListener('load', () => {
         }
         
         function resize() {
-            width = canvas.width = window.innerWidth;
-            height = canvas.height = Math.round(width * 0.25);
+            const maxWidth = 2160;
+            const minWidth = 1280;
+            const baseWidth = window.innerWidth * 1;
+            width = canvas.width = Math.max(Math.min(baseWidth, maxWidth), minWidth);
+            height = canvas.height = Math.max(Math.round(width * 0.3), 380);
             const topOffset = 70;
             
             recalculateSvgPoints(topOffset);

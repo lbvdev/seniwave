@@ -19,7 +19,14 @@ $(document).ready(function () {
         $(".router-highlight").removeClass("router-highlight");
         if (id) {
             console.log(`Highlighting element: #${id}`);
-            $(`#${id}`).addClass("router-highlight");
+            const $element = $(`#${id}`);
+            $element.addClass("router-highlight");
+            
+            if ($element.length) {
+                $('html, body').animate({
+                    scrollTop: $element.offset().top - 100
+                }, 800);
+            }
         }
     }
 
