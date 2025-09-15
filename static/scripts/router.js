@@ -15,12 +15,21 @@ $(document).ready(function () {
         $(`[data-page='${page}']`).addClass("enabled");
     }
 
+    function highlightElement(id) {
+        $(".router-highlight").removeClass("router-highlight");
+        if (id) {
+            console.log(`Highlighting element: #${id}`);
+            $(`#${id}`).addClass("router-highlight");
+        }
+    }
+
     function renderContent(page, data, $transition, isCached, is404) { setTimeout(() => {
         $("#content").html(data);
         $(".with-popup").removeClass('active') // hides header menu
 
         if (!is404) {
-            history.pushState({ page }, "", `/${page}`);
+            const currentHash = window.location.hash;
+            history.pushState({ page }, "", `/${page}${currentHash}`);
         }
         window.scrollTo(0, 0);
         updateActiveLink(page);
@@ -64,6 +73,11 @@ $(document).ready(function () {
         } else {
             $("body").addClass(page);
         }
+        
+        const hash = window.location.hash;
+        console.log('Full URL:', window.location.href);
+        const id = hash ? hash.substring(1) : null;
+        highlightElement(id);
     }
 
     const cache = {};

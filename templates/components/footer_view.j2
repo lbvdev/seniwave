@@ -1,0 +1,86 @@
+{% macro footer_view() %}
+<footer>
+    <div class="footer-wrapper">
+        <div class="content-wrapper">
+            <div class="flex-cl gap-12">
+                <p class="mono">We are a full-service creative agency, building and launching brands and digital products—always with a business mindset.</p>
+                <div class="flex gap-12">
+                    <a href="https://www.linkedin.com/company/seni-wave" target="_blank">Linkedin</a>
+                    <a href="https://www.instagram.com/seniwave/" target="_blank">Instagram</a>
+                    <a href="https://x.com/seniwave/" target="_blank">X.com</a>
+                </div>
+                <div class="time-block flex gap-128 flex-end h-100">
+                    <div class="flex-cl offices">
+                        <p>Netherlands, Amsterdam</p>
+                        <p>Bulgaria, Sofia</p>
+                        <p>UAE, Dubai</p>
+                    </div>
+                    <div class="flex-cl">
+                        <p>09:41</p>
+                        <p>09:41</p>
+                        <p>09:41</p>
+                    </div>
+                </div>
+            </div>
+            <div class="links">
+                <p>Navigate</p>
+                <a href="/home" data-page="home">Home</a>
+                <a href="/team" data-page="team">Team</a>
+                <a href="/pricing" data-page="pricing">Pricing</a>
+                <a href="/home#blog" data-page="home#blog">Blog</a>
+                <a href="/works" data-page="works">Works</a>
+            </div>
+            <div class="links">
+                <p>Services</p>
+                <a href="services/branding" data-page="services/branding">Branding</a>
+                <a href="services/design" data-page="services/design">Design System</a>
+                <a href="services/web" data-page="services/web">Web Development</a>
+                <a href="services/animation" data-page="services/animation">3D, AR and AI Animation</a>
+                <hr>
+                <a href="https://book.seniwave.com" target="_blank">Consultation booking</a>
+                <a href="https://meet.seniwave.com" target="_blank">Google-meet alike</a>
+            </div>
+            <div class="links">
+                <p>Contact</p>
+                <a href="https://wa.me/971585820390" target="_blank">Whatsapp</a>
+                <a href="https://t.me/seniwave" target="_blank">Telegram</a>
+                <a href="mailto:info@seniwave.com" target="_blank">Email</a>
+            </div>
+        </div>
+        <img class="footer-logo" src="/static/images/logos/footer.svg" alt="SeniWave">
+    </div>
+    <div class="legal">
+        <p>All Rights Reserved ©2024-2025</p>
+        <div class="flex">
+            <a class="link" href="/privacy" data-page="privacy">Privacy Policy</a>
+            <a class="link" href="/terms" data-page="terms">Terms of Use</a>
+            <a href="#" id="manage-cookies-link">Manage cookies</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+$(document).ready(function() {
+    function updateTime() {
+        const timezones = [
+            'Europe/Amsterdam', 
+            'Europe/Sofia',
+            'Asia/Dubai'
+        ];
+        
+        timezones.forEach((tz, index) => {
+            const time = new Date().toLocaleTimeString('en-GB', {
+                timeZone: tz,
+                hour12: false,
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+            $('.time-block .flex-cl:last-child p').eq(index).text(time);
+        });
+    }
+    
+    updateTime();
+    setInterval(updateTime, 1000);
+});
+</script>
+{% endmacro %}

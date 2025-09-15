@@ -106,7 +106,7 @@
             </div>
         <div class="flex-cl gap-12 w-100">
             <div class="card-wrapper">
-                <div class="card card-pricing" data-aos="slide-up">
+                <div class="card card-pricing" data-aos="slide-up" data-page="#start-up">
                     <div class="left-side">
                         <h2>Start-Up Package</h2>
 
@@ -124,7 +124,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="card card-pricing" data-aos="slide-up" data-aos-delay="100">
+                <div class="card card-pricing" data-aos="slide-up" data-aos-delay="100" data-page="#scale-up">
                     <div class="left-side">
                         <h2>Scale Up Package</h2>
 
@@ -142,7 +142,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="card card-pricing" data-aos="slide-up" data-aos-delay="200">
+                <div class="card card-pricing" data-aos="slide-up" data-aos-delay="200" data-page="#professional">
                     <div class="left-side">
                         <h2>Professional Package</h2>
 
@@ -166,8 +166,8 @@
                 <button class="white-fill continue-pricing">
                     Continue
                 </button>
-                <button class="white-fill book-pricing back hidden">Learn more</button>
-                <a href="https://book.seniwave.com/" class="white-fill book-pricing hidden">
+                <a href="/pricing" class="white-fill book-pricing learn-more hidden">Learn more</a>
+                <a href="https://book.seniwave.com/" class="white-fill consultation book-pricing hidden">
                     Consultation
                     {{ icon('contact') }}
                 </a>
@@ -218,9 +218,11 @@ $(document).ready(function () {
     const $bookPricing = $('.book-pricing');
     const $priceWrapper = $('.price-wrapper');
 
-    function updateButtons() {
+    function updateButtons(data_page='') {
         const hasEnabled = $cards.hasClass('enabled');
         const hasSelected = $cards.hasClass('selected');
+        $('.learn-more').attr('href', '/pricing' + data_page);
+        console.log(data_page);
 
         if (hasEnabled) {
             $bookPricing.removeClass('hidden');
@@ -234,50 +236,47 @@ $(document).ready(function () {
             $bookPricing.addClass('hidden');
             $continueBtn.addClass('hidden').removeClass('active');
             $priceWrapper.removeClass('muted');
+            $('.learn-more').attr('href', '/pricing');
         }
     }
-                
+
     $cards.hover(function () {
         if ('ontouchstart' in window || navigator.maxTouchPoints > 0) return;
         if ($cards.hasClass('enabled')) return;
         $cards.removeClass('selected');
         $(this).addClass('selected');
-        
         updateButtons();
     });
 
     $cards.on('click', function () {
         const $clicked = $(this);
         const hasEnabled = $cards.hasClass('enabled');
-
         if (hasEnabled) {
             $cards.removeClass('enabled disabled selected');
-
             // touchscreen fix
             if (!('ontouchstart' in window || navigator.maxTouchPoints > 0)) {
                 $clicked.addClass('selected');
+                data_page = '';
             }
         } else {
             $clicked.addClass('enabled');
             $cards.not($clicked).addClass('disabled').removeClass('selected');
+            data_page = $clicked.data('page');
         }
-        updateButtons();
+        updateButtons(data_page);
     });
 
     $continueBtn.on('click', function () {
         const $selected = $cards.filter('.selected');
-
         if ($selected.length) {
             $selected.addClass('enabled');
             $cards.not($selected).addClass('disabled').removeClass('selected');
         }
-
         updateButtons();
     });
 
     $('.book-pricing.back').on('click', function () {
         $cards.removeClass('enabled disabled selected');
-
         updateButtons();
     });
 });

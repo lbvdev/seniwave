@@ -1,7 +1,7 @@
 <div class="page pricing-page split">
     <h1>Pricing</h1>
     <div class="card-wrapper">
-        <div class="card">
+        <div class="card no-split" id="start-up">
             <h2>Start-Up Package</h2>
             <p class="description">For new brands and founders who want to launch confidently.</p>
             <hr>
@@ -54,11 +54,11 @@
             <hr>
             <div class="flex flex-wrap gap-4">
                 <button class="toggle-info default">Expand all</button>
-                <button class="book-call default accent hidden">Get in touch</button>
+                <a href="https://book.seniwave.com" class="book-call default accent hidden">Book a call</a>
             </div>
         </div>
         
-        <div class="card ">
+        <div class="card no-split" id="scale-up">
             <h2>Scale-Up Package</h2>
             <p class="description">For growing teams ready to systemise and expand</p>
             <hr>
@@ -113,11 +113,11 @@
             <hr>
             <div class="flex flex-wrap gap-4">
                 <button class="toggle-info default">Expand all</button>
-                <button class="book-call default accent hidden">Get in touch</button>
+                <a href="https://book.seniwave.com" class="book-call default accent hidden">Book a call</a>
             </div>
         </div>
         
-        <div class="card ">
+        <div class="card no-split" id="professional">
             <h2>Professional Package</h2>
             <p class="description">For complex products, enterprise requirements, or launch with 3D/AR.</p>
             <hr>
@@ -185,7 +185,7 @@
             <hr>
             <div class="flex flex-wrap gap-4">
                 <button class="toggle-info default">Expand all</button>
-                <button class="book-call default accent hidden">Get in touch</button>
+                <a href="https://book.seniwave.com" class="book-call default accent hidden">Book a call</a>
             </div>
         </div>
     </div>
@@ -255,13 +255,52 @@
         gap: 6px;
     }
     .card{
+        position: relative;
         display: flex;
         flex-direction: column;
         gap: 12px;
-
         flex: 1;
     }
-
+    .card:not(.router-highlight){
+        opacity: var(--radar-opacity, 1) !important;
+    }
+    .card h2{
+        position: relative;
+        transform: scaleX(100%);
+        color: var(--accent-color);
+        transform-origin: left;
+        transition: color 0.7s !important;
+    }
+    .card.initial-state h2{
+        color: var(--accent-color) !important;
+    }
+    .card.router-highlight h2{
+        color: #FFFFFF;
+        transform: scaleX(var(--h2-scale, 100%));
+    }
+    .card h2::before{
+        content: '';
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        max-width: calc(100% - 21px);
+        width: 0%;
+        height: 100%;
+        padding: 0 12px;
+        margin-left: -12px;
+        background-color: transparent;
+        transform: scaleX(0);
+        transform-origin: left;
+        border-radius: 12px;
+        transition: background-color 0.3s, opacity 0.5s, transform 0.3s;
+     }
+     .card.router-highlight h2::before{
+        transform: scaleX(1);
+        width: var(--radar-percent, 0%);
+        background-color: var(--accent-color);
+        opacity: 1;
+     }
     .hidden{
         opacity: 0;
         filter: blur(6px);
@@ -298,3 +337,61 @@
     }
 }
 </style>
+
+<script>
+function animateRadar() {
+    const highlightedElement = document.querySelector('.router-highlight');
+    if (!highlightedElement) return;
+        const cardWrapper = highlightedElement.closest('.card-wrapper');
+    if (!cardWrapper) return;
+     gsap.fromTo(cardWrapper,
+         {
+             "--radar-opacity": "0.2"
+         },
+         {
+             "--radar-opacity": "1",
+             duration: 2.2,
+             delay: 0.5,
+             ease: "power3.inOut",
+             onComplete: () => {
+                 gsap.to(cardWrapper, {
+                     "--radar-percent": "0%",
+                     duration: 0.3,
+                     ease: "power3",
+                     onComplete: () => {
+                         highlightedElement.classList.remove('router-highlight');
+                     }
+                 });
+                 gsap.to(cardWrapper, {
+                     duration: 0,
+                     delay: 0.15,
+                     onComplete: () => {
+                         highlightedElement.classList.add('initial-state');
+                     }
+                 });
+             }
+         }
+     );
+    gsap.fromTo(cardWrapper,
+        {
+            "--radar-percent": "0%",
+        },
+        {
+            "--radar-percent": "100%",
+            duration: 1.2,
+            ease: "power3"
+        }
+    );
+    gsap.fromTo(cardWrapper,
+        {
+            "--h2-scale": "0%"
+        },
+        {
+            "--h2-scale": "100%",
+            duration: 0.6,
+            ease: "power3"
+        }
+     );
+ }
+setTimeout(animateRadar, 400);
+</script>
