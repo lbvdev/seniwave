@@ -124,10 +124,11 @@ $(document).ready(function () {
     function handleClick(e) {
         e.preventDefault();
         const page = $(this).data("page");
+        console.log("Router: Clicked on page:", page);
         loadPage(page);
     }
 
-    $("a[data-page]").click(handleClick);
+    $(document).on("click", "a[data-page]", handleClick);
 
     $(window).on("popstate", function (e) {
         if (e.originalEvent.state?.page) {

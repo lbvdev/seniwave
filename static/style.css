@@ -562,11 +562,17 @@ div.legal{
 		color: var(--secondary-color);
 		font-weight: 400;
 	}
+    .trnsf{
+        font-family: 'Transforma Mix';
+        line-height: 100%;
+    }
 	span.trnsf{
 		font-family: 'Transforma Mix';
 		font-weight: 600;
+        line-height: initial;
 		color: var(--accent-color);
 	}
+
 	h2{
 		font-size: 32px;
 		font-weight: 400;
@@ -894,68 +900,29 @@ p.numered::before{
 		position: relative;
 		display: flex;
 		align-items: flex-start;
-
 		gap: 48px;
-
 		width: 100%;
 		padding: 12px 0;
-
 		cursor: pointer;
-
 		h1{
 			color: var(--accent-color);
 			font-weight: 400;
 		}
-
-		img{
-			margin-top: 24px;
-			background-color: var(--accent-color);
+		h3{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+			margin-top: 8px;
+            width: 240px;
 			height: fit-content;
-
-			transition: margin 0.3s, padding 0.4s;
-		}
-	}
-
-	.span-wrapper{
-		display: flex;
-		flex-wrap: wrap;
-		gap: 4px;
-
-		overflow: hidden;
-
-
-		span{
-			display: flex;
-			padding: 16px 21px;
-			align-items: flex-start;
-			gap: 28px;
-
-
-			border-radius: 24px;
-			background: #FFFFFF;
-
-			font-weight: 500;
-
-		}
-	}
-
-	.card{
-		.span-wrapper{
-			max-height: 0;
-			opacity: 0;
-			pointer-events: none;
-			transition: max-height 1s, opacity 0.5s;
-
-		}
-	}
-
-	.card.enabled{
-		.span-wrapper{
-			opacity: initial;
-			pointer-events: initial;
-			max-height: 100vh;
-
-			transition: max-height 2s, opacity 0.1s;
+            padding: 0 14px;
+            padding-top: 8px;
+			background-color: var(--accent-color);
+            color: #fff;
+            font-size: 42px;
+			transition: margin 0.3s, padding 0.4s, width 0.4s;
+            span{margin-top: -8px;}
 		}
 	}
 
@@ -977,7 +944,8 @@ p.numered::before{
 	}
 
 	.card:hover{
-		img{
+		h3{
+            width: calc(240px + var(--padding-horizontal));
 			margin-left: calc(-1 * var(--padding-horizontal));
 			padding-left: var(--padding-horizontal);
 		}

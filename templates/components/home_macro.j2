@@ -5,75 +5,24 @@
 <div class="page service">
     <h1 data-aos="fade-up">Our services</h1>
     <div class="card-wrapper">
-        <div class="card service" data-aos="fade-left" data-aos-delay="0">
-            <img src="/static/images/service/brand.svg" alt="brand">
-            <div class="flex-cl gap-12">
-                <h1 class="bold">Branding</h1>
-                <div class="span-wrapper">
-                    <span>Logo Design</span>
-                    <span>Brand Guidelines</span>
-                    <span>Visual Identity</span>
-                    <span>Business Cards</span>
-                    <span>Social Media Kit</span>
-                    <span>Brand Voice</span>
-                    <span>Structure Creation</span>
-                </div>
-            </div>
-        </div>
-        <div class="card service" data-aos="fade-left" data-aos-delay="100">
-            <img src="/static/images/service/web.svg" alt="brand">
-            <div class="flex-cl gap-12">
-                <h1 class="bold">Web Dev & Design</h1>
-                <div class="span-wrapper">
-                    <span>Website UI/UX Design</span>
-                    <span>Responsive Web Development</span>
-                    <span>Landing Page Design</span>
-                    <span>Web App Prototyping</span>
-                    <span>Web App Dev</span>
-                    <span>SEO Optimization</span>
-                    <span>Custom Integration</span>
-                </div>
-            </div>
-        </div>
-        <div class="card service" data-aos="fade-left" data-aos-delay="200">
-            <img src="/static/images/service/ar.svg" alt="brand">
-            <div class="flex-cl gap-12">
-                <h1 class="bold">AR/XR & 3D Modeling</h1>
-                <div class="span-wrapper">
-                    <span>AR Web Viewer</span>
-                    <span>AR Filters</span>
-                    <span>3D Modeling</span>
-                    <span>AR/VR/Game-ready optimized</span>
-                    <span>Hard-surface modelling</span>
-                    <span>Sculpt</span>
-                    <span>3D—Promotion animation</span>
-                    <span>3D Product Presentation</span>
-                    <span>Blender & UE5 workflow</span>
-                </div>
-            </div>
-        </div>
-        <div class="card service" data-aos="fade-left" data-aos-delay="300">
-            <img src="/static/images/service/ai.svg" alt="brand">
-            <div class="flex-cl gap-12">
-                <h1 class="bold">AI Content & Avatar Generation</h1>
-                <div class="span-wrapper">
-                    <span>AI Digital assets</span>
-                    <span>AI Avatar</span>
-                </div>
-            </div>
-        </div>
+        <a href="/services/branding" data-page="services/branding" class="card service" data-aos="fade-left" data-aos-delay="0">
+            <h3 class="trnsf">brand <span>/</span></h3>
+            <h1 class="bold">Branding</h1>
+        </a>
+        <a href="/services/design" data-page="services/design" class="card service" data-aos="fade-left" data-aos-delay="100">
+            <h3 class="trnsf">design <span>/</span></h3>
+            <h1 class="bold">Design System</h1>
+        </a>
+        <a href="/services/web" data-page="services/web" class="card service" data-aos="fade-left" data-aos-delay="200">
+            <h3 class="trnsf">web <span>/</span></h3>
+            <h1 class="bold">Web Development</h1>
+        </a>
+        <a href="/services/animation" data-page="services/animation" class="card service" data-aos="fade-left" data-aos-delay="300">
+            <h3 class="trnsf">3d+ <span>/</span></h3>
+            <h1 class="bold">3D, AR and AI Animation</h1>
+        </a>
     </div>
 </div>
-
-<script>
-    $(document).ready(() => {
-        const $cards = $('.card.service');
-
-        $cards.on('click', function () {
-            $(this).toggleClass('enabled');
-        });
-    });
-</script>
 {% endmacro %}
 
 
@@ -101,12 +50,10 @@
                 <div class="card" data-aos="slide-up" data-page="#start-up">
                     <div class="left-side">
                         <h2>Start-Up Package</h2>
-
                         <p>For new brands and founders who want to launch confidently</p>
                     </div>
                     <div class="right-side">
                         <h3>From $5k to $10k</h3>
-
                         <div class="flex-cl gap-8">
                             <p>Branding Essentials</p>
                             <p>Design & UX</p>
@@ -119,12 +66,10 @@
                 <div class="card" data-aos="slide-up" data-aos-delay="100" data-page="#scale-up">
                     <div class="left-side">
                         <h2>Scale Up Package</h2>
-
                         <p>For growing teams ready to systemise and expand</p>
                     </div>
                     <div class="right-side">
                         <h3>From $10k to $30k</h3>
-
                         <div class="flex-cl gap-8">
                             <p>Branding</p>
                             <p>Design System</p>
@@ -137,12 +82,10 @@
                 <div class="card" data-aos="slide-up" data-aos-delay="200" data-page="#professional">
                     <div class="left-side">
                         <h2>Professional Package</h2>
-
                         <p>For complex products, enterprise requirements, or launch with 3D/AR</p>
                     </div>
                     <div class="right-side">
                         <h3>From $30-50k</h3>
-
                         <div class="flex-cl gap-8">
                             <p>Copyrighting + Docs</p>
                             <p>2D/3D/WebGl</p>
@@ -158,7 +101,7 @@
                 <button class="white-fill continue-pricing">
                     Continue
                 </button>
-                <a href="/pricing" class="white-fill book-pricing learn-more hidden">Learn more</a>
+                <a href="/pricing" data-page="pricing" class="white-fill book-pricing learn-more hidden">Learn more</a>
                 <a href="https://book.seniwave.com/" class="white-fill consultation book-pricing hidden">
                     Consultation
                     {{ icon('contact') }}
@@ -244,7 +187,7 @@ $(document).ready(function () {
     <h2 class="big" data-aos="fade-zoom-in" data-aos-duration="2000" data-aos-delay="100" data-aos-once="true">something more...</h2>
     <div class="card-wrapper">
         <div class="card-content">
-            <a href="/services/animation" class="card" data-aos="fade-up" data-aos-delay="800" data-aos-once="true">
+            <a href="/services/animation" data-page="services/animation" class="card" data-aos="fade-up" data-aos-delay="800" data-aos-once="true">
                 <div class="absolute ar" data-aos="slide-up" data-aos-delay="990" data-aos-duration="3000" data-aos-once="true">
                     <img src="/static/images/something-more/ar.svg" alt="ai" loading="lazy">
                     <img src="/static/images/something-more/ar-slash.svg" alt="/" loading="lazy">
@@ -253,13 +196,13 @@ $(document).ready(function () {
                 <p>From $5,000</p>
                 <h3>Web Viewer, 3D Modeling, AR Showcase and more</h3>
             </a>
-            <a href="/services/animation" class="white-fill" data-aos="fade-up" data-aos-delay="800" data-aos-once="true">
+            <a href="/services/animation" data-page="services/animation" class="white-fill" data-aos="fade-up" data-aos-delay="800" data-aos-once="true">
                 Learn more
                 {{ icon('arrow-up') }}
             </a>
         </div>
         <div class="card-content">
-            <a href="/services/animation" class="card" data-aos="fade-up" data-aos-delay="1200" data-aos-once="true">
+            <a href="/services/animation" data-page="services/animation" class="card" data-aos="fade-up" data-aos-delay="1200" data-aos-once="true">
                 <div class="absolute ai" data-aos="slide-up" data-aos-delay="1330" data-aos-duration="3000" data-aos-once="true">
                     <img src="/static/images/something-more/ai.svg" alt="ai" loading="lazy">
                     <img src="/static/images/something-more/ai-slash.svg" alt="/" loading="lazy">
@@ -268,7 +211,7 @@ $(document).ready(function () {
                 <p>From $5,000</p>
                 <h3>AI-powered custom visuals and videos</h3>
             </a>
-            <a href="/services/animation" class="white-fill" data-aos="fade-up" data-aos-delay="1200" data-aos-once="true">
+            <a href="/services/animation" data-page="services/animation" class="white-fill" data-aos="fade-up" data-aos-delay="1200" data-aos-once="true">
                 Learn more
                 {{ icon('arrow-up') }}
             </a>
@@ -295,7 +238,7 @@ $(document).ready(function () {
 <div class="page blog" id="blog">
     <h1 data-aos="fade-up" data-aos-once="true">Blog</h1>
     <div class="card-wrapper scroll-x transparent-scroll">
-        <a class="card" class="link after-bg" href="/blog/custom-cms-vs-wordpress" data-page="blog" data-aos="fade-up" data-aos-delay="100" data-aos-once="true">
+        <a class="card" class="link after-bg" href="/blog/custom-cms-vs-wordpress" data-page="blog/custom-cms-vs-wordpress" data-aos="fade-up" data-aos-delay="100" data-aos-once="true">
             <div class="img-wrapper">
                 <img src="/static/images/blog/cms-preview.png" loading="lazy">
                 <img src="/static/images/blog/cms-preview-2d.svg" class="hidden" loading="lazy">
@@ -306,7 +249,7 @@ $(document).ready(function () {
             </div>
         </a>
 
-        <a class="card" class="link after-bg" href="/blog/atomic" data-page="blog" data-aos="fade-up" data-aos-delay="150" data-aos-once="true">
+        <a class="card" class="link after-bg" href="/blog/atomic" data-page="blog/atomic" data-aos="fade-up" data-aos-delay="150" data-aos-once="true">
             <div class="img-wrapper">
                 <img src="/static/images/blog/atomic-preview.png" loading="lazy">
                 <img src="/static/images/blog/atomic-preview-2d.svg" class="hidden" loading="lazy">
@@ -317,7 +260,7 @@ $(document).ready(function () {
             </div>
         </a>
 
-        <a class="card" class="link after-bg" href="/blog/custom-vs-framer" data-page="blog" data-aos="fade-up" data-aos-delay="200" data-aos-once="true">
+        <a class="card" class="link after-bg" href="/blog/custom-vs-framer" data-page="blog/custom-vs-framer" data-aos="fade-up" data-aos-delay="200" data-aos-once="true">
             <div class="img-wrapper">
                 <img src="/static/images/blog/custom-vs-framer-preview.png" loading="lazy">
                 <img src="/static/images/blog/custom-vs-framer-preview-2d.svg" class="hidden" loading="lazy">
@@ -333,7 +276,7 @@ $(document).ready(function () {
             <h2>read more on <b>Medium</b></h2>
         </a>
 
-        <a class="card" class="link after-bg" href="/blog/ai-visuals-vs-production" data-page="blog" data-aos="fade-up" data-aos-delay="200" data-aos-once="true">
+        <a class="card" class="link after-bg" href="/blog/ai-visuals-vs-production" data-page="blog/ai-visuals-vs-production" data-aos="fade-up" data-aos-delay="200" data-aos-once="true">
             <div class="img-wrapper">
                 <img src="/static/images/blog/ai-preview.png" loading="lazy">
                 <img src="/static/images/blog/ai-preview-2d.svg" class="hidden" loading="lazy">
@@ -344,7 +287,7 @@ $(document).ready(function () {
             </div>
         </a>
 
-        <a class="card" class="link after-bg" href="/blog/why-do-you-need-ar-for-pr" data-page="blog" data-aos="fade-up" data-aos-delay="200" data-aos-once="true">
+        <a class="card" class="link after-bg" href="/blog/why-do-you-need-ar-for-pr" data-page="blog/why-do-you-need-ar-for-pr" data-aos="fade-up" data-aos-delay="200" data-aos-once="true">
             <div class="img-wrapper">
                 <img src="/static/images/blog/ar-preview.png" loading="lazy">
                 <img src="/static/images/blog/ar-preview-2d.svg" class="hidden" loading="lazy">
