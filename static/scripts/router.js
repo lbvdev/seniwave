@@ -18,10 +18,8 @@ $(document).ready(function () {
     function highlightElement(id) {
         $(".router-highlight").removeClass("router-highlight");
         if (id) {
-            console.log(`Highlighting element: #${id}`);
             const $element = $(`#${id}`);
             $element.addClass("router-highlight");
-            
             if ($element.length) {
                 $('html, body').animate({
                     scrollTop: $element.offset().top - 100
@@ -82,7 +80,6 @@ $(document).ready(function () {
         }
         
         const hash = window.location.hash;
-        console.log('Full URL:', window.location.href);
         const id = hash ? hash.substring(1) : null;
         highlightElement(id);
     }

@@ -66,7 +66,7 @@
                 </div>
                 <div class="legal-mini">
                     <p>All Rights Reserved ©2024-2025</p>
-                    <a href="/legal">Privacy Policy</a>
+                    <a href="/privacy">Privacy Policy</a>
                 </div>
             </div>
         </div>
@@ -110,7 +110,7 @@
                 </div>
                 <div class="legal-mini">
                     <p>All Rights Reserved ©2024-2025</p>
-                    <a href="/legal">Privacy Policy</a>
+                    <a href="/privacy">Privacy Policy</a>
                 </div>
             </div>
         </div>
@@ -174,19 +174,15 @@ $(document).on("click", function(e) {
 header{
     position: fixed;
     z-index: 100;
-
     display: flex;
     justify-content: space-between;
-
     width: calc(100% - var(--padding-horizontal) - var(--padding-horizontal) + 16px);
     height: 64px;
     margin: 0 calc( var(--padding-horizontal) - 8px);
     margin-top: 24px;
     padding: 8px;
-
     border-radius: 32px;
-    
-    transition: margin 0.3s, width 0.3s, border-radius 0.3s;
+    transition: var(--animation-default-03), background 0.1s;
 
     .link-wr{
         display: flex;
@@ -215,7 +211,7 @@ header{
             max-width: 0;
             opacity: 0;
             transform: translateX(8px);
-            transition: var(--animation-default-03), max-width 0.3s, transform 0.3s;
+            transition: var(--animation-default-03);
         }
     }
     .link:not(.enabled){
@@ -254,16 +250,21 @@ header{
         background: rgba(30, 30, 30, 0.08);
         inset: -5px;
     }
+    .after-bg:active::after {
+        background: rgba(30, 30, 30, 0.08);
+        inset: -2px;
+    }
     @media (max-width: 580px) {
-    .after-bg:hover::after {
-        background: rgba(30, 30, 30, 0.04);
-        inset: 0px;
+        .after-bg:hover::after {
+            background: rgba(30, 30, 30, 0.04);
+            inset: 0px;
+        }
     }
-    }
-        
-        
     .after-bg.contact::after{
         background-color: var(--accent-color);
+    }
+    .after-bg.contact:active::after {
+        background: rgba(90, 0, 255, 0.08);
     }
     a:active { 
         opacity: 0.5;
@@ -590,7 +591,6 @@ header{
                 font-size: 14px !important;
             }
         }
-
         .with-popup.active .popup {
             transform: initial;
         }
@@ -602,6 +602,7 @@ header.scrolled{
     margin: 0 calc(var(--padding-horizontal) - 20px);
     margin-top: 24px;
     background-color: #FFFFFF;
+    backdrop-filter: blur(10px);
 }
 
 @media (max-width: 580px) {
