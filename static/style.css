@@ -1982,7 +1982,7 @@ body.works{
 
 
 body.legal,body.blog,body.team,body.privacy,body.terms,body.pricing {
-    canvas{display: none;}
+    #canvas-wrapper{display: none;}
 }
 /*body.pricing{
     #canvas-wrapper{
