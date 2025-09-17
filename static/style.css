@@ -1949,7 +1949,7 @@ body.works{
 }
 
 
-body.legal,body.blog,body.team,body.privacy,body.terms,body.pricing {
+body.legal,body.blog,body.team,body.privacy,body.terms,body.pricing,body.services {
     #canvas-wrapper{display: none;}
 }
 /*body.pricing{
