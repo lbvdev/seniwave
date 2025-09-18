@@ -1427,7 +1427,7 @@ body.contact{
         flex-direction: column;
         align-items: center;
     }
-	h1,h2,h3,p{
+	h1,h2,h3,p, ul{
 		max-width: 720px;
         width: 100%;
 	}
@@ -1442,6 +1442,12 @@ body.contact{
 	}
     h3{
         padding-top: 12px;
+    }
+    ul{
+        margin-top: 8px;
+    }
+    li,p{
+        font-size: 16px;
     }
 }
 

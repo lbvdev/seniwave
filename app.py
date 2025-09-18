@@ -5,7 +5,7 @@ r = render_template
 
 def is_russian_domain():
     host = request.headers.get('Host', '').lower()
-    return host.startswith('seniwave.ru') or request.args.get('ru') == '1' or request.args.get('en') != '1'   
+    return host.startswith('seniwave.ru')
 
 def get_pages_path():
     return 'pages_ru/' if is_russian_domain() else 'pages/'
