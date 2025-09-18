@@ -1,0 +1,35 @@
+{% from "components/service_page.j2" import service_page %}
+
+{% set title %}
+    Web Development
+{% endset %}
+
+{% set text %}
+<h3>Process</h3>
+<p class="numered">Solution Architecture — goals, functional scope, stack and CMS choice.</p>
+<p class="numered">Repo & CI/CD — project structure, environments, build/deploy pipeline.</p>
+<p class="numered">Frontend — semantic markup, components, responsive, motion.</p>
+<p class="numered">Backend/CMS — content modeling, roles, integrations.</p>
+<p class="numered">Performance & A11y — asset optimization, lazy/SSR, ARIA.</p>
+<p class="numered">QA & Cross‑device — test plan, bugfixes, regressions.</p>
+<p class="numered">SEO/Marketing Setup — meta, sitemap, robots, Open Graph, schema.org, wiring GA4, GTM, pixels, events.</p>
+<p class="numered">Content & Launch — content migration, prod deploy, team training.</p>
+{% endset %}
+
+{% set info %}
+<p>Lighthouse ≥ 90</p>
+<p>CWV — Pass</p>
+<p>WCAG AA</p>
+{% endset %}
+
+{% set tags %}
+    ["logo", "colors", "typography"]
+{% endset %}
+
+{{ service_page(
+    title = title,
+    text = text | safe,
+    info = info | safe,
+    tags = ["calendar", "meets", "crm", "webgl", "website"],
+    image = "branding",
+) }}

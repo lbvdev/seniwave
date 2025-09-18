@@ -1,0 +1,115 @@
+{% from "components/gtag/modal.j2" import google_modal %}
+{% from "components/gtag/script.j2" import gtag_script %}
+{% from "components_ru/header_view.j2" import header_view %}
+{% from "components_ru/footer_view.j2" import footer_view %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SeniWave – Веб-разработка и брендинг ИИ, AR | Дубай</title>
+    <meta name="description" content="Креативная студия из Дубая, предоставляющая полный цикл веб-разработки, брендинга, ИИ-контента и AR-опыта. Мы проектируем, создаем и запускаем цифровые продукты и сайты для клиентов в Дубае и по всему миру.">
+
+    <meta property="og:url" content="https://seniwave.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="SeniWave — Веб-разработка и брендинг ИИ, AR | Дубай">
+    <meta property="og:description" content="Креативная студия из Дубая, предоставляющая полный цикл веб-разработки, брендинга, ИИ-контента и AR-опыта. Мы проектируем, создаем и запускаем цифровые продукты и сайты для клиентов в Дубае и по всему миру.">
+    <meta property="og:image" content="https://seniwave.com/static/images/logos/og-image.png">
+
+    <meta property="twitter:domain" content="seniwave.com">
+    <meta property="twitter:url" content="https://seniwave.com/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SeniWave – Веб-разработка и брендинг ИИ, AR | Дубай">
+    <meta name="twitter:description" content="Креативная студия из Дубая, предоставляющая полный цикл веб-разработки, брендинга, ИИ-контента и AR-опыта. Мы проектируем, создаем и запускаем цифровые продукты и сайты для клиентов в Дубае и по всему миру.">
+    <meta name="twitter:image" content="https://seniwave.com/static/images/logos/og-image.png">
+
+    <link rel="icon" href="/static/favicon/fav.ico" sizes="48x48" type="image/x-icon">
+    <link rel="icon" href="/static/favicon/fav.png" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" href="/static/favicon/fav.png" sizes="48x48">
+    <link rel="icon" href="/static/favicon/fav.svg" type="image/svg+xml">
+
+    {{ gtag_script() }}
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="/static/scripts/anims.js"></script>
+    <script type="module" src="/static/scripts/waveRenderer.js"></script>
+    <script type="module" src="/static/scripts/router.js"></script>
+
+    <style>/* css for cls improvments */.page-transition{position: fixed;top: 0;right: 0;width: 100vw;height: 100vh;background-color: var(--accent-color);z-index: 20222;transform: translateX(100%);transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s;will-change: transform;}.page-transition.slide-in{transform: translateX(0);}.page-transition.slide-out{transform: translateX(-100%);}.page-transition.slide-fast-out{transform: translateX(-100%);}:root{--accent-color:#5F00FF;--primary-color:#000000;--secondary-color:#1E1E1E;--background-color:#F7F2FF;--padding-horizontal:76px;--padding-vertical:56px;}body{width:100vw;max-width:100vw;margin:0;padding:0;background-color:var(--background-color);font-family:'Manrope';-webkit-font-smoothing:antialiased;overflow-x:hidden;overflow-y:scroll;}header{position:fixed;z-index:100;display:flex;justify-content:space-between;width:calc(100% - var(--padding-horizontal) - var(--padding-horizontal) + 16px);height:64px;margin:0 calc(var(--padding-horizontal) - 8px);margin-top:24px;padding:8px;border-radius:32px;transition:margin 0.3s,width 0.3s,border-radius 0.3s;}.header-gap{height:96px;pointer-events:none;}canvas{z-index:2;pointer-events:none;position:absolute;opacity:0.4;margin-top:0;top:40vh;mask-image:linear-gradient(to bottom,rgba(0,0,0,1),rgba(0,0,0,0));user-select:none;-webkit-user-drag:none;-webkit-user-select:none;overflow:visible;will-change:contents;}</style>
+    <link rel="stylesheet" href="/static/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Martian+Mono:wght@100..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100..700&display=swap" rel="stylesheet">
+    <link href="/static/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        $(document).ready(function() {
+            if (typeof AOS !== 'undefined') {
+                AOS.init();
+            }
+        });
+    </script>
+</head>
+
+<body>
+    {{ google_modal() }}
+    {{ header_view() }}
+    <div class="page-transition slide-in"></div>
+    <div class="header-gap"></div>
+    <div id="canvas-wrapper">
+        <a href="https://book.seniwave.com">Записаться на звонок<svg xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17" fill="none"><path d="M18 11.0278H16V3.67334L1.66895 16.5718L0.331055 15.0845L14.3926 2.42822L7.40332 2.43115L7.40234 0.431152L18 0.428223V11.0278Z" fill="#5F00FF"/></svg></a>
+        <canvas id="canvas" height="550px"></canvas>
+    </div>
+    <div id="content">
+        <div class="page loading">
+            <div class="loader">
+                {% for i in range(5) %}
+                <div class="circle"></div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {{ footer_view() }}
+</body>
+
+
+<script>
+$(window).scroll(function () {
+    const themeMetaTag = document.querySelector('meta[name="theme-color"]');
+    const isSmallScreen = window.innerWidth <= 580;
+    const isScrolled = $(this).scrollTop() > 0;
+    $('header').toggleClass('scrolled', isScrolled);
+    if (themeMetaTag) {
+        let newColor;
+        if (path.startsWith('/works')) {
+            newColor = '#1e1e1e';
+        } else if (isSmallScreen) {
+            newColor = isScrolled ? '#ffffff' : '#F7F2FF';
+        } else {
+            newColor = '#F7F2FF';
+        }
+        themeMetaTag.setAttribute('content', newColor);
+    }
+    });
+    $(document).ready(function () {
+        $(window).scroll();
+        $(document).on('click', '.with-popup', function (e) {
+        if ($(e.target).closest('.close-popup').length) return;
+        $('.with-popup').not(this).removeClass('active');
+        $(this).addClass('active');
+    });
+    $(document).on('click', '.with-popup .close-popup', function (e) {
+        e.stopPropagation();
+        $(this).closest('.with-popup').removeClass('active');
+    });
+});
+</script>
+
+</html>

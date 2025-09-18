@@ -1,0 +1,55 @@
+{% macro team_wrapper() %}
+
+<div class="team-wrapper transparent-scroll no-split">
+     <div class="card" data-aos="fade-up" data-aos-delay="0" data-aos-once="true">
+         <div class="text">
+         <h3>Татьяна <br> Абакумова</h3>
+         <p>Финансовый директор</p>
+         </div>
+        <img class="def" src="/static/images/team/tatyana.png" alt="РЕАЛЬНЫЙ ЧЕЛОВЕК, ИИ-СГЕНЕРИРОВАННЫЙ АВАТАР">
+        {% for _ in range(3) %}
+        <img class="muted" src="/static/images/team/tatyana-muted.png">
+        {% endfor %}
+    </div>
+    <div class="card" data-aos="fade-up" data-aos-delay="100" data-aos-once="true">
+        <div class="text">
+        <h3>Мария <br> Абакумова</h3>
+        <p>Основатель, стратегия <br>и маркетинг</p>
+        </div>
+        <img class="def" src="/static/images/team/maria.png" alt="РЕАЛЬНЫЙ ЧЕЛОВЕК, ИИ-СГЕНЕРИРОВАННЫЙ АВАТАР">
+        {% for _ in range(3) %}
+        <img class="muted" src="/static/images/team/maria-muted.png">
+        {% endfor %}
+    </div>
+    <div class="card" data-aos="fade-up" data-aos-delay="150" data-aos-once="true">
+        <div class="text">
+        <h3>Дмитрий <br> Громов</h3>
+        <p>Руководитель дизайна <br>и разработки</p>
+        </div>
+        <img class="def" src="/static/images/team/dmitry.png" alt="РЕАЛЬНЫЙ ЧЕЛОВЕК, ИИ-СГЕНЕРИРОВАННЫЙ АВАТАР">
+        {% for _ in range(3) %}
+        <img class="muted" src="/static/images/team/dmitry-muted.png">
+        {% endfor %}
+    </div>
+    <div class="card" data-aos="fade-up" data-aos-delay="200" data-aos-once="true">
+        <div class="text">
+        <h3>Виталий <br> Дорогов</h3>
+        <p>3D/2D моушн-дизайнер <br>Специалист по дополненной реальности</p>
+        </div>
+        <img class="def" src="/static/images/team/vitally.png" alt="РЕАЛЬНЫЙ ЧЕЛОВЕК, ИИ-СГЕНЕРИРОВАННЫЙ АВАТАР">
+        {% for _ in range(3) %}
+        <img class="muted" class="muted" src="/static/images/team/vitally-muted.png">
+        {% endfor %}
+    </div>
+    <div class="card" data-aos="fade-up" data-aos-delay="250" data-aos-once="true">
+        <div class="text">
+        <h3>Катя <br> Курушева</h3>
+        <p>Арт-директор <br>ИИ-креатор</p>
+        </div>
+        <img class="def" src="/static/images/team/kate.png" alt="РЕАЛЬНЫЙ ЧЕЛОВЕК, ИИ-СГЕНЕРИРОВАННЫЙ АВАТАР">
+        {% for _ in range(3) %}
+        <img class="muted" src="/static/images/team/kate-muted.png">
+        {% endfor %}
+    </div>
+</div>
+{% endmacro %}

@@ -1,0 +1,302 @@
+{% from "components/icon.j2" import icon %}
+{% from "components_ru/team_wrapper.j2" import team_wrapper %}
+
+{% macro page_service() %}
+<div class="page service">
+    <h1 data-aos="fade-up">Наши услуги</h1>
+    <div class="card-wrapper">
+        <a href="/services/branding" data-page="services/branding" class="card service" data-aos="fade-left" data-aos-delay="0">
+            <h3 class="trnsf">бренд <span>/</span></h3>
+            <h1 class="bold">Брендинг</h1>
+        </a>
+        <a href="/services/design" data-page="services/design" class="card service" data-aos="fade-left" data-aos-delay="100">
+            <h3 class="trnsf">дизайн <span>/</span></h3>
+            <h1 class="bold">Дизайн-система</h1>
+        </a>
+        <a href="/services/web" data-page="services/web" class="card service" data-aos="fade-left" data-aos-delay="200">
+            <h3 class="trnsf">веб <span>/</span></h3>
+            <h1 class="bold">Веб-разработка</h1>
+        </a>
+        <a href="/services/animation" data-page="services/animation" class="card service" data-aos="fade-left" data-aos-delay="300">
+            <h3 class="trnsf">3d+ <span>/</span></h3>
+            <h1 class="bold">3D, AR и AI анимация</h1>
+        </a>
+    </div>
+</div>
+{% endmacro %}
+
+
+{% macro page_pricing() %}
+<div class="page pricing" id="pricing">
+    <h1 data-aos="fade-up">Какой у вас бюджет?</h1>
+    <div class="flex-cl gap-12 w-100 wrap-on-mobile">
+            <div class="price-wrapper">
+                <span data-aos="slide-up">
+                    <p>$5,000</p>
+                    <div class="line"></div>
+                </span>
+                <span data-aos="slide-up" data-aos-delay="100">
+                    <p>$10,000</p>
+                    <div class="line"></div>
+                </span>
+                <span data-aos="slide-up" data-aos-delay="200">
+                    <p>$30,000</p>
+                    <div class="line"></div>
+                    <p>$$$</p>
+                </span>
+            </div>
+        <div class="flex-cl gap-12 w-100">
+            <div class="card-wrapper">
+                <div class="card" data-aos="slide-up" data-page="#start-up">
+                    <div class="left-side">
+                        <h2>Стартап-пакет</h2>
+                        <p>Для новых брендов и основателей, которые хотят запуститься уверенно</p>
+                    </div>
+                    <div class="right-side">
+                        <h3>От $5k до $10k</h3>
+                        <div class="flex-cl gap-8">
+                            <p>Основы брендинга</p>
+                            <p>Дизайн и UX</p>
+                            <p>Разработка до 5 страниц</p>
+                            <p>Настройка маркетинга</p>
+                            <p>2D анимация/базовая инфографика</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" data-aos="slide-up" data-aos-delay="100" data-page="#scale-up">
+                    <div class="left-side">
+                        <h2>Пакет масштабирования</h2>
+                        <p>Для растущих команд, готовых систематизировать и расширяться</p>
+                    </div>
+                    <div class="right-side">
+                        <h3>От $10k до $30k</h3>
+                        <div class="flex-cl gap-8">
+                            <p>Брендинг</p>
+                            <p>Дизайн-система</p>
+                            <p>Разработка до 12 страниц</p>
+                            <p>Настройка маркетинга</p>
+                            <p>2D анимация/WebGL</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" data-aos="slide-up" data-aos-delay="200" data-page="#professional">
+                    <div class="left-side">
+                        <h2>Профессиональный пакет</h2>
+                        <p>Для сложных продуктов, корпоративных требований или запуска с 3D/AR</p>
+                    </div>
+                    <div class="right-side">
+                        <h3>От $30-50k</h3>
+                        <div class="flex-cl gap-8">
+                            <p>Копирайтинг + документация</p>
+                            <p>2D/3D/WebGL</p>
+                            <p>Продвинутый брендинг</p>
+                            <p>Дизайн-система</p>
+                            <p>Разработка ∞</p>
+                            <p>Настройка маркетинга</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex gap-4 pos-rel" data-aos="fade-up" data-aos-delay="200">
+                <button class="white-fill continue-pricing">
+                    Продолжить
+                </button>
+                <a href="/pricing" data-page="pricing" class="white-fill book-pricing learn-more hidden">Узнать больше</a>
+                <a href="https://book.seniwave.com/" class="white-fill consultation book-pricing hidden">
+                    Консультация
+                    {{ icon('contact') }}
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+$(document).ready(function () {
+    const $cards = $('.page.pricing .card');
+    const $continueBtn = $('.continue-pricing');
+    const $bookPricing = $('.book-pricing');
+    const $priceWrapper = $('.price-wrapper');
+
+    function updateButtons(data_page='') {
+        const hasEnabled = $cards.hasClass('enabled');
+        const hasSelected = $cards.hasClass('selected');
+        $('.learn-more').attr('href', '/pricing' + data_page);
+        console.log(data_page);
+
+        if (hasEnabled) {
+            $bookPricing.removeClass('hidden');
+            $continueBtn.addClass('hidden');
+            $priceWrapper.addClass('muted');
+        } else if (hasSelected) {
+            $bookPricing.addClass('hidden');
+            $continueBtn.removeClass('hidden').addClass('active');
+            $priceWrapper.removeClass('muted');
+        } else {
+            $bookPricing.addClass('hidden');
+            $continueBtn.addClass('hidden').removeClass('active');
+            $priceWrapper.removeClass('muted');
+            $('.learn-more').attr('href', '/pricing');
+        }
+    }
+    $cards.hover(function () {
+        if ('ontouchstart' in window || navigator.maxTouchPoints > 0) return;
+        if ($cards.hasClass('enabled')) return;
+        $cards.removeClass('selected');
+        $(this).addClass('selected');
+        updateButtons();
+    });
+
+    $cards.on('click', function () {
+        const $clicked = $(this);
+        const hasEnabled = $cards.hasClass('enabled');
+        if (hasEnabled) {
+            $cards.removeClass('enabled disabled selected');
+            // touchscreen fix
+            if (!('ontouchstart' in window || navigator.maxTouchPoints > 0)) {
+                $clicked.addClass('selected');
+                data_page = '';
+            }
+        } else {
+            $clicked.addClass('enabled');
+            $cards.not($clicked).addClass('disabled').removeClass('selected');
+            data_page = $clicked.data('page');
+        }
+        updateButtons(data_page);
+    });
+
+    $continueBtn.on('click', function () {
+        const $selected = $cards.filter('.selected');
+        if ($selected.length) {
+            $selected.addClass('enabled');
+            $cards.not($selected).addClass('disabled').removeClass('selected');
+        }
+        updateButtons();
+    });
+
+    $('.book-pricing.back').on('click', function () {
+        $cards.removeClass('enabled disabled selected');
+        updateButtons();
+    });
+});
+</script>
+{% endmacro %}
+
+
+{% macro page_something_more() %}
+<div class="page something-more">
+    <h2 class="big" data-aos="fade-zoom-in" data-aos-duration="2000" data-aos-delay="100" data-aos-once="true">кое-что еще...</h2>
+    <div class="card-wrapper">
+        <div class="card-content">
+            <a href="/services/animation" data-page="services/animation" class="card" data-aos="fade-up" data-aos-delay="800" data-aos-once="true">
+                <div class="absolute ar" data-aos="slide-up" data-aos-delay="990" data-aos-duration="3000" data-aos-once="true">
+                    <img src="/static/images/something-more/ar.svg" alt="ai" loading="lazy">
+                    <img src="/static/images/something-more/ar-slash.svg" alt="/" loading="lazy">
+                </div>
+                <img class="preview" src="/static/images/something-more/ai.png" alt="" loading="lazy"> 
+                <p>От $5,000</p>
+                <h3>Веб-просмотрщик, 3D моделирование, AR презентация и многое другое</h3>
+            </a>
+            <a href="/services/animation" data-page="services/animation" class="white-fill" data-aos="fade-up" data-aos-delay="800" data-aos-once="true">
+                Узнать больше
+                {{ icon('arrow-up') }}
+            </a>
+        </div>
+        <div class="card-content">
+            <a href="/services/animation" data-page="services/animation" class="card" data-aos="fade-up" data-aos-delay="1200" data-aos-once="true">
+                <div class="absolute ai" data-aos="slide-up" data-aos-delay="1330" data-aos-duration="3000" data-aos-once="true">
+                    <img src="/static/images/something-more/ai.svg" alt="ai" loading="lazy">
+                    <img src="/static/images/something-more/ai-slash.svg" alt="/" loading="lazy">
+                </div>
+                <img class="preview" src="/static/images/something-more/ar.png" alt="" loading="lazy"> 
+                <p>От $5,000</p>
+                <h3>ИИ-визуалы и видео на заказ</h3>
+            </a>
+            <a href="/services/animation" data-page="services/animation" class="white-fill" data-aos="fade-up" data-aos-delay="1200" data-aos-once="true">
+                Узнать больше
+                {{ icon('arrow-up') }}
+            </a>
+        </div>
+    </div>
+</div>
+{% endmacro %}
+
+
+{% macro page_team() %}
+<div class="page gap-32">
+    <h1 class="center" data-aos="fade-up" data-aos-once="true">
+        <span class="secondary">Наша</span> <span class="trnsf">Команда</span>
+    </h1>
+    {{ team_wrapper() }}
+    <div class="flex-cl flex-center w-100">
+        <a href="/team" data-page="team" class="typical" tabindex="0">Наша история</a>
+    </div>
+</div>
+{% endmacro %}
+
+
+{% macro page_blog() %}
+<div class="page blog" id="blog">
+    <h1 data-aos="fade-up" data-aos-once="true">Блог</h1>
+    <div class="card-wrapper scroll-x transparent-scroll">
+        <a class="card" class="link after-bg" href="/blog/custom-cms-vs-wordpress" data-page="blog/custom-cms-vs-wordpress" data-aos="fade-up" data-aos-delay="100" data-aos-once="true">
+            <div class="img-wrapper">
+                <img src="/static/images/blog/cms-preview.png" loading="lazy">
+                <img src="/static/images/blog/cms-preview-2d.svg" class="hidden" loading="lazy">
+            </div>
+            <div class="text">
+                <p>18 АВГ 2025</p>
+                <h3>Headless CMS против кастомного</h3>
+            </div>
+        </a>
+
+        <a class="card" class="link after-bg" href="/blog/atomic" data-page="blog/atomic" data-aos="fade-up" data-aos-delay="150" data-aos-once="true">
+            <div class="img-wrapper">
+                <img src="/static/images/blog/atomic-preview.png" loading="lazy">
+                <img src="/static/images/blog/atomic-preview-2d.svg" class="hidden" loading="lazy">
+            </div>
+            <div class="text">
+                <p>12 АВГ 2025</p>
+                <h3>Почему Atomic Design — наш метод в SeniWave</h3>
+            </div>
+        </a>
+
+        <a class="card" class="link after-bg" href="/blog/custom-vs-framer" data-page="blog/custom-vs-framer" data-aos="fade-up" data-aos-delay="200" data-aos-once="true">
+            <div class="img-wrapper">
+                <img src="/static/images/blog/custom-vs-framer-preview.png" loading="lazy">
+                <img src="/static/images/blog/custom-vs-framer-preview-2d.svg" class="hidden" loading="lazy">
+            </div>
+            <div class="text">
+                <p>5 АВГ 2025</p>
+                <h3>Кастом против Framer</h3>
+            </div>
+        </a>
+                
+        <a class="card subscribe" href="https://medium.com/@SeniWave" target="_blank" data-aos="fade-up" data-aos-delay="250" data-aos-once="true">
+            <p>medium.com/@SeniWave</p>
+            <h2>читайте больше на <b>Medium</b></h2>
+        </a>
+
+        <a class="card" class="link after-bg" href="/blog/ai-visuals-vs-production" data-page="blog/ai-visuals-vs-production" data-aos="fade-up" data-aos-delay="200" data-aos-once="true">
+            <div class="img-wrapper">
+                <img src="/static/images/blog/ai-preview.png" loading="lazy">
+                <img src="/static/images/blog/ai-preview-2d.svg" class="hidden" loading="lazy">
+            </div>
+            <div class="text">
+                <p>1 АВГ 2025</p>
+                <h3>ИИ-визуалы против продакшена</h3>
+            </div>
+        </a>
+
+        <a class="card" class="link after-bg" href="/blog/why-do-you-need-ar-for-pr" data-page="blog/why-do-you-need-ar-for-pr" data-aos="fade-up" data-aos-delay="200" data-aos-once="true">
+            <div class="img-wrapper">
+                <img src="/static/images/blog/ar-preview.png" loading="lazy">
+                <img src="/static/images/blog/ar-preview-2d.svg" class="hidden" loading="lazy">
+            </div>
+            <div class="text">
+                <p>21 ИЮЛ 2025</p>
+                <h3>Зачем нужен AR для PR</h3>
+            </div>
+        </a>
+    </div>
+</div>
+{% endmacro %}

@@ -1,0 +1,21 @@
+{% from "components_ru/home_macro.j2" import page_service %}
+{% from "components_ru/home_macro.j2" import page_pricing %}
+{% from "components_ru/home_macro.j2" import page_something_more %}
+{% from "components_ru/home_macro.j2" import page_team %}
+{% from "components_ru/home_macro.j2" import page_blog %}
+
+<div class="page hero">
+    <span class="split">
+        <h1 class="bold center words home-page">
+            <span class="secondary">Там, где</span> <span class="trnsf">Креативные</span><br>
+            <span class="secondary">И</span> <span class="trnsf">Технические решения</span>
+        </h1>
+        <h3 class="center">Мы — <a href="/home#services">креативное агентство полного цикла</a>, создаем и запускаем бренды <br> и цифровые продукты — всегда с <a href="/home#pricing">бизнес-подходом</a>.</h3>
+    </span>
+</div>
+
+{{ page_service() }}
+{{ page_pricing() }}
+{{ page_something_more() }}
+{{ page_team() }}
+{{ page_blog() }}

@@ -1,0 +1,36 @@
+{% from "components/service_page.j2" import service_page %}
+
+{% set title %}
+    3D, AR and AI Animation
+{% endset %}
+
+{% set text %}
+<h3>Process 3D Render & AI Animation</h3>
+<p class="numered">Brief & Location Study — site context, target buyer, key spaces → shot list.</p>
+<p class="numered">BIM/CAD Ingestion — architectural/landscape plans, measurements, references.</p>
+<p class="numered">Modelling — structures, terrain, foliage, hero props; or refine provided models.</p>
+<p class="numered">Materials & Lighting — physically‑based materials (PBR), daylight studies, dusk/dawn looks.</p>
+<p class="numered">Cameras & Storyboard — fly‑through paths, interior walkthroughs, product hero angles.</p>
+<p class="numered">Rendering — stills (4K–8K) and/or sequences; noise targets set.</p>
+<p class="numered">AI Animation/Enhancement — upscale/stylise/interpolate when it benefits clarity and speed.</p>
+<p class="numered">Post & Delivery — colour, de noise, sound (for motion); export and web guidelines.</p>
+
+<h3>Model Integration in AR/XR Web Viewer </h3>
+<p class="numered">Export — glTF/GLB + USDZ, compatibility checks.</p>
+<p class="numered">Viewer Integration — embeddable web viewer (WebXR/8th Wall/custom).</p>
+<p class="numered">Performance and compatibility report.</p>
+{% endset %}
+
+{% set info %}
+<p>WCAG 2.2 AA contrast</p>
+<p>Unified tokens (color/type/spacing)</p>
+<p>Brand guide with usability examples</p>
+{% endset %}
+
+{{ service_page(
+    title = title,
+    text = text | safe,
+    info = info | safe,
+    tags = ["cgi", "3d motion", "2d motion", "avatars", "ai animation", "web ar"],
+    image = "branding",
+) }}

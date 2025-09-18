@@ -1,0 +1,44 @@
+{% from "components/blog_page.j2" import blog_page %}
+{% from "components/blog_image.j2" import blog_image %}
+
+{% set title %}
+    <b>Headless CMS</b> VS Custom
+{% endset %}
+
+{% set blog_text %}
+    <h2><b>What is a CMS, really?</b></h2>
+    <p><b>Content Management System</b> is the backstage engine of your product: authoring, structure, permissions, media, and integrations — without tapping engineering for every change. For content‑heavy platforms, the CMS is mission control.</p>
+    <ul>
+        <li>Dashboard with scheduling, filters, and status tracking</li>
+        <li>Visual editor for text, images, video, embeds</li>
+        <li>Custom content types with tailored fields</li>
+        <li>Media library & asset reuse</li>
+        <li>Role‑based access (writers, editors, admins)</li>
+        <li>SEO & Open Graph tools, sitemaps</li>
+        <li>Localization for multi‑language content</li>
+        <li>Analytics hooks & performance insights</li>
+        <li>CRM‑lite: leads, forms, newsletter capture</li>
+    </ul>
+    <p><b>Note: </b>"Custom CMS" refers to a system tailored to your workflow. It can be built <b>monolithic</b> (backend+frontend coupled) or <b>headless</b> (content via API to any frontend).</p>
+    
+    <h2><b>Monolithic (e.g., WordPress)</b></h2>
+    <p>Backend, frontend, and templating live together. Fast to launch, opinionated, plugin-rich. Great for classic sites and content teams who want speed.</p>
+    
+    <h2><b>Headless (Sanity, Strapi, Directus, or WordPress Headless)</b></h2>
+    <p>CMS manages content and serves it via API (REST/GraphQL). Any frontend (web/app/kiosk) consumes it. Flexible, scalable, omnichannel.</p>
+    
+    <h2><b>Custom CMS (Monolithic or Headless)</b></h2>
+    <p>Tailored UX, data model, and permissions. Built with Django/Flask/Node/Rails. Exact workflows, no plugin bloat, scale-ready — either coupled or headless.</p>
+    
+    {{ blog_image('cms-diagram.svg', 'Content System Management diagram') }}
+    
+    <h2><b>Which one should you choose?</b></h2>
+    <p>Choose <b>Monolithic if</b> you need a blog, portfolio, or straightforward business site, your budget is tight with a 2–6 week timeline, and you're comfortable working with themes and a plugin ecosystem.</p>
+    <p>Choose <b>Headless if</b> you need omni-channel distribution across web, app, or kiosk, performance and scalability are non-negotiable, and your developers prefer modern stacks and CI/CD.</p>
+    <p>Choose a <b>Custom CMS if</b> you've outgrown templates and plugin glue, you need exact workflows and permissions with long-term ownership, and you're building a product-led platform with a multi-year roadmap.</p>
+{% endset %}
+
+{{ blog_page(
+    title = title | safe,
+    text = blog_text | safe
+) }} 

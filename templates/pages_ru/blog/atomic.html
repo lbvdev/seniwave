@@ -1,0 +1,29 @@
+{% from "components/blog_page.j2" import blog_page %}
+
+{% set title %}
+    Why Atomic Design is Our Go-To Method at SeniWave
+{% endset %}
+
+{% set blog_text %}
+    <p>Building a website can feel complicated, especially when you're trying to create something both visually appealing and easy to manage. At <strong>SENIWAVE</strong>, we've embraced Atomic Design because it simplifies this process significantly.</p>
+    <h2>Understanding Atomic Design</h2>
+    <p>Atomic Design breaks a webpage down into fundamental building blocks:</p>
+    <ul>
+    <li><b>Atoms</b> are basic elements like buttons, labels, and inputs.</li>
+    <li><b>Molecules</b> combine these atoms into small, functional components like a search bar.</li>
+    <li><b>Organisms</b> are groups of molecules, forming complex structures like headers or footers.</li>
+    <li><b>Templates</b> are layouts combining organisms, shaping the general structure.</li>
+    <li><b>Pages</b> apply real content to templates, finalizing the design.</li>
+    </ul>
+    <h2>Benefits of Using Atomic Design</h2>
+    <p>By using this modular method, we ensure that your website remains consistent and easy to update. Adjusting an atom automatically updates it everywhere, streamlining maintenance and significantly reducing errors.</p>
+    <p>Atomic Design also accelerates our workflow, meaning we deliver projects efficiently without sacrificing quality or scalability. Your website remains adaptable as your business evolves, ready to meet future needs.</p>
+    <h2>Why it Matters to You</h2>
+    <p>Atomic Design isn't just a developer-friendly solution. It's client-friendly too. You'll benefit from a cohesive, intuitive site that engages users and clearly communicates your brand message.</p>
+    <p>Interested in exploring how Atomic Design can improve your website? <strong>Get in touch</strong>, and let’s discuss your next project.</p>
+{% endset %}
+
+{{ blog_page(
+    title = title | safe,
+    text = blog_text | safe
+) }}

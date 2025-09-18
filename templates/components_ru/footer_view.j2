@@ -1,0 +1,79 @@
+{% macro footer_view() %}
+<footer>
+    <div class="footer-wrapper">
+        <div class="content-wrapper">
+            <div class="flex-cl gap-12">
+                <p class="mono">Мы — креативное агентство полного цикла, создаем и запускаем бренды и цифровые продукты — всегда с бизнес-подходом.</p>
+                <div class="flex gap-12">
+                    <a href="https://www.linkedin.com/company/seni-wave" target="_blank">Linkedin</a>
+                    <a href="https://x.com/seniwave/" target="_blank">X.com</a>
+                </div>
+                <div class="time-block flex gap-128 flex-end h-100">
+                    <div class="flex-cl offices">
+                        <p>Россия, Москва</p>
+                    </div>
+                    <div class="flex-cl">
+                        <p>09:41</p>
+                    </div>
+                </div>
+            </div>
+            <div class="links">
+                <p>Навигация</p>
+                <a href="/home" data-page="home">Главная</a>
+                <a href="/team" data-page="team">Команда</a>
+                <a href="/pricing" data-page="pricing">Цены</a>
+                <a href="/home#blog" data-page="home#blog">Блог</a>
+                <a href="/works" data-page="works">Работы</a>
+            </div>
+            <div class="links">
+                <p>Услуги</p>
+                <a href="services/branding" data-page="services/branding">Брендинг</a>
+                <a href="services/design" data-page="services/design">Дизайн-система</a>
+                <a href="services/web" data-page="services/web">Веб-разработка</a>
+                <a href="services/animation" data-page="services/animation">3D, AR и ИИ анимация</a>
+                <hr>
+                <a href="https://book.seniwave.com" target="_blank">Запись на консультацию</a>
+                <a href="https://meet.seniwave.com" target="_blank">Приложение для видеозвонков</a>
+            </div>
+            <div class="links">
+                <p>Контакты</p>
+                <a href="https://wa.me/971585820390" target="_blank">Whatsapp</a>
+                <a href="https://t.me/seniwave" target="_blank">Telegram</a>
+                <a href="mailto:info@seniwave.com" target="_blank">Email</a>
+            </div>
+        </div>
+        <img class="footer-logo" src="/static/images/logos/footer.svg" alt="SeniWave">
+    </div>
+    <div class="legal">
+        <p>Все права защищены ©2024-2025</p>
+        <div class="flex">
+            <a class="link" href="/privacy" data-page="privacy">Политика конфиденциальности</a>
+            <a class="link" href="/terms" data-page="terms">Условия использования</a>
+            <a href="#" id="manage-cookies-link">Управление cookies</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+$(document).ready(function() {
+    function updateTime() {
+        const timezones = [
+            'Europe/Moscow'
+        ];
+        
+        timezones.forEach((tz, index) => {
+            const time = new Date().toLocaleTimeString('ru-RU', {
+                timeZone: tz,
+                hour12: false,
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+            $('.time-block .flex-cl:last-child p').eq(index).text(time);
+        });
+    }
+    
+    updateTime();
+    setInterval(updateTime, 1000);
+});
+</script>
+{% endmacro %}

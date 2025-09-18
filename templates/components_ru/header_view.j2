@@ -1,0 +1,636 @@
+{% from "components/icon.j2" import icon %}
+{% macro header_view() %}
+
+<header>
+    <a class="logo" href="/home" data-page="home">
+        <img src="/static/images/logos/header.svg" alt="SeniWave Logo">
+    </a>
+    <div class="link-wr">
+        <a class="link after-bg" href="/home" data-page="home" id="home" class="enabled">
+            Главная
+            {{ icon('home', class='outline') }}
+            {{ icon('home-fill', class='fill') }}
+        </a>
+        <a class="link after-bg" href="/team" data-page="team" id="team">
+            Команда
+            {{ icon('team', class='outline') }}
+            {{ icon('team-fill', class='fill') }}
+        </a>
+        <a class="link after-bg" href="/pricing" data-page="pricing" id="pricing">
+            Цены
+            {{ icon('price', class='outline') }}
+            {{ icon('price-fill', class='fill') }}
+        </a>
+        <div class="with-popup after-bg services">
+            <div class="head link">
+                <span>Услуги</span>
+                {{ icon('services', class='outline invert-on-works') }}
+            </div>
+            <div class="popup center">
+                <div class="absolute-head close-popup">
+                    Услуги
+                    <div class="img-wrapper">
+                        {{ icon('services', class='first') }}
+                        {{ icon('close', class='second') }}
+                    </div>
+                </div>
+                <div class="info-wr">
+                    <a class="info" href="/services/branding" data-page="services/branding">
+                        <div class="text">
+                            <h3>Брендинг</h3>
+                            <p>Создаем бренд-системы, которые узнают и выбирают</p>
+                        </div>
+                        <img src="/static/images/header/branding.png" loading="lazy">
+                    </a>
+                    <a class="info" href="/services/design" data-page="services/design">
+                        <div class="text">
+                            <h3>Дизайн-система</h3>
+                            <p>Глубокие исследования для понимания поведения и потребностей пользователей</p>
+                        </div>
+                        <img src="/static/images/header/design.png" loading="lazy">
+                    </a>
+                    <a class="info" href="/services/web" data-page="services/web">
+                        <div class="text">
+                            <h3>Веб-разработка</h3>
+                            <p>Создаем адаптивные и масштабируемые сайты, которые работают</p>
+                        </div>
+                        <img src="/static/images/header/web.png" loading="lazy">
+                    </a>
+                    <a class="info" href="/services/animation" data-page="services/animation">
+                        <div class="text">
+                            <h3>3D, AR и ИИ анимация</h3>
+                            <p>Создаем захватывающие визуальные впечатления</p>
+                        </div>
+                        <img src="/static/images/header/ar.png" loading="lazy">
+                    </a>
+                </div>
+                <div class="legal-mini">
+                    <p>Все права защищены ©2024-2025</p>
+                    <a href="/privacy" data-page="privacy">Политика конфиденциальности</a>
+                </div>
+            </div>
+        </div>
+        <a class="link after-bg" href="/works" data-page="works" id="works">
+            Работы
+            {{ icon('works', class='outline') }}
+            {{ icon('works-fill', class='fill') }}
+        </a>
+    </div>
+    <div class="link-wr">
+        <div class="with-popup after-bg fill menu">
+            <div class="head">
+                <span>Меню</span>
+                {{ icon('menu', class='first invert-on-works') }}
+            </div>
+            <div class="popup">
+                <div class="absolute-head close-popup">
+                    Меню
+                    <div class="img-wrapper">
+                        {{ icon('menu', class='first') }}
+                        {{ icon('close', class='second') }}
+                    </div>
+                </div>
+                <div class="info-wr">
+                    <a class="info" href="/home" data-page="home" id="home" class="enabled">
+                        <h3>Главная</h3>
+                    </a>
+                    <a class="info" href="/team" data-page="team" id="team">
+                        <h3>История</h3>
+                    </a>
+                    <a class="info" href="/pricing" data-page="pricing" id="pricing">
+                        <h3>Цены</h3>
+                    </a>
+                    <a class="info" href="https://medium.com/@SeniWave" target="_blank">
+                        <h3>Блог</h3>
+                        <p class="invisible">переход на Medium</p>
+                    </a>
+                    <a class="info" href="/works" data-page="works" id="works">
+                        <h3>Работы</h3>
+                    </a>
+                </div>
+                <div class="legal-mini">
+                    <p>Все права защищены ©2024-2025</p>
+                    <a href="/privacy" data-page="privacy">Политика конфиденциальности</a>
+                </div>
+            </div>
+        </div>
+        <div class="with-popup after-bg contact">
+            <div class="head">
+                <span>Связаться</span>
+                <div class="img-wrapper">
+                    {{ icon('contact', class='first') }}
+                    {{ icon('message', class='second') }}
+                </div>
+            </div>
+            <div class="popup">
+                <div class="absolute-head close-popup">
+                    Обсудим проект
+                    <div class="img-wrapper">
+                        {{ icon('message', class='first') }}
+                        {{ icon('close', class='second') }}
+                    </div>
+                </div>
+                <a href="https://book.seniwave.com/" class="book">
+                    Консультация
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="36" viewBox="0 0 32 36" fill="none"><path d="M9.57568 2.09546V8.49546M22.3757 2.09546V8.49546M1.57568 14.8955H30.3757M13.9757 20.3584H15.9757V28.3584M13.9757 28.3584H17.9757M9.25568 34.0955H22.6957C25.3839 34.0955 26.7281 34.0955 27.7548 33.5723C28.658 33.1121 29.3923 32.3778 29.8525 31.4746C30.3757 30.4478 30.3757 29.1037 30.3757 26.4155V12.9755C30.3757 10.2872 30.3757 8.94308 29.8525 7.9163C29.3923 7.01313 28.658 6.27882 27.7548 5.81863C26.7281 5.29546 25.3839 5.29546 22.6957 5.29546H9.25568C6.56743 5.29546 5.22331 5.29546 4.19653 5.81863C3.29335 6.27882 2.55904 7.01313 2.09885 7.9163C1.57568 8.94308 1.57568 10.2872 1.57568 12.9755L1.57568 26.4155C1.57568 29.1037 1.57568 30.4478 2.09885 31.4746C2.55904 32.3778 3.29335 33.1121 4.19653 33.5723C5.22331 34.0955 6.56743 34.0955 9.25568 34.0955Z" stroke="white" stroke-width="2.6" stroke-linecap="square"/></svg>
+                </a> 
+                <div class="info-wr">
+                    <a tabindex="0" href="https://wa.me/971585820390" class="info">
+                        <h3>Whatsapp</h3>
+                        <p>+971 58 582 0390</p>
+                    </a>
+                    <a tabindex="0" href="https://t.me/seniwave" class="info">
+                        <h3>Telegram</h3>
+                        <p>@seniwave</p>
+                    </a>
+                    <a tabindex="0" class="info" href="mailto:info@seniwave.com">
+                        <h3>Почта</h3>
+                        <p>info@seniwave.com</p>
+                    </a>
+                </div>
+                <div class="legal-mini">
+                    <p>Все права защищены ©2024-2025</p>
+                    <a href="/privacy" data-page="privacy">Политика конфиденциальности</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<script>
+$(window).on('scroll', function () {
+    $('.with-popup').removeClass('active');
+    $('body').removeClass('contact')
+});
+$(document).on("click", function(e) {
+    if (!$(e.target).closest("header").length) {
+        $(".with-popup").removeClass("active");
+        $('body').removeClass('contact')
+    }
+});
+</script>
+
+<style>
+header{
+    position: fixed;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    width: calc(100% - var(--padding-horizontal) - var(--padding-horizontal) + 16px);
+    height: 64px;
+    margin: 0 calc( var(--padding-horizontal) - 8px);
+    margin-top: 24px;
+    padding: 8px;
+    border-radius: 32px;
+    transition: var(--animation-default-03), background 0.1s;
+
+    .link-wr{
+        display: flex;
+        gap: 5px;
+    }
+
+    .link-wr .link{
+        position: relative;
+        z-index: 2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        height: 48px;
+        padding: 12px 18px;
+        padding-right: 6px !important;
+        color: var(--secondary-color);
+        font-weight: 600;
+        user-select: none;
+        -moz-user-select: none;
+        transition: padding-right 0.3s, color 0.1s !important;
+        img.fill{
+            display: none;
+        }
+        img{
+            max-width: 0;
+            opacity: 0;
+            transform: translateX(8px);
+            transition: var(--animation-default-03);
+        }
+    }
+    .link:not(.enabled){
+        color: #1E1E1EA0;
+        img{
+            opacity: 0.5;
+        }
+    }
+
+    .link:hover{
+        padding-right: 18px !important;
+        color: var(--secondary-color);
+        img{
+            max-width: 40px;
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+    .after-bg {
+        position: relative;
+    }
+    .after-bg::after {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        background: rgba(30, 30, 30, 0);
+        border-radius: 64px;
+        
+        transition: var(--animation-default-03);
+        inset: 0;
+    }
+    .after-bg.fill::after {
+        background: rgba(30, 30, 30, 0.04);
+    }
+    .after-bg:hover::after {
+        background: rgba(30, 30, 30, 0.08);
+        inset: -5px;
+    }
+    .after-bg:active::after {
+        background: rgba(30, 30, 30, 0.08);
+        inset: -2px;
+    }
+    @media (max-width: 580px) {
+        .after-bg:hover::after {
+            background: rgba(30, 30, 30, 0.04);
+            inset: 0px;
+        }
+    }
+    .after-bg.contact::after{
+        background-color: var(--accent-color);
+    }
+    .after-bg.contact:active::after {
+        background: rgba(90, 0, 255, 0.08);
+    }
+    a:active { 
+        opacity: 0.5;
+    }
+    a.enabled{
+        img.fill{
+            display: initial !important;
+        }
+        img.outline{
+            display: none;
+        }
+    }
+
+    .with-popup{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        padding: 0;
+        height: 48px;
+        width: fit-content;
+        border-radius: 24px;
+        
+        .head{
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            height: 48px;
+            padding: 12px 18px;
+            font-weight: 600;
+            cursor: pointer;
+            user-select: none;
+            -moz-user-select: none;
+            -webkit-user-drag: none;
+        }
+        .popup{
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: fit-content;
+            color: var(--secondary-color) !important;
+            border-radius: 24px;
+            z-index: 12;
+            opacity: 0;
+            pointer-events: none;
+            .absolute-head{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 36px;
+                height: 48px;
+                width: 100%;
+                padding: 12px 18px;
+                font-weight: 600;
+                cursor: pointer;
+                user-select: none;
+                -moz-user-select: none;
+                .img-wrapper{
+                    position: relative;
+                    width: 16px;
+                    height: 16px;
+                    transition: 1.0s cubic-bezier(0.075, 0.82, 0.165, 1);
+                    img {
+                        position: absolute;
+                    }
+                    .second {
+                        width: 12px;
+                        opacity: 0;
+                    }
+                }
+            }
+        }
+        .info-wr{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            .info{
+                display: flex;
+                align-items: flex-end;
+                padding: 2px 18px;
+                width: 380px;
+                min-width: fit-content;
+                color: var(--secondary-color);
+                user-select: none;
+                h3{
+                    font-size: 48px;
+                    font-weight: 300;
+                    width: 100%;
+                    text-align: left;
+                    transition: font-weight 0.4s;
+                }
+                p{
+                    font-size: 16px;
+                    font-weight: 400;
+                    padding-bottom: 11px;
+                    white-space: nowrap;
+                }
+                p.invisible{
+                    opacity: 0;
+                    transition: opacity 0.5s;
+                }
+            }
+            .info:active{
+                h3{
+                    font-weight: 450;
+                }
+            }
+            .info.enabled{
+                h3{                    
+                    font-weight: 500;
+                }
+            }
+            .info{
+                transition: opacity 0.2s;
+            }
+            .info:hover{
+                opacity: 1 !important;
+                p.invisible{
+                    opacity: 0.5;
+                }
+            }
+        }
+        .info-wr:hover .info{
+            opacity: 0.5;
+        }
+        
+        .legal-mini{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 32px;
+            margin-top: 32px;
+            padding: 18px 18px;
+            width: 100%;
+            a, p{
+                color: var(--secondary-color);
+                opacity: 0.5;
+                font-size: 14px;
+            }
+            a{
+                text-decoration: underline;
+                text-decoration-color: #1E1E1E90;
+                text-underline-offset: 2px;
+            }
+        }
+        
+    }
+    .with-popup{
+        transition: background-color 0.3s, transform 0.3s;
+        .head{
+            transition: opacity 0.2s;
+        }
+        .popup{
+            opacity: 0;
+            pointer-events: none;
+            background-color: #F6F6F6;
+            color: #1E1E1E;
+            
+            transform-origin: right top;
+            transform: scaleY(55%) scaleX(55%) translateY(40px);
+            transition: var(--animation-default-03), opacity 0.4s;
+        }
+        .popup.center{
+            width: 1120px;
+            max-width: calc(100vw - var(--padding-horizontal) - var(--padding-horizontal) + 16px);
+            transform: scaleY(55%) scaleX(55%) translateX(50%) translateY(40px);
+        }
+    }
+    .with-popup.active::after{
+        background-color: rgba(30, 30, 30, 0.08);
+        inset: 0;
+    }
+    .with-popup.active{
+        color: var(--secondary-color);
+        background-color: transparent;
+        
+        transform: translateY(10px);
+        z-index: 20;
+        .head{
+            opacity: 0;
+        }
+        .popup{
+            opacity: 1;
+            pointer-events: all;
+            transform: scaleY(100%) scaleX(100%) translateX(-10px) translateY(-10px);
+            transition: transform 0.3s, background-color 0.2s, opacity 0.1s 0s;
+            
+            .absolute-head{
+                .img-wrapper {
+                    transform: rotateY(360deg);
+                    scale: 1.1;
+                    .first {
+                        opacity: 0;
+                    }
+                    .second {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+        .popup.center{
+            transform: scaleY(100%) scaleX(100%) translateX(40.5%) translateY(-10px);
+        }
+    }
+
+    .with-popup.contact{
+        background-color: var(--accent-color);
+        color: #FFFFFF;
+        .head{
+            justify-content: space-between;
+            gap: 36px;
+        }
+        .popup{
+            background-color: #C19DFF;
+        }
+        .info-wr{
+            .info{
+                justify-content: space-between;
+                gap: 58px;
+                width: 100%;
+            }
+        }
+        .book {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 110%;
+            padding: 24px 32px;
+            margin-bottom: 18px;
+            margin-top: 6px;
+            transform: rotate(-3deg);
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: 64px;
+            font-size: 28px;
+            transition: transform 0.2s;
+        }
+        .book:hover{
+            transform: rotate(1deg) scale(1.08);
+        }
+    }
+
+
+
+
+    .with-popup.services{
+        .info-wr{
+            display: grid;
+            grid-template-columns: 2fr 2fr;
+            width: 100%;
+            padding: 0 24px;
+            gap: 6px;
+        }
+        .info{
+            gap: 24px;
+            max-width: 100%;
+            min-width: 0;
+            width: 100%;
+            flex: 1;
+            padding: 14px 18px !important;
+            box-sizing: border-box;
+            overflow: hidden;
+
+            background-color: #ffffff;
+            border-radius: 18px;
+
+            cursor: pointer;
+
+            .text{
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                flex-shrink: 1;
+                min-width: 0;
+            }
+
+            h3{
+                font-size: 32px !important;
+                width: 100%;
+            }
+            p{
+                opacity: 0.5;
+                width: 100%;
+                font-size: 14px;
+                white-space: initial;
+
+            }
+
+            img{
+                height: 135px;
+                width: auto;
+                object-fit: contain;
+            }
+        }
+        .info:hover{
+            
+        }
+    }
+
+    @media (max-width: 630px) {
+        .with-popup .popup {
+            position: fixed;
+
+            top: 0;
+            right: 0;
+            width: 80vw !important;
+
+            background: white;
+
+            .info{
+                flex-direction: column;
+                align-items: flex-start !important;
+                gap: 0 !important;
+            }
+        }
+        .with-popup.menu .popup{
+            margin-right: -64px !important;
+            .invisible{
+                opacity: 0.5 !important;
+                padding: 0 !important;
+                font-size: 14px !important;
+            }
+        }
+        .with-popup.active .popup {
+            transform: initial;
+        }
+    }
+}
+
+header.scrolled{
+    width: calc(100% - var(--padding-horizontal) - var(--padding-horizontal) + 40px);
+    margin: 0 calc(var(--padding-horizontal) - 20px);
+    margin-top: 24px;
+    background-color: #FFFFFF;
+    backdrop-filter: blur(10px);
+}
+
+@media (max-width: 580px) {
+    header{
+        .menu, .contact{
+            max-width: 48px;
+            
+            .head span{
+                display: none;
+            }
+        }
+        .contact{
+            .head{
+                padding-left: 24px !important;
+                padding-right: 17px !important;
+            }
+            .first{
+                opacity: 0 !important;
+            }
+            .second{
+                opacity: 1 !important;
+            }
+        }
+    }
+    header.scrolled{
+        width: 100%;
+        margin: 0;
+        border-radius: 0;
+    }
+}
+</style>
+
+{% endmacro %}
