@@ -1,36 +1,36 @@
 {% from "components/service_page.j2" import service_page %}
 
 {% set title %}
-    3D, AR and AI Animation
+    3D, AR и ИИ анимация
 {% endset %}
 
 {% set text %}
-<h3>Process 3D Render & AI Animation</h3>
-<p class="numered">Brief & Location Study — site context, target buyer, key spaces → shot list.</p>
-<p class="numered">BIM/CAD Ingestion — architectural/landscape plans, measurements, references.</p>
-<p class="numered">Modelling — structures, terrain, foliage, hero props; or refine provided models.</p>
-<p class="numered">Materials & Lighting — physically‑based materials (PBR), daylight studies, dusk/dawn looks.</p>
-<p class="numered">Cameras & Storyboard — fly‑through paths, interior walkthroughs, product hero angles.</p>
-<p class="numered">Rendering — stills (4K–8K) and/or sequences; noise targets set.</p>
-<p class="numered">AI Animation/Enhancement — upscale/stylise/interpolate when it benefits clarity and speed.</p>
-<p class="numered">Post & Delivery — colour, de noise, sound (for motion); export and web guidelines.</p>
+<h3>Процесс 3D рендера и ИИ анимации</h3>
+<p class="numered">Бриф и изучение локации — контекст площадки, целевая аудитория, ключевые пространства → список кадров.</p>
+<p class="numered">Импорт BIM/CAD — архитектурные/ландшафтные планы, измерения, референсы.</p>
+<p class="numered">Моделирование — структуры, рельеф, растительность, ключевые объекты; или доработка предоставленных моделей.</p>
+<p class="numered">Материалы и освещение — физически корректные материалы (PBR), дневное освещение, сумеречные/рассветные виды.</p>
+<p class="numered">Камеры и раскадровка — пути облета, внутренние проходы, героические ракурсы продукта.</p>
+<p class="numered">Рендеринг — статичные кадры (4K–8K) и/или последовательности; установка целей по шуму.</p>
+<p class="numered">ИИ анимация/улучшение — апскейл/стилизация/интерполяция, когда это улучшает ясность и скорость.</p>
+<p class="numered">Пост и доставка — цветокоррекция, шумоподавление, звук (для движения); экспорт и веб-гайдлайны.</p>
 
-<h3>Model Integration in AR/XR Web Viewer </h3>
-<p class="numered">Export — glTF/GLB + USDZ, compatibility checks.</p>
-<p class="numered">Viewer Integration — embeddable web viewer (WebXR/8th Wall/custom).</p>
-<p class="numered">Performance and compatibility report.</p>
+<h3>Интеграция модели в AR/XR веб-просмотрщик</h3>
+<p class="numered">Экспорт — glTF/GLB + USDZ, проверка совместимости.</p>
+<p class="numered">Интеграция просмотрщика — встраиваемый веб-просмотрщик (WebXR/8th Wall/кастомный).</p>
+<p class="numered">Отчет по производительности и совместимости.</p>
 {% endset %}
 
 {% set info %}
-<p>WCAG 2.2 AA contrast</p>
-<p>Unified tokens (color/type/spacing)</p>
-<p>Brand guide with usability examples</p>
+<p>WCAG 2.2 AA контрастность</p>
+<p>Единые токены (цвет/тип/отступы)</p>
+<p>Бренд-гайд с примерами использования</p>
 {% endset %}
 
 {{ service_page(
     title = title,
     text = text | safe,
     info = info | safe,
-    tags = ["cgi", "3d motion", "2d motion", "avatars", "ai animation", "web ar"],
+    tags = ["cgi", "3d motion", "2d motion", "аватары", "ии анимация", "web ar"],
     image = "branding",
 ) }}

@@ -1,29 +1,25 @@
 {% from "components/service_page.j2" import service_page %}
 
 {% set title %}
-    Web Development
+    Веб-разработка
 {% endset %}
 
 {% set text %}
-<h3>Process</h3>
-<p class="numered">Solution Architecture — goals, functional scope, stack and CMS choice.</p>
-<p class="numered">Repo & CI/CD — project structure, environments, build/deploy pipeline.</p>
-<p class="numered">Frontend — semantic markup, components, responsive, motion.</p>
-<p class="numered">Backend/CMS — content modeling, roles, integrations.</p>
-<p class="numered">Performance & A11y — asset optimization, lazy/SSR, ARIA.</p>
-<p class="numered">QA & Cross‑device — test plan, bugfixes, regressions.</p>
-<p class="numered">SEO/Marketing Setup — meta, sitemap, robots, Open Graph, schema.org, wiring GA4, GTM, pixels, events.</p>
-<p class="numered">Content & Launch — content migration, prod deploy, team training.</p>
+<h3>Процесс</h3>
+<p class="numered">Архитектура решения — цели, функциональный объем, выбор стека и CMS.</p>
+<p class="numered">Репозиторий и CI/CD — структура проекта, окружения, пайплайн сборки/деплоя.</p>
+<p class="numered">Фронтенд — семантическая разметка, компоненты, адаптив, анимация.</p>
+<p class="numered">Бэкенд/CMS — моделирование контента, роли, интеграции.</p>
+<p class="numered">Производительность и доступность — оптимизация ресурсов, lazy/SSR, ARIA.</p>
+<p class="numered">QA и кроссплатформенность — план тестирования, исправления багов, регрессии.</p>
+<p class="numered">SEO/настройка маркетинга — мета, карта сайта, robots, Open Graph, schema.org, подключение GA4, GTM, пикселей, событий.</p>
+<p class="numered">Контент и запуск — миграция контента, продакшн-деплой, обучение команды.</p>
 {% endset %}
 
 {% set info %}
 <p>Lighthouse ≥ 90</p>
 <p>CWV — Pass</p>
 <p>WCAG AA</p>
-{% endset %}
-
-{% set tags %}
-    ["logo", "colors", "typography"]
 {% endset %}
 
 {{ service_page(

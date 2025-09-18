@@ -1,11 +1,11 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_from_directory
 
 app = Flask(__name__, static_folder='static')
 r = render_template
 
 def is_russian_domain():
     host = request.headers.get('Host', '').lower()
-    return host.startswith('seniwave.ru')
+    return host.startswith('seniwave.ru') or host.startswith('localseniwave.ru')
 
 def get_pages_path():
     return 'pages_ru/' if is_russian_domain() else 'pages/'
@@ -35,6 +35,10 @@ def contact():
         return r('index_ru.html', contact=True, ru=True)
     else:
         return r('index.html', contact=True, ru=is_russian_domain())
+
+@app.route('/presentation/t2')
+def presentation_t2():
+    return send_from_directory('static', 'presentation/game_concept_seniwave.pdf')
 
 
 if __name__ == '__main__':
