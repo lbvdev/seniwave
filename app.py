@@ -10,12 +10,15 @@ def is_russian_domain():
 def get_pages_path():
     return 'pages_ru/' if is_russian_domain() else 'pages/'
 
-@app.route('/')
-def index():
+def return_index():
     if is_russian_domain():
         return r('index_ru.html', ru=True)
     else:
         return r('index.html')
+
+@app.route('/')
+def index():
+    return return_index()
 
 @app.route('/pages/<path:filename>')
 def pages(filename):
@@ -24,21 +27,15 @@ def pages(filename):
 
 @app.route('/<path:path>')
 def catch_all(path):
-    if is_russian_domain():
-        return r('index_ru.html', ru=True)
-    else:
-        return r('index.html')
+    return return_index()
     
 @app.route('/contact')
 def contact():
-    if is_russian_domain():
-        return r('index_ru.html', contact=True, ru=True)
-    else:
-        return r('index.html', contact=True, ru=is_russian_domain())
+    return return_index()
 
-@app.route('/presentation/t2')
-def presentation_t2():
-    return send_from_directory('static', 'presentation/game_concept_seniwave.pdf')
+#@app.route('static/presentation/t2')
+#def presentation_t2():
+#    return send_from_directory('static', 'presentation/game_concept_seniwave.pdf')
 
 
 if __name__ == '__main__':
