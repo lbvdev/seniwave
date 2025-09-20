@@ -973,6 +973,7 @@ p.numered::before{
 			gap: 18px;
 			width: 100%;
 			padding-left: 12px;
+            white-space: nowrap;
 
 			p{
 				color: var(--accent-color);
